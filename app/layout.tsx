@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/layout/NavBar";
+import BackgroundVideo from "@/components/layout/BackgroundVideo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#121212] w-screen min-h-screen relative`}
       >
+        <BackgroundVideo defaultSrc="/bg/238264.mp4" />
+        <Navbar />
         {children}
       </body>
     </html>

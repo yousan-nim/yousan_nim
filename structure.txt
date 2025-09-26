@@ -1,0 +1,33 @@
+/app                ← Next.js routing & pages
+  /(public)         ← Public routes (landing, about, blog…)
+    /about-us
+      page.tsx
+    /contact-us
+      page.tsx
+  /(dashboard)      ← Authenticated routes
+    /dashboard
+      /products
+        page.tsx
+      /settings
+        page.tsx
+  /api              ← API routes (only thin route.ts wrappers)
+
+/components         ← Reusable UI components (global)
+  /ui               ← Generic UI building blocks (buttons, modals, inputs)
+  /layout           ← Navbar, Sidebar, Footer, Header
+  /forms            ← Form-related components
+  /cards            ← Cards, widgets, reusable display blocks
+
+/features           ← Feature-scoped components & hooks
+  /auth             ← Login form, user menu, reset password
+  /products         ← ProductCard, ProductTable, ProductForm
+  /chat             ← ChatUI, MessageList, ChatInput
+
+/styles             ← Global styles, Tailwind config, themes
+
+/lib                ← Shared utils (formatDate, fetcher, hooks)
+  /hooks            ← useAuth, useScroll, useDebounce
+  /helpers          ← string, number, date utilities
+  /api-client       ← client for calling APIs
+
+/server             ← Backend logic (services, db, external API integration)

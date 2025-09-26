@@ -1,103 +1,114 @@
-import Image from "next/image";
+import AboutMe from "@/components/contents/AboutMe";
+import HeaderCoolWord from "@/components/contents/HeaderCoolWord";
+import HeaderWhatImI from "@/components/contents/HeaderWhatImI";
+import Grid, { GridItem } from "@/components/layout/Grid";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+
+
+
+
+    <main className="relative">
+      {/* Hero */}
+      <section id="home" aria-label="Hero" className="relative h-screen">
+        <div className="relative w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto h-full">
+          <HeaderCoolWord />
+          <HeaderWhatImI />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+
+      {/* About */}
+      <section id="about" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28">
+        <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
+          <AboutMe />
+        </div>
+      </section>
+
+
+
+
+
+      {/* Experience */}
+      <section id="experience" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5">
+        <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
+          <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">Experience</h2>
+          <Grid cols={1} md={2} gap="lg">
+            <GridItem className="rounded-xl border border-white/10 p-6 text-white/80">
+              <h3 className="text-white font-semibold text-lg mb-2">Company A</h3>
+              <p>Full‑Stack Developer — Built scalable web applications and APIs.</p>
+            </GridItem>
+            <GridItem className="rounded-xl border border-white/10 p-6 text-white/80">
+              <h3 className="text-white font-semibold text-lg mb-2">Company B</h3>
+              <p>Frontend Engineer — Led UI revamp with performance improvements.</p>
+            </GridItem>
+          </Grid>
+        </div>
+      </section>
+
+
+
+      {/* Education */}
+      <section id="education" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28">
+        <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
+          <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">Education</h2>
+          <div className="rounded-xl border border-white/10 p-6 text-white/80">
+            <h3 className="text-white font-semibold text-lg mb-2">MSc in Artificial Intelligence</h3>
+            <p>Focused on applying AI to real-world products and engineering problems.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Vocation */}
+      <section id="vocation" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5">
+        <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
+          <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">Vocation</h2>
+          <Grid cols={2} md={3} lg={4} gap="md">
+            {[
+              "JavaScript/TypeScript",
+              "React/Next.js",
+              "Node.js",
+              "Python",
+              "PostgreSQL",
+              "TailwindCSS",
+              "AI/ML",
+              "Cloud & CI/CD",
+            ].map((skill) => (
+              <GridItem key={skill} className="rounded-md border border-white/10 px-4 py-3 text-white/80">
+                {skill}
+              </GridItem>
+            ))}
+          </Grid>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28">
+        <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
+          <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">Projects</h2>
+          <Grid cols={1} sm={2} md={3} gap="lg">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <GridItem key={n} className="rounded-xl border border-white/10 p-6">
+                <div className="h-32 rounded-md bg-white/5 mb-4" />
+                <h3 className="text-white font-semibold mb-1">Project {n}</h3>
+                <p className="text-white/70 text-sm">Short description goes here.</p>
+              </GridItem>
+            ))}
+          </Grid>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5">
+        <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
+          <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">Contact</h2>
+          <div className="rounded-xl border border-white/10 p-6">
+            <p className="text-white/80">Email: you@example.com</p>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
