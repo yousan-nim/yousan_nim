@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 type Props = {
   defaultSrc: string;
@@ -42,9 +42,52 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
     return defaultSrc;
   }, [aboutVisible, aboutSrc, defaultSrc]);
 
+  // Ref for scroll-linked pan effect
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Scroll horizontally pans the video from left to right via object-position
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const doc = document.documentElement;
+        const scrollMax = Math.max(1, doc.scrollHeight - window.innerHeight);
+        const y = window.scrollY;
+        const progress = Math.min(1, Math.max(0, y / scrollMax));
+        // Move from ~10% (left) to ~90% (right)
+        const pos = 10 + progress * 80;
+        el.style.objectPosition = `${pos}% center`;
+        ticking = false;
+      });
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [src]);
+
+  // Dispatch a "bg-ready" event when the video can play through
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const onReady = () => {
+      window.dispatchEvent(new Event("bg-ready"));
+    };
+
+    video.addEventListener("canplaythrough", onReady, { once: true });
+    return () => video.removeEventListener("canplaythrough", onReady);
+  }, [src]);
+
   return (
     <div className={"fixed inset-0 -z-10"} aria-hidden>
       <video
+        ref={videoRef}
         key={src} // forces reload when src changes
         autoPlay
         loop
@@ -52,11 +95,15 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
         playsInline
         className={
           className ||
-          "w-full h-full object-cover object-left opacity-90 transition-[filter] duration-500"
+          "w-full h-full object-cover opacity-90 transition-[filter] duration-500 will-change-[object-position]"
         }
         // Subtle filter shift when About is visible (if src doesn't change)
         style={{
-          filter: aboutVisible && (!aboutSrc || aboutSrc === defaultSrc) ? "hue-rotate(15deg) brightness(0.95)" : "none",
+
+          filter:
+            aboutVisible && (!aboutSrc || aboutSrc === defaultSrc)
+              ? "hue-rotate(15deg) brightness(0.95)"
+              : "none",
         }}
       >
         <source src={src} type="video/mp4" />

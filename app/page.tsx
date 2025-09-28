@@ -21,7 +21,7 @@ export default function Home() {
 
 
       {/* About */}
-      <section id="about" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28">
+      <section id="about" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 min-h-screen">
         <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
           <AboutMe />
         </div>
@@ -32,7 +32,7 @@ export default function Home() {
 
 
       {/* Experience */}
-      <section id="experience" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5">
+      <section id="experience" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5 min-h-screen">
         <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
           <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">Experience</h2>
           <Grid cols={1} md={2} gap="lg">
@@ -51,7 +51,7 @@ export default function Home() {
 
 
       {/* Education */}
-      <section id="education" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28">
+      <section id="education" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 min-h-screen">
         <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
           <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">Education</h2>
           <div className="rounded-xl border border-white/10 p-6 text-white/80">
@@ -62,7 +62,7 @@ export default function Home() {
       </section>
 
       {/* Vocation */}
-      <section id="vocation" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5">
+      <section id="vocation" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5 min-h-screen">
         <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
           <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">Vocation</h2>
           <Grid cols={2} md={3} lg={4} gap="md">
@@ -85,7 +85,7 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28">
+      <section id="projects" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 min-h-screen">
         <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
           <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">Projects</h2>
           <Grid cols={1} sm={2} md={3} gap="lg">
@@ -101,7 +101,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5">
+      <section id="contact" className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5 ">
         <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
           <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">Contact</h2>
           <div className="rounded-xl border border-white/10 p-6">
