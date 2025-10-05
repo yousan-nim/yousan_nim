@@ -30,8 +30,8 @@ const AboutMe = () => {
             <p className="text-white text-[clamp(16px,2.5vw,20px)] leading-relaxed text- indent-8">
               I've collaborated with industry leaders like{" "}
               <span className="text-gray-300">Panasonic</span> and{" "}
-              <span className="text-gray-300">NSTDA</span> on AI research,
-              built CMS platforms serving high-profile clients, and pioneered{" "}
+              <span className="text-gray-300">NSTDA</span> on AI research, built
+              CMS platforms serving high-profile clients, and pioneered{" "}
               <span className="text-gray-300">
                 holographic AI avatar technology
               </span>{" "}
@@ -42,29 +42,37 @@ const AboutMe = () => {
 
         {/* Right: Key Stats */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="rounded-lg border border-white/10 bg-white/2 backdrop-blur p-5 text-center">
-            <div className="text-[clamp(32px,5vw,48px)] font-bold text-gray-100/98 mb-1">2+</div>
+          <div className="rounded-lg border border-white/10 bg-white/2 backdrop-blur p-5 text-center flex flex-col justify-center">
+            <div className="text-[clamp(32px,5vw,48px)] font-bold text-gray-100/98 mb-1">
+              2+
+            </div>
             <div className="text-white text-[clamp(12px,2vw,16px)] uppercase tracking-wide">
               Years Experience
             </div>
           </div>
 
-          <div className="rounded-lg border border-white/10 bg-white/2 backdrop-blur p-5 text-center">
-            <div className="text-[clamp(32px,5vw,48px)] font-bold text-gray-100/98 mb-1">10+</div>
+          <div className="rounded-lg border border-white/10 bg-white/2 backdrop-blur p-5 text-center flex flex-col justify-center">
+            <div className="text-[clamp(32px,5vw,48px)] font-bold text-gray-100/98 mb-1">
+              10+
+            </div>
             <div className="text-white text-[clamp(12px,2vw,16px)] uppercase tracking-wide">
               Projects Delivered
             </div>
           </div>
 
-          <div className="rounded-lg border border-white/10 bg-white/2 backdrop-blur p-5 text-center">
-            <div className="text-[clamp(32px,5vw,48px)] font-bold text-gray-100/98 mb-1">2</div>
+          <div className="rounded-lg border border-white/10 bg-white/2 backdrop-blur p-5 text-center flex flex-col justify-center">
+            <div className="text-[clamp(32px,5vw,48px)] font-bold text-gray-100/98 mb-1">
+              2
+            </div>
             <div className="text-white text-[clamp(12px,2vw,16px)] uppercase tracking-wide">
               Research Collaborations
             </div>
           </div>
 
-          <div className="rounded-lg border border-white/10 bg-white/2 backdrop-blur p-5 text-center">
-            <div className="text-[clamp(32px,5vw,48px)] font-bold text-gray-100/98 mb-1">5+</div>
+          <div className="rounded-lg border border-white/10 bg-white/2 backdrop-blur p-5 text-center flex flex-col justify-center">
+            <div className="text-[clamp(32px,5vw,48px)] font-bold text-gray-100/98 mb-1">
+              5+
+            </div>
             <div className="text-white text-[clamp(12px,2vw,16px)] uppercase tracking-wide">
               Cloud Deployments
             </div>
@@ -77,106 +85,180 @@ const AboutMe = () => {
         <h2 className="text-white font-semibold text-[clamp(24px,4vw,36px)] mb-8 text-center">
           My Development Process
         </h2>
-        <p className="text-white/70 text-center text-[clamp(14px,2.5vw,18px)] mb-12 max-w-3xl mx-auto">
-          A systematic approach to building scalable, production-ready applications
+        <p className="hidden md:block text-white/70 text-center text-[clamp(14px,2.5vw,18px)] mb-12 max-w-3xl mx-auto">
+          A systematic approach to building scalable, production-ready
+          applications
+        </p>
+        <p className="md:hidden text-white/70 text-center text-[clamp(12px,3.5vw,16px)] mb-8 mx-auto">
+          From idea to production — fast and reliable
         </p>
 
         <div className="relative max-w-5xl mx-auto">
           {/* Center vertical line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-white/50 via-white/30 to-transparent -translate-x-1/2"></div>
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-white/50 via-white/30 to-transparent -translate-x-1/2 hidden md:block"></div>
 
           <div className="space-y-12">
             {/* Step 1 - Planning - Right */}
-            <div className="relative grid grid-cols-2 gap-10 items-center">
-              <div></div>
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white ring-6 ring-white/20 z-10 flex items-center justify-center text-black text-base font-bold">1</div>
+            <div className="relative grid md:grid-cols-2 grid-cols-1 gap-16 items-center">
+              <div className="hidden md:block"></div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white ring-6 ring-white/20 z-10 hidden md:flex items-center justify-center text-black text-base font-bold">
+                1
+              </div>
               <div className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
+                <div className="md:hidden text-white/60 text-xs font-medium tracking-wide uppercase mb-2">
+                  Step 1
+                </div>
                 <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2">
                   Planning & Design 📋
                 </div>
-                <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3">
+                <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3 hidden md:block">
                   Define requirements, architecture, and tech stack selection
                 </div>
+                <div className="text-white/60 text-sm md:hidden mb-3">
+                  Plan scope, architecture, stack
+                </div>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">User Stories</span>
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">Database</span>
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">API Design</span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    User Stories
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    Database
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    API Design
+                  </span>
                 </div>
               </div>
             </div>
 
             {/* Step 2 - Development - Left */}
-            <div className="relative grid grid-cols-2 gap-10 items-center">
+            <div className="relative grid md:grid-cols-2 grid-cols-1 gap-16 items-center">
               <div className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
-                <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2 text-right">
+                <div className="md:hidden text-white/60 text-xs font-medium tracking-wide uppercase mb-2">
+                  Step 2
+                </div>
+                <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2 md:md:text-right">
                   Development 💻
                 </div>
-                <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3 text-right">
+                <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3 md:text-right hidden md:block">
                   Build frontend, backend APIs, and integrate features
                 </div>
-                <div className="flex flex-wrap gap-2 justify-end">
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">Components</span>
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">APIs</span>
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">State Mgmt</span>
+                <div className="text-white/60 text-sm md:hidden mb-3">
+                  Build UI, APIs, features
+                </div>
+                <div className="flex flex-wrap gap-2 md:md:justify-end">
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    Components
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    APIs
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    State Mgmt
+                  </span>
                 </div>
               </div>
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-300 ring-6 ring-gray-300/20 z-10 flex items-center justify-center text-black text-base font-bold">2</div>
-              <div></div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-300 ring-6 ring-gray-300/20 z-10 hidden md:flex items-center justify-center text-black text-base font-bold">
+                2
+              </div>
+              <div className="hidden md:block"></div>
             </div>
 
             {/* Step 3 - Testing - Right */}
-            <div className="relative grid grid-cols-2 gap-10 items-center">
-              <div></div>
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-400 ring-6 ring-gray-400/20 z-10 flex items-center justify-center text-black text-base font-bold">3</div>
+            <div className="relative grid md:grid-cols-2 grid-cols-1 gap-16 items-center">
+              <div className="hidden md:block"></div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-400 ring-6 ring-gray-400/20 z-10 hidden md:flex items-center justify-center text-black text-base font-bold">
+                3
+              </div>
               <div className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
+                <div className="md:hidden text-white/60 text-xs font-medium tracking-wide uppercase mb-2">
+                  Step 3
+                </div>
                 <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2">
                   Testing & QA 🧪
                 </div>
-                <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3">
+                <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3 hidden md:block">
                   Comprehensive testing and quality assurance
                 </div>
+                <div className="text-white/60 text-sm md:hidden mb-3">
+                  Unit, integration, E2E
+                </div>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">Unit Tests</span>
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">Integration</span>
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">E2E</span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    Unit Tests
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    Integration
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    E2E
+                  </span>
                 </div>
               </div>
             </div>
 
             {/* Step 4 - Deployment - Left */}
-            <div className="relative grid grid-cols-2 gap-10 items-center">
+            <div className="relative grid md:grid-cols-2 grid-cols-1 gap-16 items-center">
               <div className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
-                <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2 text-right">
+                <div className="md:hidden text-white/60 text-xs font-medium tracking-wide uppercase mb-2">
+                  Step 4
+                </div>
+                <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2 md:md:text-right">
                   Deployment 🚀
                 </div>
-                <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3 text-right">
+                <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3 md:text-right hidden md:block">
                   CI/CD pipelines and cloud deployment setup
                 </div>
-                <div className="flex flex-wrap gap-2 justify-end">
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">Docker</span>
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">CI/CD</span>
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">AWS/Vultr</span>
+                <div className="text-white/60 text-sm md:hidden mb-3">
+                  Automate and deploy to cloud
+                </div>
+                <div className="flex flex-wrap gap-2 md:md:justify-end">
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    Docker
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    CI/CD
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    AWS/Vultr
+                  </span>
                 </div>
               </div>
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-500 ring-6 ring-gray-500/20 z-10 flex items-center justify-center text-white text-base font-bold">4</div>
-              <div></div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-500 ring-6 ring-gray-500/20 z-10 hidden md:flex items-center justify-center text-white text-base font-bold">
+                4
+              </div>
+              <div className="hidden md:block"></div>
             </div>
 
             {/* Step 5 - Monitoring - Right */}
-            <div className="relative grid grid-cols-2 gap-10 items-center">
-              <div></div>
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-200 ring-6 ring-gray-200/20 z-10 flex items-center justify-center text-black text-base font-bold">5</div>
+            <div className="relative grid md:grid-cols-2 grid-cols-1 gap-16 items-center">
+              <div className="hidden md:block"></div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-700 ring-6 ring-gray-200/20 z-10 hidden md:flex items-center justify-center text-white text-base font-bold">
+                5
+              </div>
               <div className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
+                <div className="md:hidden text-white/60 text-xs font-medium tracking-wide uppercase mb-2">
+                  Step 5
+                </div>
                 <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2">
                   Monitoring 📊
                 </div>
-                <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3">
+                <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3 hidden md:block">
                   Track performance and continuously optimize
                 </div>
+                <div className="text-white/60 text-sm md:hidden mb-3">
+                  Monitor, analyze, iterate
+                </div>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">Analytics</span>
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">Performance</span>
-                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">Iteration</span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    Analytics
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    Performance
+                  </span>
+                  <span className="text-xs px-3 py-1 rounded bg-white/5 text-white/60">
+                    Iteration
+                  </span>
                 </div>
               </div>
             </div>
@@ -231,7 +313,8 @@ const AboutMe = () => {
           Technical Expertise
         </h2>
         <p className="text-white/80 mb-12 text-[clamp(14px,2.5vw,18px)] leading-relaxed text-center max-w-3xl mx-auto">
-          A refined selection of my proficiency in modern development tools and technologies
+          A refined selection of my proficiency in modern development tools and
+          technologies
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-full mx-auto">
@@ -246,14 +329,16 @@ const AboutMe = () => {
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                {["React", "Next.js", "TypeScript", "Tailwind", "Three.js"].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                {["React", "Next.js", "TypeScript", "Tailwind", "Three.js"].map(
+                  (tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
+                    >
+                      {tech}
+                    </span>
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -269,14 +354,16 @@ const AboutMe = () => {
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                {["Node.js", "Express", "Spring Boot", "Python", "Flask"].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                {["Node.js", "Express", "Spring Boot", "Python", "Flask"].map(
+                  (tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
+                    >
+                      {tech}
+                    </span>
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -292,14 +379,16 @@ const AboutMe = () => {
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                {["MongoDB", "PostgreSQL", "MySQL", "Elasticsearch"].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                {["MongoDB", "PostgreSQL", "MySQL", "Elasticsearch"].map(
+                  (tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
+                    >
+                      {tech}
+                    </span>
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -315,14 +404,16 @@ const AboutMe = () => {
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                {["Docker", "Kubernetes", "AWS", "Vultr", "GitHub Actions"].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                {["Docker", "Kubernetes", "AWS", "Vultr", "GitHub Actions"].map(
+                  (tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
+                    >
+                      {tech}
+                    </span>
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -338,14 +429,16 @@ const AboutMe = () => {
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                {["PyTorch", "OpenAI", "RAG", "Computer Vision", "ASR"].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                {["PyTorch", "OpenAI", "RAG", "Computer Vision", "ASR"].map(
+                  (tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
+                    >
+                      {tech}
+                    </span>
+                  )
+                )}
               </div>
             </div>
           </div>

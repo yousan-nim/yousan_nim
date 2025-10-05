@@ -2,7 +2,11 @@ import React from "react";
 
 const HeaderCoolWord = () => {
   return (
-    <section id="home" aria-label="Hero" className="relative h-[130vh] lg:h-screen">
+    <section
+      id="home"
+      aria-label="Hero"
+      className="relative h-[130vh] lg:h-screen"
+    >
       <div className="relative w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto h-full">
         <div
           className="absolute z-10 left-0 top-[30%] sm:top-[18%] w-full flex justify-center xl:justify-start"
@@ -32,7 +36,7 @@ const HeaderCoolWord = () => {
           lg:text-[clamp(40px,10vw,100px)]
           text-transparent bg-clip-text
           bg-gradient-to-br from-white/30 via-white to-white/20
-          drop-shadow-[0_1px_0_rgba(255,255,255,0.2)]
+          drop-shadow-[0_1px_0_rgba(255,255,255,0.2)] 
         "
               >
                 experiences
@@ -44,8 +48,8 @@ const HeaderCoolWord = () => {
         w-full m-auto lg:w-full mt-4 xl:mt-6
         max-w-[60ch]
         text-white/90 uppercase font-semibold
-        text-[clamp(11px,2.5vw,18px)] leading-relaxed
-        text-center xl:text-left
+        text-[clamp(11px,2.5vw,18px)] leading-5
+        text-center xl:text-left lg:ml-0
       "
             >
               I merge creativity with logic to build solutions that inspire and

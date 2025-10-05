@@ -1,5 +1,7 @@
 import AboutMe from "@/components/contents/AboutMe";
-import Exp from "@/components/contents/Exp";
+import Contact from "@/components/contents/Contact";
+import EducationLazy from "@/components/contents/EducationLazy";
+import Exp from "@/components/contents/Experience";
 import HeaderCoolWord from "@/components/contents/HeaderCoolWord";
 import HeaderWhatImI from "@/components/contents/HeaderWhatImI";
 import Grid, { GridItem } from "@/components/layout/Grid";
@@ -34,23 +36,12 @@ export default function Home() {
         id="education"
         className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 min-h-screen"
       >
-        <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
-          <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">
-            Education
-          </h2>
-          <div className="rounded-xl border border-white/10 p-6 text-white/80">
-            <h3 className="text-white font-semibold text-lg mb-2">
-              MSc in Artificial Intelligence
-            </h3>
-            <p>
-              Focused on applying AI to real-world products and engineering
-              problems.
-            </p>
-          </div>
+        <div className="w-[95%] md:w-[80%] xl:max-w-screen-5xl mx-auto">
+          <EducationLazy />
         </div>
       </section>
       {/* Vocation */}
-      <section
+      {/* <section
         id="vocation"
         className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5 min-h-screen"
       >
@@ -78,7 +69,7 @@ export default function Home() {
             ))}
           </Grid>
         </div>
-      </section>
+      </section> */}
       {/* Projects */}
       <section
         id="projects"
@@ -107,16 +98,9 @@ export default function Home() {
       {/* Contact */}
       <section
         id="contact"
-        className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5 "
+        className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 bg-white/5 px-4 lg:px-0"
       >
-        <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
-          <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">
-            Contact
-          </h2>
-          <div className="rounded-xl border border-white/10 p-6">
-            <p className="text-white/80">Email: you@example.com</p>
-          </div>
-        </div>
+        <Contact />
       </section>
     </main>
   );

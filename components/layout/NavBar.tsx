@@ -12,7 +12,7 @@ const NAV_ITEMS: Item[] = [
   { id: "about", label: "About Me" },
   { id: "experience", label: "Experience" },
   { id: "education", label: "Education" },
-  { id: "vocation", label: "Vocation" },
+  // { id: "vocation", label: "Vocation" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
@@ -70,7 +70,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 lg:top-8 left-0 z-40 w-full flex justify-center">
+    <header className="fixed top-0 lg:top-2 left-0 z-40 w-full flex justify-center">
       <div className="mt-2 w-[95%] md:w-[98%] xl:max-w-screen-2xl rounded-xl border border-white/10 bg-[#121212]/40 backdrop-blur supports-[backdrop-filter]:bg-[#121212]/30">
         <div className="mx-auto flex h-14 items-center justify-between pr-2 pl-4 lg:px-4 max-w-[1200px] lg:max-w-[1400px] xl:max-w-[1600px] 2xl:max-w-[1800px] min-[1920px]:max-w-[1920px] min-[2560px]:max-w-[2200px]">
           {/* Logo / Name */}
@@ -147,9 +147,9 @@ export default function Navbar() {
               </a>
             ))}
             <div className="mt-3 border-t border-white/10 pt-2">
-              <button className="w-full rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition">
+              {/* <button className="w-full rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition">
                 Sign In
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
