@@ -62,11 +62,11 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
         const y = window.scrollY;
         const progress = Math.min(1, Math.max(0, y / scrollMax));
         // Move from ~10% (left) to ~90% (right)
-        const pos = 10 + progress * 80;
+        const pos = 0 + progress * 90;
         el.style.objectPosition = `${pos}% center`;
 
         // Update darkness: 0 at top, 0.6 at bottom (60% black overlay)
-        setScrollDarkness(progress * 0.8);
+        setScrollDarkness(progress * 0.3);
 
         ticking = false;
       });

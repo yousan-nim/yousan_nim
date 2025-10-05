@@ -1,16 +1,66 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 
 const HeaderCoolWord = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const bottomRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    const heroEl = heroRef.current;
+    const bottomEl = bottomRef.current;
+    if (!sectionEl || !heroEl || !bottomEl) return;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let ticking = false;
+
+    const update = () => {
+      if (!sectionEl || !heroEl || !bottomEl) return;
+      const scrollY = window.scrollY || window.pageYOffset;
+      const sectionTop = sectionEl.offsetTop;
+      const rel = scrollY - sectionTop;
+      const y1 = rel * 0.15; // foreground text moves slower
+      const y2 = rel * -0.08; // bottom block moves subtly opposite
+      heroEl.style.transform = `translate3d(0, ${y1}px, 0)`;
+      bottomEl.style.transform = `translate3d(0, ${y2}px, 0)`;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (prefersReduced) return;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    const onResize = () => {
+      update();
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
   return (
     <section
       id="home"
       aria-label="Hero"
+      ref={sectionRef}
       className="relative h-[130vh] lg:h-screen"
     >
       <div className="relative w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto h-full">
         <div
-          className="absolute z-10 left-0 top-[30%] sm:top-[18%] w-full flex justify-center xl:justify-start"
+          className="absolute z-10 left-0 top-[30%] sm:top-[18%] w-full flex justify-center xl:justify-start will-change-transform transform-gpu"
           aria-labelledby="hero-title"
+          ref={heroRef}
         >
           <div className="cq mx-0 max-w-full md:w-[min(92vw,720px)] h-full">
             <h1
@@ -65,8 +115,9 @@ const HeaderCoolWord = () => {
     w-[min(95%,800px)] mx-auto
     lg:w-[min(90%,1000px)] xl:w-[min(85%,1200px)]
     text-center
-    px-4
+    px-4 will-change-transform transform-gpu
   "
+        ref={bottomRef}
       >
         <h1
           className="
