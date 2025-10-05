@@ -10,11 +10,12 @@ type Props = {
 
 /**
  * BackgroundVideo
- * - Watches the visibility of the #about section
- * - When visible, it either switches to aboutSrc (if provided) or applies a color overlay effect
+ * - Increases darkness as user scrolls down
+ * - No color changes, just progressive darkening overlay
  */
 export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Props) {
   const [aboutVisible, setAboutVisible] = useState(false);
+  const [scrollDarkness, setScrollDarkness] = useState(0);
 
   useEffect(() => {
     const target = document.getElementById("about");
@@ -46,6 +47,7 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   // Scroll horizontally pans the video from left to right via object-position
+  // Also updates darkness based on scroll progress
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
@@ -62,6 +64,10 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
         // Move from ~10% (left) to ~90% (right)
         const pos = 10 + progress * 80;
         el.style.objectPosition = `${pos}% center`;
+
+        // Update darkness: 0 at top, 0.6 at bottom (60% black overlay)
+        setScrollDarkness(progress * 0.8);
+
         ticking = false;
       });
     };
@@ -95,24 +101,17 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
         playsInline
         className={
           className ||
-          "w-full h-full object-cover opacity-90 transition-[filter] duration-500 will-change-[object-position]"
+          "w-full h-full object-cover opacity-70 will-change-[object-position]"
         }
-        // Subtle filter shift when About is visible (if src doesn't change)
-        style={{
-
-          filter:
-            aboutVisible && (!aboutSrc || aboutSrc === defaultSrc)
-              ? "hue-rotate(15deg) brightness(0.95)"
-              : "none",
-        }}
       >
         <source src={src} type="video/mp4" />
       </video>
 
-      {/* Color overlay for extra contrast when About is visible (only when src not swapped) */}
-      {aboutVisible && (!aboutSrc || aboutSrc === defaultSrc) && (
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-fuchsia-500/10 via-transparent to-transparent" />
-      )}
+      {/* Progressive darkness overlay based on scroll */}
+      <div
+        className="absolute inset-0 pointer-events-none bg-black transition-opacity duration-300"
+        style={{ opacity: scrollDarkness }}
+      />
     </div>
   );
 }

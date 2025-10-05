@@ -1,0 +1,237 @@
+================================================================================
+                         PONGCHANOK NUAMTEAM
+                    FULL-STACK DEVELOPER & AI ENGINEER
+================================================================================
+
+PROFESSIONAL SUMMARY
+────────────────────────────────────────────────────────────────────────────
+Full-stack Developer with expertise in Next.js, React, Tailwind, MongoDB, and
+cloud deployment (Vultr/AWS). Experienced in building scalable web applications,
+CMS platforms, and AI-driven chatbots/avatars with OpenAI LLM integration and
+RAG pipelines. Skilled in CI/CD, Docker, and Kubernetes, delivering solutions
+from planning to deployment. Passionate about digital transformation, AI
+innovation, and collaborative teamwork to create impactful, user-focused systems.
+
+
+TECHNICAL SKILLS
+────────────────────────────────────────────────────────────────────────────
+
+Programming Languages & Frameworks
+  • Python: Pandas, Numpy, Pytorch, Torchaudio, Torchvision, MLFlow,
+    Tensorboard, Flask, Django
+  • JavaScript & TypeScript: React, Next.js, Express
+  • Java: Spring Boot
+
+Database & Storage
+  • SQL, PostgreSQL
+  • MongoDB
+  • Elasticsearch
+
+Frontend & UI
+  • HTML, CSS
+  • Tailwind CSS
+  • Three.js (3D on Web)
+
+DevOps & Infrastructure
+  • Docker, Docker Compose
+  • Kubernetes
+  • Shell Script, SlurmScript (HPC)
+  • GitHub Actions, GitLab CI/CD
+
+Cloud Platforms
+  • AWS (EC2, S3)
+  • Vultr
+  • Digital Ocean
+  • Firebase Hosting
+
+Other Tools
+  • Line Developer Tools
+
+
+EDUCATION
+────────────────────────────────────────────────────────────────────────────
+
+Master of Electrical Engineering                              2021 - 2025
+King Mongkut's University of Technology Thonburi
+
+Bachelor of Electronics and Telecommunication Engineering     2017 - 2021
+King Mongkut's University of Technology Thonburi
+
+
+PROFESSIONAL EXPERIENCE
+────────────────────────────────────────────────────────────────────────────
+
+FULL-STACK DEVELOPER                                         2024 - Present
+StartUp @CREaiVE.ai
+
+  ┌─ CREaiVE.ai - CMS Website [Full-stack Developer]
+  │  Timeline: Jul 2024 - Oct 2025
+  │  Tech Stack: Next.js, Tailwind CSS, MongoDB, AWS EC2, GitHub Actions
+  │
+  │  Responsibilities:
+  │  • Initiated and led the project from ground up, including planning,
+  │    architecture design, and frontend development in collaboration with
+  │    graphic designers
+  │  • Built a CMS-driven platform to showcase products and services, enabling
+  │    the team to manage and update content for high-profile client projects
+  │  • Developed secure authentication and content upload features for seamless
+  │    portfolio and case study promotion
+  │  • Implemented GitHub Actions CI/CD pipelines to automate testing and
+  │    deployment, improving release efficiency
+  │  • Optimized performance and SEO (metadata, sitemaps, responsive design)
+  │    to increase online visibility
+  │
+  │  Impact & Outcome:
+  │  ✓ Delivered a scalable, maintainable CMS website that enhanced brand
+  │    visibility and streamlined content management
+  │  ✓ Enhanced customer engagement and reduced support response time by
+  │    providing 24/7 automated assistance
+  └─
+
+  ┌─ IPPS Website – Payment Solutions Company [Frontend Developer]
+  │  Timeline: May 2024 - Jun 2024
+  │  Tech Stack: React.js, Tailwind CSS, Firebase Hosting
+  │
+  │  Responsibilities:
+  │  • Designed and developed a corporate marketing website for IPPS Payment
+  │    Solutions, a Bank of Thailand licensed payment provider
+  │  • Implemented product pages (Treasury, Virtual Accounts, Invoice QR,
+  │    e-Wallets, B2B Payments) and solution modules (Order to Cash, Cash
+  │    Management, Record to Report)
+  │  • Collaborated with business stakeholders to structure content for company
+  │    profile, certifications, mission, and industry use cases
+  │  • Ensured responsive UI/UX, SEO optimization, and accessibility compliance
+  │
+  │  Impact & Outcome:
+  │  ✓ Strengthened brand presence online
+  │  ✓ Enabled enterprise clients to easily explore services
+  │  ✓ Supported lead generation through expert consultation forms and product
+  │    showcases
+  │  ✓ Positioned IPPS as a trusted financial technology partner
+  └─
+
+  ┌─ E-Commerce Project [Full-stack Developer]
+  │  Timeline: Jan 2025 - Mar 2025
+  │  Tech Stack: Next.js, Express (Bun runtime), GitLab CI/CD, Docker,
+  │               Docker-Compose, Kubernetes
+  │
+  │  Responsibilities:
+  │  • Collaborated with a team of three developers to design and implement
+  │    a marketplace platform for cosmetics and beauty merchants
+  │  • Integrated payment solution architecture aligned with the company's
+  │    core fintech business
+  │  • Structured backend services using repository-service pattern for
+  │    maintainability and scalability
+  │  • Worked with containerization and deployment tools to establish robust
+  │    development and deployment pipeline
+  │
+  │  Impact & Outcome:
+  │  ✓ Although discontinued due to limited resources, gained valuable hands-on
+  │    experience with containerization, CI/CD pipelines, and backend
+  │    architecture design
+  │  ✓ Strengthened collaboration skills by working within a lean team to
+  │    deliver high-impact proof of concept
+  │  ✓ Gained practical exposure to modern DevOps tools (Docker, Kubernetes,
+  │    GitLab CI/CD) and scalable backend structuring
+  └─
+
+  ┌─ REALLY COOL AIRLINES CHATBOT [Full-stack Developer]
+  │  Timeline: Dec 2024 - Jan 2025
+  │  Tech Stack: Next.js, Tailwind CSS, MongoDB, Vultr Cloud
+  │
+  │  Responsibilities & Contribution:
+  │  • Built a realistic AI avatar chatbot capable of answering customer
+  │    inquiries about the airline, including flight information and services
+  │  • Developed a responsive frontend (Next.js) and connected it with a
+  │    MongoDB backend for dynamic data storage and retrieval
+  │  • Deployed the solution on Vultr Cloud, ensuring performance and
+  │    reliability across platforms
+  │  • Designed the system to work seamlessly on mobile devices and Holovue
+  │    holographic displays for immersive customer interaction
+  │
+  │  Impact & Outcome:
+  │  ✓ Delivered an AI-powered realistic avatar chatbot with real-time
+  │    responses on airline and flight information
+  │  ✓ Improved customer engagement and support efficiency, reducing reliance
+  │    on human agents
+  │  ✓ Enabled seamless deployment across mobile devices and Holovue
+  │    holographic displays for an immersive, futuristic user experience
+  │
+  │  Highlight:
+  │  ★ Pioneered the integration of AI human avatar technology in the airline
+  │    industry, combining natural language understanding, real-time data
+  │    access, and holographic/multi-platform deployment
+  └─
+
+  ┌─ FOOD & HOSPITALITY THAILAND 2025 [Full-stack Developer]
+  │  Timeline: Aug 2025 - Sep 2025
+  │  Tech Stack: Next.js, Express (Bun runtime), MongoDB, GitHub Actions,
+  │               Vultr Cloud
+  │
+  │  Responsibilities & Contribution:
+  │  • Developed an AI Human system for an 86-inch Holovue holographic
+  │    display to interact with event visitors
+  │  • Integrated OpenAI LLM with a custom RAG pipeline to provide accurate,
+  │    real-time responses based on event content
+  │  • Built the full-stack system including frontend (Next.js), backend
+  │    services, and database (MongoDB), deployed securely on Vultr Cloud
+  │  • Designed the UI flow and implemented conversational logic to improve
+  │    visitor engagement and event promotion
+  │
+  │  Impact & Outcome:
+  │  ✓ Successfully deployed an interactive holographic AI assistant at the
+  │    FOOD & HOSPITALITY THAILAND 2025 event
+  │  ✓ Enhanced visitor experience by enabling 24/7 AI-driven event
+  │    information access
+  │  ✓ Showcased the integration of AI + holographic displays for digital
+  │    transformation in the hospitality industry
+  │
+  │  Highlight:
+  │  ★ Pioneered an AI-powered holographic assistant that combined natural
+  │    language understanding, event-specific knowledge, and immersive display
+  │    technology
+  └─
+
+
+AI RESEARCHER & TEACHING ASSISTANT                           2021 - 2024
+King Mongkut's University of Technology Thonburi
+
+  ┌─ Personal Protective Equipment Detection Project
+  │  (Vision & Image Processing)
+  │
+  │  • Collaborated with Panasonic Singapore to develop a computer vision
+  │    system that detects workers without protective equipment (PPE) on
+  │    construction sites
+  │  • Designed the solution to proactively enhance safety compliance and
+  │    reduce workplace accidents
+  └─
+
+  ┌─ Tele-Rehabilitation System (Auto Speech Recognition)
+  │
+  │  • Collaborated with NSTDA to develop an assistive communication system
+  │    using Wav2Vec2-based ASR models to support individuals with laryngeal
+  │    damage
+  │  • Designed the solution to improve speech recognition for patients who
+  │    struggle to communicate, helping them engage more effectively in social
+  │    interactions
+  └─
+
+
+ELECTRICAL ENGINEERING INTERN                                2019 - 2020
+Seagate Technology (Thailand) Co. Ltd
+
+  ┌─ Inventory Management System
+  │
+  │  • Designed and built a full-stack stock management system with React.js
+  │    (frontend), Node.js/Express (backend), and SQL database to manage
+  │    ~300 warehouse products
+  │  • Implemented product tracking, CRUD operations, and reporting features
+  │    for small-scale warehouse operations
+  │  • Developed data visualization dashboards to generate inventory reports
+  │    and support decision-making
+  └─
+
+
+================================================================================
+                              END OF RESUME
+================================================================================

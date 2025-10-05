@@ -1,0 +1,102 @@
+Typography Summary - HeaderCoolWord Component
+===============================================
+
+TOP SECTION (Hero Content)
+---------------------------
+Position: top-[14%] sm:top-[18%]
+Alignment: Center on mobile, left-aligned on xl screens
+
+1. "Crafting code into" (Small Heading)
+   - Size: clamp(24px, 5vw, 56px)
+   - Line Height: 0.95
+   - Font: Extrabold, Uppercase
+   - Gradient: from-white/20 via-white to-white/20
+   - Alignment: Center on mobile, left on xl
+
+2. "experiences" (Large Heading)
+   - Size: clamp(40px, 10vw, 120px)
+   - Line Height: 0.8
+   - Font: Extrabold, Uppercase
+   - Gradient: from-white/30 via-white to-white/20
+   - Alignment: Center on mobile, left on xl
+
+3. Description Text
+   - Size: clamp(11px, 2.5vw, 18px)
+   - Line Height: relaxed
+   - Font: Semibold, Uppercase
+   - Color: white/90
+   - Max Width: 60ch
+   - Alignment: Center on mobile, left on xl
+   - Margin Top: mt-4 xl:mt-6
+
+
+BOTTOM SECTION (Name & CTA)
+----------------------------
+Position: bottom-12 sm:bottom-16 md:bottom-20
+Container Width:
+  - Mobile: min(95%, 800px)
+  - Large: min(90%, 1000px)
+  - XL: min(85%, 1200px)
+
+1. Name Heading "Pongchanok Nuamteam"
+   - Size: clamp(28px, 6vw, 52px)
+   - Line Height: 0.9
+   - Font: Black, Uppercase
+   - Gradient: from-white/30 via-white to-white/20
+   - Border: border-white/10
+   - Padding: p-3 md:p-4
+   - Border Radius: rounded-xl
+   - Backdrop: backdrop-blur-md
+
+2. Subtitle "Full-Stack Developer & AI Engineer"
+   - Size: clamp(14px, 3.5vw, 20px)
+   - Line Height: snug
+   - Font: Black, Uppercase
+   - Gradient: from-white/30 via-white to-white/20
+   - Margin Top: mt-3 md:mt-4
+
+3. CTA Buttons
+   - Text Size: text-xs md:text-sm
+   - Font Weight: medium
+   - Padding: px-4 md:px-5 py-2 md:py-2.5
+   - Gap: gap-2 md:gap-3
+   - Transition: transition-all duration-200
+
+   Button Types:
+   a) Contact (Primary)
+      - Background: fuchsia-500/20
+      - Border: fuchsia-400/30
+      - Text: fuchsia-100
+      - Hover: bg-fuchsia-500/30
+
+   b) Projects (Secondary)
+      - Background: white/5
+      - Border: white/10
+      - Text: slate-200
+      - Hover: bg-white/10
+
+   c) GitHub (Tertiary)
+      - Background: transparent
+      - Border: white/15
+      - Text: white/90
+      - Hover: bg-white/10
+
+
+RESPONSIVE BREAKPOINTS
+----------------------
+- Mobile (default): 320px - 767px
+- SM: 640px+
+- MD: 768px+
+- LG: 1024px+
+- XL: 1280px+
+
+KEY IMPROVEMENTS MADE
+---------------------
+1. Unified vw units (replaced cqw with vw for consistency)
+2. Improved text scaling across all screen sizes
+3. Better typography hierarchy and readability
+4. Responsive spacing (margins, paddings, gaps)
+5. Smooth transitions on interactive elements
+6. Centered layout on mobile, left-aligned on desktop (top section)
+7. Optimized font sizes for better mobile readability
+8. Added responsive container widths per breakpoint
