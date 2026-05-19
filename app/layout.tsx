@@ -6,6 +6,7 @@ import BackgroundVideo from "@/components/layout/BackgroundVideo";
 import Preloader from "@/components/common/Preloader";
 import NextTopLoader from "nextjs-toploader";
 import FloatingAction from "@/components/common/FloatingAction";
+import { I18nProvider } from "@/lib/i18n/I18nProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -90,12 +91,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#121212] w-screen min-h-screen relative`}
       >
-        <NextTopLoader color="#a855f7" showSpinner={false} />
-        <Preloader />
-        <BackgroundVideo defaultSrc="/bg/238264.mp4" />
-        <FloatingAction />
-        <Navbar />
-        {children}
+        <I18nProvider>
+          <NextTopLoader color="#a855f7" showSpinner={false} />
+          <Preloader />
+          <BackgroundVideo defaultSrc="/bg/238264.mp4" />
+          <FloatingAction />
+          <Navbar />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

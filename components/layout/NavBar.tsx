@@ -3,34 +3,45 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useI18n } from "@/lib/i18n/I18nProvider";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+
+type NavLabelKey =
+  | "about"
+  | "experience"
+  | "education"
+  | "projects"
+  | "blogs"
+  | "contact";
 
 type NavItem = {
-  label: string;
+  labelKey: NavLabelKey;
   href: string;
   kind: "section" | "page";
   id?: string;
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { id: "about", label: "About Me", href: "/#about", kind: "section" },
+  { id: "about", labelKey: "about", href: "/#about", kind: "section" },
   {
     id: "experience",
-    label: "Experience",
+    labelKey: "experience",
     href: "/#experience",
     kind: "section",
   },
   {
     id: "education",
-    label: "Education",
+    labelKey: "education",
     href: "/#education",
     kind: "section",
   },
-  { id: "projects", label: "Projects", href: "/#projects", kind: "section" },
-  { label: "Blogs", href: "/blogs", kind: "page" },
-  { id: "contact", label: "Contact", href: "/#contact", kind: "section" },
+  { id: "projects", labelKey: "projects", href: "/#projects", kind: "section" },
+  { labelKey: "blogs", href: "/blogs", kind: "page" },
+  { id: "contact", labelKey: "contact", href: "/#contact", kind: "section" },
 ];
 
 export default function Navbar() {
+  const { t } = useI18n();
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
@@ -118,7 +129,11 @@ export default function Navbar() {
     return (
       <Link
         key={`${item.kind}-${item.id ?? item.href}`}
-        href={isHome && item.kind === "section" && item.id ? `#${item.id}` : item.href}
+        href={
+          isHome && item.kind === "section" && item.id
+            ? `#${item.id}`
+            : item.href
+        }
         onClick={(e) => {
           if (item.kind === "section" && item.id) {
             handleSectionClick(e, item.id);
@@ -127,12 +142,9 @@ export default function Navbar() {
 
           setOpen(false);
         }}
-        className={[
-          baseClasses,
-          stateClasses,
-        ].join(" ")}
+        className={[baseClasses, stateClasses].join(" ")}
       >
-        {item.label}
+        {t.nav[item.labelKey]}
       </Link>
     );
   };
@@ -152,6 +164,17 @@ export default function Navbar() {
           <nav className="hidden lg:flex gap-2 lg:gap-3 2xl:gap-4">
             {NAV_ITEMS.map((item) => renderNavLink(item))}
           </nav>
+          <div className="hidden lg:flex items-center gap-3">
+            <LanguageSwitcher />
+            <button className="rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition">
+              {t.nav.signIn}
+            </button>
+          </div>
+
+          {/* Mobile language switcher */}
+          <div className="lg:hidden mr-2">
+            <LanguageSwitcher />
+          </div>
 
           {/* Mobile toggle */}
           <button

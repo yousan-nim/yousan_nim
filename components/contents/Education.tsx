@@ -1,49 +1,54 @@
+"use client";
+
 import React from "react";
 
 import { FaSchool, FaUniversity } from "react-icons/fa";
+import { useI18n } from "@/lib/i18n/I18nProvider";
 
 const Education = () => {
+  const { t } = useI18n();
+  const items = t.education.items;
   return (
     <div>
       <h2 className="text-white font-semibold text-[clamp(24px,4vw,36px)] mb-8 text-center">
-        Education
+        {t.education.title}
       </h2>
 
       {/* Mosaic layout: left-top (40%), center, right-bottom (40%) */}
       <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-4 md:gap-6">
         <div className="md:col-span-5 md:col-start-8 md:row-start-1 rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
           <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2">
-            Master of Electrical Engineering (Dropout)
+            {items[0].degree}
           </div>
           <div className="text-white/80 text-[clamp(14px,2.2vw,16px)] mb-2">
-            King Mongkut's University of Technology Thonburi (KMUTT)
+            {items[0].school}
           </div>
           <div className="text-white/60 text-[clamp(12px,2vw,14px)]">
-            2021 – 2025
+            {items[0].years}
           </div>
         </div>
 
         <div className="md:col-span-6 md:col-start-6 md:row-start-2 rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
           <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2">
-            Bachelor of Electronics and Telecommunication Engineering
+            {items[1].degree}
           </div>
           <div className="text-white/80 text-[clamp(14px,2.2vw,16px)] mb-2">
-            King Mongkut's University of Technology Thonburi (KMUTT)
+            {items[1].school}
           </div>
           <div className="text-white/60 text-[clamp(12px,2vw,14px)]">
-            2017 – 2021
+            {items[1].years}
           </div>
         </div>
 
         <div className="md:col-span-3 md:col-start-4 md:row-start-3 rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
           <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2">
-            High School
+            {items[2].degree}
           </div>
           <div className="text-white/80 text-[clamp(14px,2.2vw,16px)] mb-2">
-            Pomnakarachsawatyanon Hight School
+            {items[2].school}
           </div>
           <div className="text-white/60 text-[clamp(12px,2vw,14px)]">
-            2014 – 2017
+            {items[2].years}
           </div>
         </div>
 
