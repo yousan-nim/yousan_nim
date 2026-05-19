@@ -2,30 +2,49 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-type Item = {
-  id: string; // section id on the page
-  label: string; // text shown in nav
+type NavItem = {
+  label: string;
+  href: string;
+  kind: "section" | "page";
+  id?: string;
 };
 
-const NAV_ITEMS: Item[] = [
-  { id: "about", label: "About Me" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
-  // { id: "vocation", label: "Vocation" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
+const NAV_ITEMS: NavItem[] = [
+  { id: "about", label: "About Me", href: "/#about", kind: "section" },
+  {
+    id: "experience",
+    label: "Experience",
+    href: "/#experience",
+    kind: "section",
+  },
+  {
+    id: "education",
+    label: "Education",
+    href: "/#education",
+    kind: "section",
+  },
+  { id: "projects", label: "Projects", href: "/#projects", kind: "section" },
+  { label: "Blogs", href: "/blogs", kind: "page" },
+  { id: "contact", label: "Contact", href: "/#contact", kind: "section" },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
 
-  // Smooth scroll (works for anchors and Link href="#id")
-  const handleNavClick = (
+  const handleSectionClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     id: string
   ) => {
+    if (!isHome) {
+      setOpen(false);
+      return;
+    }
+
     e.preventDefault();
     const el = document.getElementById(id);
     if (!el) return;
@@ -34,27 +53,41 @@ export default function Navbar() {
     setOpen(false);
   };
 
-  // Active section highlighting using IntersectionObserver
+  const isActive = (item: NavItem) => {
+    if (item.kind === "page") {
+      return pathname === item.href || pathname.startsWith(`${item.href}/`);
+    }
+
+    return isHome && item.id === active;
+  };
+
   useEffect(() => {
+    if (!isHome) {
+      setActive("");
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
-        // pick the most visible entry
         const visible = entries
           .filter((en) => en.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (visible?.target?.id) setActive(visible.target.id);
       },
-
-      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.01, 0.25, 0.5, 0.75, 1] }
+      {
+        rootMargin: "-45% 0px -45% 0px",
+        threshold: [0, 0.01, 0.25, 0.5, 0.75, 1],
+      }
     );
 
-    NAV_ITEMS.forEach(({ id }) => {
+    NAV_ITEMS.filter(
+      (item): item is NavItem & { kind: "section"; id: string } =>
+        item.kind === "section" && typeof item.id === "string"
+    ).forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
 
-
-    // Fallback: if scrolled to the bottom, ensure 'contact' is active
     const onScrollBottom = () => {
       const atBottom =
         window.innerHeight + window.scrollY >=
@@ -67,7 +100,42 @@ export default function Navbar() {
       observer.disconnect();
       window.removeEventListener("scroll", onScrollBottom);
     };
-  }, []);
+  }, [isHome]);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  const renderNavLink = (item: NavItem, mobile = false) => {
+    const activeItem = isActive(item);
+    const baseClasses = mobile
+      ? "block rounded-md px-4 py-3 text-base"
+      : "rounded-md px-3 py-2 md:text-sm lg:text-base 2xl:text-lg transition uppercase";
+    const stateClasses = activeItem
+      ? "bg-white/10 text-white"
+      : "text-slate-300 hover:bg-white/10 hover:text-white";
+
+    return (
+      <Link
+        key={`${item.kind}-${item.id ?? item.href}`}
+        href={isHome && item.kind === "section" && item.id ? `#${item.id}` : item.href}
+        onClick={(e) => {
+          if (item.kind === "section" && item.id) {
+            handleSectionClick(e, item.id);
+            return;
+          }
+
+          setOpen(false);
+        }}
+        className={[
+          baseClasses,
+          stateClasses,
+        ].join(" ")}
+      >
+        {item.label}
+      </Link>
+    );
+  };
 
   return (
     <header className="absolute top-0 lg:top-2 left-0 z-40 w-screen flex justify-center">
@@ -82,27 +150,8 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex gap-2 lg:gap-3 2xl:gap-4">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={[
-                  "rounded-md px-3 py-2 md:text-sm lg:text-base 2xl:text-lg transition uppercase",
-                  active === item.id
-                    ? "bg-white/10 text-white"
-                    : "text-slate-300 hover:bg-white/10 hover:text-white",
-                ].join(" ")}
-              >
-                {item.label}
-              </a>
-            ))}
+            {NAV_ITEMS.map((item) => renderNavLink(item))}
           </nav>
-          <div className="hidden lg:block">
-            <button className="ml-4 rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition">
-              Sign In
-            </button>
-          </div>
 
           {/* Mobile toggle */}
           <button
@@ -131,26 +180,7 @@ export default function Navbar() {
           ].join(" ")}
         >
           <div className="space-y-1 border-t border-white/10 bg-[#0f1115] p-2">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={[
-                  "block rounded-md px-4 py-3 text-base",
-                  active === item.id
-                    ? "bg-white/10 text-white"
-                    : "text-slate-300 hover:bg-white/10 hover:text-white",
-                ].join(" ")}
-              >
-                {item.label}
-              </a>
-            ))}
-            <div className="mt-3 border-t border-white/10 pt-2">
-              {/* <button className="w-full rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition">
-                Sign In
-              </button> */}
-            </div>
+            {NAV_ITEMS.map((item) => renderNavLink(item, true))}
           </div>
         </div>
       </div>
