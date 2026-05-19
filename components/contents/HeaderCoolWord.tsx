@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { useI18n } from "@/lib/i18n/I18nProvider";
 
 const HeaderCoolWord = () => {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement | null>(null);
   const heroRef = useRef<HTMLDivElement | null>(null);
   const bottomRef = useRef<HTMLDivElement | null>(null);
@@ -76,7 +78,7 @@ const HeaderCoolWord = () => {
           drop-shadow-[0_1px_0_rgba(255,255,255,0.2)]
         "
               >
-                Crafting code into
+                {t.hero.line1}
               </span>
 
               <span
@@ -89,7 +91,7 @@ const HeaderCoolWord = () => {
           drop-shadow-[0_1px_0_rgba(255,255,255,0.2)] 
         "
               >
-                experiences
+                {t.hero.line2}
               </span>
             </h1>
 
@@ -102,8 +104,7 @@ const HeaderCoolWord = () => {
         text-center xl:text-left lg:ml-0
       "
             >
-              I merge creativity with logic to build solutions that inspire and
-              endure.
+              {t.hero.tagline}
             </p>
           </div>
         </div>
@@ -142,7 +143,7 @@ const HeaderCoolWord = () => {
       drop-shadow-[0_1px_0_rgba(255,255,255,0.2)]
     "
         >
-          Full-Stack Developer & AI Engineer
+          {t.hero.role}
         </p>
 
         <div
@@ -160,7 +161,7 @@ const HeaderCoolWord = () => {
         hover:bg-white/30 transition-all duration-200
       "
           >
-            Contact
+            {t.hero.contact}
           </a>
 
           <a
@@ -173,7 +174,7 @@ const HeaderCoolWord = () => {
         hover:bg-white/10 transition-all duration-200
       "
           >
-            Projects
+            {t.hero.projects}
           </a>
 
           <a
@@ -189,7 +190,7 @@ const HeaderCoolWord = () => {
       "
             aria-label="GitHub"
           >
-            GitHub
+            {t.hero.github}
           </a>
         </div>
       </div>

@@ -3,8 +3,7 @@ import Contact from "@/components/contents/Contact";
 import EducationLazy from "@/components/contents/EducationLazy";
 import Exp from "@/components/contents/Experience";
 import HeaderCoolWord from "@/components/contents/HeaderCoolWord";
-import HeaderWhatImI from "@/components/contents/HeaderWhatImI";
-import Grid, { GridItem } from "@/components/layout/Grid";
+import Projects from "@/components/contents/Projects";
 
 export default function Home() {
   return (
@@ -76,23 +75,7 @@ export default function Home() {
         className="scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 min-h-screen"
       >
         <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
-          <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">
-            Projects
-          </h2>
-          <Grid cols={1} sm={2} md={3} gap="lg">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <GridItem
-                key={n}
-                className="rounded-xl border border-white/10 p-6"
-              >
-                <div className="h-32 rounded-md bg-white/5 mb-4" />
-                <h3 className="text-white font-semibold mb-1">Project {n}</h3>
-                <p className="text-white/70 text-sm">
-                  Short description goes here.
-                </p>
-              </GridItem>
-            ))}
-          </Grid>
+          <Projects />
         </div>
       </section>
       {/* Contact */}

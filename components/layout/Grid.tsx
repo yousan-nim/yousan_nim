@@ -72,7 +72,7 @@ export type GridGap = keyof typeof GAP;
 export type GridCols = keyof typeof COLS;
 export type GridSpan = keyof typeof SPANS;
 
-export interface GridProps<T extends keyof JSX.IntrinsicElements = "div">
+export interface GridProps<T extends keyof React.JSX.IntrinsicElements = "div">
   extends React.HTMLAttributes<HTMLElement> {
   as?: T;
   // columns per breakpoint
@@ -96,7 +96,7 @@ export interface GridProps<T extends keyof JSX.IntrinsicElements = "div">
  * - Accessible, flexible API; safe-listed classes for Tailwind JIT
  */
 export function Grid<
-  T extends keyof JSX.IntrinsicElements = "div"
+  T extends keyof React.JSX.IntrinsicElements = "div"
 >({
   as,
   cols = 1,

@@ -2,22 +2,25 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useI18n } from "@/lib/i18n/I18nProvider";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 type Item = {
   id: string; // section id on the page
-  label: string; // text shown in nav
+  labelKey: "about" | "experience" | "education" | "projects" | "contact";
 };
 
 const NAV_ITEMS: Item[] = [
-  { id: "about", label: "About Me" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
-  // { id: "vocation", label: "Vocation" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
+  { id: "about", labelKey: "about" },
+  { id: "experience", labelKey: "experience" },
+  { id: "education", labelKey: "education" },
+  // { id: "vocation", labelKey: "vocation" },
+  { id: "projects", labelKey: "projects" },
+  { id: "contact", labelKey: "contact" },
 ];
 
 export default function Navbar() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
 
@@ -94,14 +97,20 @@ export default function Navbar() {
                     : "text-slate-300 hover:bg-white/10 hover:text-white",
                 ].join(" ")}
               >
-                {item.label}
+                {t.nav[item.labelKey]}
               </a>
             ))}
           </nav>
-          <div className="hidden lg:block">
-            <button className="ml-4 rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition">
-              Sign In
+          <div className="hidden lg:flex items-center gap-3">
+            <LanguageSwitcher />
+            <button className="rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition">
+              {t.nav.signIn}
             </button>
+          </div>
+
+          {/* Mobile language switcher */}
+          <div className="lg:hidden mr-2">
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile toggle */}
@@ -143,7 +152,7 @@ export default function Navbar() {
                     : "text-slate-300 hover:bg-white/10 hover:text-white",
                 ].join(" ")}
               >
-                {item.label}
+                {t.nav[item.labelKey]}
               </a>
             ))}
             <div className="mt-3 border-t border-white/10 pt-2">

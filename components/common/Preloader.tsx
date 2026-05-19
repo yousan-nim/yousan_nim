@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useI18n } from "@/lib/i18n/I18nProvider";
 
 export default function Preloader() {
+  const { t } = useI18n();
   const [show, setShow] = useState(true);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function Preloader() {
     <div className="fixed inset-0 z-[9999] grid place-items-center bg-black transition-opacity duration-500">
       <div className="flex flex-col items-center gap-4">
         <div className="animate-spin rounded-full h-12 w-12 border-4 border-white/20 border-t-white" />
-        <p className="text-white/80 text-sm">Loading…</p>
+        <p className="text-white/80 text-sm">{t.preloader.loading}</p>
       </div>
     </div>
   );
