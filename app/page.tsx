@@ -12,14 +12,7 @@ export default function Home() {
       <HeaderCoolWord />
 
       {/* About Me */}
-      <section
-        id="about"
-        className="relative scroll-mt-24 md:scroll-mt-28 py-20 md:py-28 min-h-screen"
-      >
-        <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
-          <AboutMe />
-        </div>
-      </section>
+      <AboutMe />
 
       {/* Experience */}
       <section
@@ -30,6 +23,7 @@ export default function Home() {
           <Exp />
         </div>
       </section>
+
       {/* Education */}
       <section
         id="education"
@@ -39,6 +33,7 @@ export default function Home() {
           <EducationLazy />
         </div>
       </section>
+
       {/* Vocation */}
       {/* <section
         id="vocation"
@@ -69,6 +64,7 @@ export default function Home() {
           </Grid>
         </div>
       </section> */}
+
       {/* Projects */}
       <section
         id="projects"
@@ -78,6 +74,7 @@ export default function Home() {
           <Projects />
         </div>
       </section>
+
       {/* Contact */}
       <section
         id="contact"

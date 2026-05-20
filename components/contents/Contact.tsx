@@ -6,10 +6,11 @@ import { useI18n } from "@/lib/i18n/I18nProvider";
 const Contact = () => {
   const { t } = useI18n();
   const c = t.contact;
-  // Replace these with your real links/email
-  const EMAIL = "you@example.com";
-  const LINKEDIN = "https://www.linkedin.com/in/your-handle";
-  const GITHUB = "https://github.com/your-handle";
+  const EMAIL = "pongchanok.nt@gmail.com";
+  const LINKEDIN = "https://www.linkedin.com/in/yousan-nim";
+  const GITHUB = "https://github.com/yousan-nim";
+  const LINKEDIN_DISPLAY = "linkedin.com/in/yousan-nim";
+  const GITHUB_DISPLAY = "github.com/yousan-nim";
 
   return (
     <div className="">
@@ -75,7 +76,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="text-white/70 text-[clamp(12px,2.5vw,14px)] truncate">
-            linkedin.com/in/your-handle
+            {LINKEDIN_DISPLAY}
           </div>
         </a>
 
@@ -92,7 +93,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="text-white/70 text-[clamp(12px,2.5vw,14px)] truncate">
-            github.com/your-handle
+            {GITHUB_DISPLAY}
           </div>
         </a>
       </div>
