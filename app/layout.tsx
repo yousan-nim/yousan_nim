@@ -89,7 +89,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#121212] w-screen min-h-screen relative`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#121212] min-h-screen overflow-x-hidden relative`}
       >
         <I18nProvider>
           <NextTopLoader color="#a855f7" showSpinner={false} />
