@@ -32,12 +32,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (isLocale(stored)) {
-      setLocaleState(stored);
-      return;
-    }
-    const nav = navigator.language.slice(0, 2);
-    if (isLocale(nav)) setLocaleState(nav);
+    if (isLocale(stored)) setLocaleState(stored);
   }, []);
 
   useEffect(() => {

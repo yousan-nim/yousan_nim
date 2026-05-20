@@ -2,7 +2,14 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n/I18nProvider";
-import { LOCALES, LOCALE_LABELS, type Locale } from "@/lib/i18n/dictionaries";
+import { LOCALES, type Locale } from "@/lib/i18n/dictionaries";
+
+const LOCALE_SHORT: Record<Locale, string> = {
+  en: "EN",
+  th: "TH",
+  zh: "ZH",
+  ja: "JA",
+};
 
 export default function LanguageSwitcher({
   className = "",
@@ -31,25 +38,15 @@ export default function LanguageSwitcher({
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label="Change language"
-        className="flex items-center gap-1.5 rounded-md border border-white/20 bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/20 transition"
+        className="rounded-md border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold tracking-wide text-white hover:bg-white/20 transition"
       >
-        <span aria-hidden>🌐</span>
-        <span>{LOCALE_LABELS[locale]}</span>
-        <svg
-          viewBox="0 0 20 20"
-          className={`h-3.5 w-3.5 transition-transform ${
-            open ? "rotate-180" : ""
-          }`}
-          fill="currentColor"
-        >
-          <path d="M5 7l5 6 5-6z" />
-        </svg>
+        {LOCALE_SHORT[locale]}
       </button>
 
       {open && (
         <ul
           role="listbox"
-          className="absolute right-0 mt-2 w-40 overflow-hidden rounded-md border border-white/15 bg-[#0f1115] shadow-lg z-50"
+          className="absolute right-0 mt-2 w-20 overflow-hidden rounded-md border border-white/15 bg-[#0f1115] shadow-lg z-50"
         >
           {LOCALES.map((l: Locale) => (
             <li key={l} role="option" aria-selected={l === locale}>
@@ -60,13 +57,13 @@ export default function LanguageSwitcher({
                   setOpen(false);
                 }}
                 className={[
-                  "block w-full px-4 py-2.5 text-left text-sm transition",
+                  "block w-full px-4 py-2 text-left text-sm font-semibold tracking-wide transition",
                   l === locale
                     ? "bg-white/10 text-white"
                     : "text-slate-300 hover:bg-white/10 hover:text-white",
                 ].join(" ")}
               >
-                {LOCALE_LABELS[l]}
+                {LOCALE_SHORT[l]}
               </button>
             </li>
           ))}
