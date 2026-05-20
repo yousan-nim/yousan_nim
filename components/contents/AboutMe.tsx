@@ -11,7 +11,7 @@ const STEP_CIRCLE = [
   "bg-gray-700 ring-gray-200/20 text-white",
 ];
 
-const FOCUS_ICONS = ["🤖", "☁️", "🎯"];
+const FOCUS_ICONS = ["⚡", "📉", "🎬"];
 
 const TECH_META: { icon: string; techs: string[] }[] = [
   { icon: "⚛️", techs: ["React", "Next.js", "TypeScript", "Tailwind", "Three.js"] },
@@ -23,7 +23,7 @@ const TECH_META: { icon: string; techs: string[] }[] = [
 ];
 
 const STATS = [
-  { value: "2+", key: "statYears" as const },
+  { value: "5+", key: "statYears" as const },
   { value: "10+", key: "statProjects" as const },
   { value: "2", key: "statResearch" as const },
   { value: "5+", key: "statCloud" as const },
