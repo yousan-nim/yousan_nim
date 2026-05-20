@@ -42,8 +42,11 @@ const AboutMe = () => {
   const { t } = useI18n();
   const a = t.about;
 
+
+  // py-20 md:py-28 bg-white/5 min-h-screen
+
   return (
-    <section id="about" className="p-0 m-0">
+    <section id="about" className="py-20">
       <div className="max-w-[90%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
         <h1 className="text-white font-semibold uppercase text-[clamp(32px,6vw,56px)] text-start mb-8">
           {a.title}

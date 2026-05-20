@@ -9,7 +9,7 @@ const Projects = () => {
 
   return (
     <>
-      <h2 className="text-white text-2xl md:text-3xl font-semibold mb-8">
+      <h2 className="text-white font-semibold uppercase text-[clamp(32px,6vw,56px)] mb-8">
         {t.projects.title}
       </h2>
       <Grid cols={1} sm={2} md={3} gap="lg">
