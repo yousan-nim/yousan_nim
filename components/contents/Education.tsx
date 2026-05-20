@@ -12,7 +12,7 @@ const Education = () => {
 
   return (
     <div>
-      <h2 className="text-white font-semibold text-[clamp(24px,4vw,36px)] mb-8 text-center">
+      <h2 className="text-white font-semibold uppercase text-[clamp(32px,6vw,56px)] mb-8 text-center">
         {t.education.title}
       </h2>
 
