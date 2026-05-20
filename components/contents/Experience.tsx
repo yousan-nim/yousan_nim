@@ -8,6 +8,7 @@ const POINT_COLOR = [
   "bg-gray-300 ring-gray-300/20",
   "bg-gray-400 ring-gray-400/20",
   "bg-gray-500 ring-gray-500/20",
+  "bg-gray-600 ring-gray-600/20",
 ];
 
 const Experience = () => {

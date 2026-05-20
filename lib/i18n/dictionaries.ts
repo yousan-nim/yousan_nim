@@ -194,6 +194,12 @@ const en: Dict = {
         desc: "Smart Building IoT (Zyta) + multi-vendor BLE healthcare app. Cut backend latency ~8s → ~2s, reduced frontend API calls by 33%, shipped to 3 B2B clients and both major app stores.",
       },
       {
+        period: "Oct 2025 - Feb 2026",
+        role: "Full-Stack Developer",
+        company: "@ Prime Media Co., Ltd.",
+        desc: "Led a 3-engineer team on a Discovery Influencer Platform (Next.js + Elysia + PostgreSQL on Google Cloud) for large-scale KOL/KOC campaigns. Also shipped IPPS Payment Solutions' corporate site and a fintech-aligned cosmetics e-commerce platform.",
+      },
+      {
         period: "Jul 2024 - Oct 2025",
         role: "Full-Stack Developer",
         company: "@ CREaiVE.ai",
@@ -363,6 +369,12 @@ const th: Dict = {
         desc: "Smart Building IoT (Zyta) และแอป BLE ด้าน healthcare ลดเวลา backend จาก ~8s เหลือ ~2s ลด API call ฝั่ง frontend 33% ส่งมอบ B2B 3 ราย และขึ้นทั้ง App Store / Google Play",
       },
       {
+        period: "ต.ค. 2025 - ก.พ. 2026",
+        role: "Full-Stack Developer",
+        company: "@ Prime Media Co., Ltd.",
+        desc: "นำทีมวิศวกร 3 คนพัฒนา Discovery Influencer Platform (Next.js + Elysia + PostgreSQL บน Google Cloud) สำหรับแคมเปญ KOL/KOC ขนาดใหญ่ พร้อมส่งมอบเว็บไซต์ IPPS Payment Solutions และแพลตฟอร์มอีคอมเมิร์ซเครื่องสำอางที่เชื่อมกับโซลูชันการชำระเงิน",
+      },
+      {
         period: "ก.ค. 2024 - ต.ค. 2025",
         role: "Full-Stack Developer",
         company: "@ CREaiVE.ai",
@@ -520,6 +532,12 @@ const zh: Dict = {
         role: "高级全栈开发者",
         company: "@ BPS Technology",
         desc: "智能建筑 IoT（Zyta）与多厂商 BLE 健康应用。后端延迟由约 8 秒优化至 2 秒，前端 API 调用减少 33%，已交付 3 家 B2B 客户并上线 Google Play 与 App Store。",
+      },
+      {
+        period: "2025 年 10 月 - 2026 年 2 月",
+        role: "全栈开发者",
+        company: "@ Prime Media Co., Ltd.",
+        desc: "带领 3 人工程团队打造 Discovery 影响者平台（Next.js + Elysia + PostgreSQL，部署于 Google Cloud），支撑大规模 KOL/KOC 营销活动。同时交付 IPPS Payment Solutions 企业营销网站与对接金融科技的化妆品电商平台。",
       },
       {
         period: "2024 年 7 月 - 2025 年 10 月",
@@ -688,6 +706,12 @@ const ja: Dict = {
         role: "シニアフルスタック開発者",
         company: "@ BPS Technology",
         desc: "スマートビル IoT（Zyta）とマルチベンダー BLE ヘルスケアアプリ。バックエンド遅延を約 8 秒→2 秒、フロント API 呼び出しを 33% 削減し、3 つの B2B クライアントと両主要ストアへリリース。",
+      },
+      {
+        period: "2025 年 10 月 - 2026 年 2 月",
+        role: "フルスタック開発者",
+        company: "@ Prime Media Co., Ltd.",
+        desc: "3 名のエンジニアチームを率い、Next.js + Elysia + PostgreSQL（Google Cloud）で大規模 KOL/KOC キャンペーン向け Discovery インフルエンサープラットフォームを構築。IPPS Payment Solutions のコーポレートサイトと、決済ソリューションと連携する化粧品 EC プラットフォームも納品。",
       },
       {
         period: "2024 年 7 月 - 2025 年 10 月",
