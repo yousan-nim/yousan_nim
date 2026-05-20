@@ -58,7 +58,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-20 md:py-28 bg-white/5 px-4 lg:px-0">
+      <section id="contact" className="min-h-screen flex flex-col justify-center py-20 md:py-28 bg-white/5 px-4 lg:px-0">
         <Contact />
       </section>
     </main>
