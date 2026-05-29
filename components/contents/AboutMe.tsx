@@ -2,6 +2,37 @@
 
 import React from "react";
 import { useI18n } from "@/lib/i18n/I18nProvider";
+import { IconType } from "react-icons";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiThreedotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiGo,
+  SiBun,
+  SiSpringboot,
+  SiPython,
+  SiFlask,
+  SiMongodb,
+  SiPostgresql,
+  SiMysql,
+  SiElasticsearch,
+  SiDocker,
+  SiKubernetes,
+  SiVultr,
+  SiGithubactions,
+  SiPytorch,
+  SiOpenai,
+  SiGit,
+  SiFigma,
+  SiPostman,
+  SiJira,
+} from "react-icons/si";
+import { FaAws } from "react-icons/fa";
+import { TbBrandVscode } from "react-icons/tb";
 
 const STEP_CIRCLE = [
   "bg-white ring-white/20 text-black",
@@ -13,22 +44,77 @@ const STEP_CIRCLE = [
 
 const FOCUS_ICONS = ["⚡", "📉", "🎬"];
 
-const TECH_META: { icon: string; techs: string[] }[] = [
+type Tech = { name: string; Icon?: IconType; color?: string };
+
+const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
   {
     icon: "⚛️",
-    techs: ["React", "Next.js", "TypeScript", "Tailwind", "Three.js"],
+    accent: "#38BDF8",
+    techs: [
+      { name: "React", Icon: SiReact, color: "#61DAFB" },
+      { name: "React Native", Icon: SiReact, color: "#61DAFB" },
+      { name: "Next.js", Icon: SiNextdotjs, color: "#FFFFFF" },
+      { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+      { name: "Tailwind", Icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "Three.js", Icon: SiThreedotjs, color: "#FFFFFF" },
+    ],
   },
   {
     icon: "🚂",
-    techs: ["Node.js", "Express", "Spring Boot", "Python", "Flask"],
+    accent: "#34D399",
+    techs: [
+      { name: "Node.js", Icon: SiNodedotjs, color: "#5FA04E" },
+      { name: "Express", Icon: SiExpress, color: "#FFFFFF" },
+      { name: "Go", Icon: SiGo, color: "#00ADD8" },
+      { name: "Bun", Icon: SiBun, color: "#FBF0DF" },
+      { name: "Spring Boot", Icon: SiSpringboot, color: "#6DB33F" },
+      { name: "Python", Icon: SiPython, color: "#3776AB" },
+      { name: "Flask", Icon: SiFlask, color: "#FFFFFF" },
+    ],
   },
-  { icon: "🗄️", techs: ["MongoDB", "PostgreSQL", "MySQL", "Elasticsearch"] },
+  {
+    icon: "🗄️",
+    accent: "#FBBF24",
+    techs: [
+      { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
+      { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
+      { name: "MySQL", Icon: SiMysql, color: "#4479A1" },
+      { name: "Elasticsearch", Icon: SiElasticsearch, color: "#005571" },
+    ],
+  },
   {
     icon: "☁️",
-    techs: ["Docker", "Kubernetes", "AWS", "Vultr", "GitHub Actions"],
+    accent: "#60A5FA",
+    techs: [
+      { name: "Docker", Icon: SiDocker, color: "#2496ED" },
+      { name: "Kubernetes", Icon: SiKubernetes, color: "#326CE5" },
+      { name: "AWS", Icon: FaAws, color: "#FF9900" },
+      { name: "Vultr", Icon: SiVultr, color: "#007BFC" },
+      { name: "GitHub Actions", Icon: SiGithubactions, color: "#2088FF" },
+    ],
   },
-  { icon: "🤖", techs: ["PyTorch", "OpenAI", "RAG", "Computer Vision", "ASR"] },
-  { icon: "🛠️", techs: ["Git", "VS Code", "Figma", "Postman", "Jira"] },
+  {
+    icon: "🤖",
+    accent: "#F472B6",
+    techs: [
+      { name: "PyTorch", Icon: SiPytorch, color: "#EE4C2C" },
+      { name: "OpenAI", Icon: SiOpenai, color: "#FFFFFF" },
+      { name: "RAG" },
+      { name: "Computer Vision" },
+      { name: "ASR" },
+    ],
+  },
+  {
+    icon: "🛠️",
+    accent: "#FB923C",
+    techs: [
+      { name: "Git", Icon: SiGit, color: "#F05032" },
+      { name: "VS Code", Icon: TbBrandVscode, color: "#007ACC" },
+      { name: "Figma", Icon: SiFigma, color: "#F24E1E" },
+      { name: "Postman", Icon: SiPostman, color: "#FF6C37" },
+      { name: "Jira", Icon: SiJira, color: "#0052CC" },
+    ],
+  },
 ];
 
 const STATS = [
@@ -204,25 +290,64 @@ const AboutMe = () => {
             {TECH_META.map((card, i) => (
               <div
                 key={i}
-                className="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 via-transparent to-transparent backdrop-blur p-6 hover:border-white/40 transition-all duration-300"
+                style={{ ["--accent" as string]: card.accent }}
+                className="group relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 transition-all duration-300 hover:border-[var(--accent)]/40 hover:-translate-y-1"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                {/* accent corner glow */}
+                <div
+                  className="pointer-events-none absolute inset-0 rounded-2xl opacity-40 transition-opacity duration-500 group-hover:opacity-80"
+                  style={{
+                    background: `radial-gradient(circle at top right, ${card.accent}33, transparent 55%)`,
+                  }}
+                />
+                {/* top accent line */}
+                <div
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-50 transition-opacity duration-300 group-hover:opacity-90"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${card.accent}, transparent)`,
+                  }}
+                />
                 <div className="relative">
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="text-3xl">{card.icon}</div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl ring-1 ring-inset transition-transform duration-300 group-hover:scale-110"
+                      style={{
+                        backgroundColor: `${card.accent}1F`,
+                        boxShadow: `inset 0 0 0 1px ${card.accent}55`,
+                      }}
+                    >
+                      {card.icon}
+                    </div>
                     <h3 className="font-bold text-[clamp(18px,3vw,22px)] text-white">
                       {a.techCards[i]}
                     </h3>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {card.techs.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white/90 text-[clamp(12px,2vw,14px)] font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="grid grid-cols-4 gap-2.5 sm:gap-3">
+                    {card.techs.map((tech) =>
+                      tech.Icon ? (
+                        <div
+                          key={tech.name}
+                          style={{ ["--brand" as string]: tech.color }}
+                          className="group/item relative flex aspect-square items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-all duration-200 hover:-translate-y-1 hover:border-[var(--brand)] hover:bg-white/[0.08] hover:shadow-[0_0_24px_-6px_var(--brand)]"
+                        >
+                          <tech.Icon
+                            className="text-3xl md:text-4xl transition-transform duration-200 group-hover/item:scale-110"
+                            style={{ color: tech.color }}
+                            aria-label={tech.name}
+                          />
+                          <span className="pointer-events-none absolute -top-9 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-black/90 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover/item:opacity-100">
+                            {tech.name}
+                          </span>
+                        </div>
+                      ) : (
+                        <div
+                          key={tech.name}
+                          className="col-span-2 flex aspect-[2/1] items-center justify-center rounded-xl border border-dashed border-white/15 bg-white/[0.04] px-2 text-center text-[clamp(12px,2vw,14px)] font-semibold text-white/70 transition-colors hover:border-white/30 hover:text-white"
+                        >
+                          {tech.name}
+                        </div>
+                      )
+                    )}
                   </div>
                 </div>
               </div>

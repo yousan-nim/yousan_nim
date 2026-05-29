@@ -15,7 +15,7 @@ const Education = () => {
       </h2>
 
       {/* Mosaic layout: left-top (40%), center, right-bottom (40%) */}
-      <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-4 md:gap-6 max-w-screen-2xl mx-auto ">
         <div className="md:col-span-5 md:col-start-8 md:row-start-1 rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
           <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2">
             {items[0].degree}

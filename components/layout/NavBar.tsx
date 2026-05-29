@@ -36,9 +36,12 @@ const NAV_ITEMS: NavItem[] = [
     kind: "section",
   },
   { id: "projects", labelKey: "projects", href: "/#projects", kind: "section" },
-  { labelKey: "blogs", href: "/blogs", kind: "page" },
   { id: "contact", labelKey: "contact", href: "/#contact", kind: "section" },
+  { labelKey: "blogs", href: "/blogs", kind: "page" },
 ];
+
+const BLOGS_ITEM = NAV_ITEMS.find((item) => item.labelKey === "blogs")!;
+const PRIMARY_ITEMS = NAV_ITEMS.filter((item) => item.labelKey !== "blogs");
 
 export default function Navbar() {
   const { t } = useI18n();
@@ -152,7 +155,9 @@ export default function Navbar() {
   return (
     <header className="absolute top-0 lg:top-2 inset-x-0 z-40 flex justify-center">
       <div className="mt-2 w-[95%] md:w-[98%] xl:max-w-screen rounded-xl ">
-        <div className="mx-auto flex h-14 items-center justify-between pr-2 pl-4 lg:px-4 max-w-[1200px] lg:max-w-[1400px] xl:max-w-[1600px] 2xl:max-w-[1800px] min-[1920px]:max-w-[1920px] min-[2560px]:max-w-[2200px]">
+        <div className="mx-auto flex h-14 items-center justify-between 
+          max-w-[1200px] lg:max-w-[1400px] xl:max-w-[1600px] 2xl:max-w-screen-2xl min-[1920px]:max-w-[1920px] min-[2560px]:max-w-[2200px]
+          ">
           {/* Logo / Name */}
           <Link href="/" className="shrink-0">
             <span className="font-semibold tracking-wide text-sm md:text-base lg:text-lg 2xl:text-xl text-white text-start">
@@ -161,8 +166,13 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex gap-2 lg:gap-3 2xl:gap-4">
-            {NAV_ITEMS.map((item) => renderNavLink(item))}
+          <nav className="hidden lg:flex items-center gap-2 lg:gap-3 2xl:gap-4">
+            {PRIMARY_ITEMS.map((item) => renderNavLink(item))}
+            <span
+              aria-hidden
+              className="mx-1 h-5 w-px bg-white/25"
+            />
+            {renderNavLink(BLOGS_ITEM)}
           </nav>
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
