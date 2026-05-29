@@ -81,6 +81,10 @@ type Dict = {
   projects: {
     title: string;
     placeholder: string;
+    comingSoonBadge: string;
+    comingSoonTitle: string;
+    comingSoonBody: string;
+    notifyMe: string;
   };
   preloader: { loading: string };
 };
@@ -256,6 +260,11 @@ const en: Dict = {
   projects: {
     title: "Projects",
     placeholder: "Short description goes here.",
+    comingSoonBadge: "Coming Soon",
+    comingSoonTitle: "Selected work is on the way",
+    comingSoonBody:
+      "Case studies, live demos, and source code are being curated. In the meantime, feel free to reach out for a walkthrough of recent work.",
+    notifyMe: "Notify me by email",
   },
   preloader: { loading: "Loading…" },
 };
@@ -432,6 +441,11 @@ const th: Dict = {
   projects: {
     title: "ผลงาน",
     placeholder: "คำอธิบายสั้น ๆ ตรงนี้",
+    comingSoonBadge: "เร็ว ๆ นี้",
+    comingSoonTitle: "ผลงานคัดสรรกำลังจะมา",
+    comingSoonBody:
+      "Case study, live demo และซอร์สโค้ดกำลังถูกคัดสรรอยู่ ระหว่างนี้สามารถติดต่อเข้ามาเพื่อขอชม walkthrough ของผลงานล่าสุดได้",
+    notifyMe: "แจ้งเตือนผ่านอีเมล",
   },
   preloader: { loading: "กำลังโหลด…" },
 };
@@ -598,6 +612,11 @@ const zh: Dict = {
   projects: {
     title: "项目",
     placeholder: "简短描述放在这里。",
+    comingSoonBadge: "敬请期待",
+    comingSoonTitle: "精选作品即将上线",
+    comingSoonBody:
+      "案例研究、在线演示和源代码正在整理中。期间欢迎来信,获取近期作品的详细讲解。",
+    notifyMe: "邮件通知我",
   },
   preloader: { loading: "加载中…" },
 };
@@ -773,6 +792,11 @@ const ja: Dict = {
   projects: {
     title: "プロジェクト",
     placeholder: "ここに簡単な説明が入ります。",
+    comingSoonBadge: "近日公開",
+    comingSoonTitle: "厳選した作品を公開予定",
+    comingSoonBody:
+      "ケーススタディ、ライブデモ、ソースコードを整理中です。お気軽にお問い合わせいただければ、最近の作品をご紹介します。",
+    notifyMe: "メールで通知",
   },
   preloader: { loading: "読み込み中…" },
 };

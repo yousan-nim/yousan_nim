@@ -7,10 +7,17 @@ const Contact = () => {
   const { t } = useI18n();
   const c = t.contact;
   const EMAIL = "pongchanok.nt@gmail.com";
-  const LINKEDIN = "https://www.linkedin.com/in/yousan-nim";
+  const LINKEDIN = "https://www.linkedin.com/in/yousan-nim/";
   const GITHUB = "https://github.com/yousan-nim";
+  const WEBSITE = "https://yousan-nim.com/";
   const LINKEDIN_DISPLAY = "linkedin.com/in/yousan-nim";
   const GITHUB_DISPLAY = "github.com/yousan-nim";
+  const WEBSITE_DISPLAY = "yousan-nim.com";
+  const CV_REQUEST_MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent(
+    "Requesting CV — Pongchanok Nuamteam"
+  )}&body=${encodeURIComponent(
+    "Hi Pongchanok,\n\nI'd like to request your latest CV. A bit about me and the role:\n\n— \n\nThanks!"
+  )}`;
 
   return (
     <div className="">
@@ -36,18 +43,17 @@ const Contact = () => {
           <span aria-hidden>✉️</span>
         </a>
         <a
-          href="/resume.txt"
-          target="_blank"
-          rel="noopener noreferrer"
+          href={CV_REQUEST_MAILTO}
           className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 text-white px-5 py-3 font-semibold hover:border-white/40 transition"
+          title="Send an email to request the latest CV"
         >
-          <span>{c.downloadResume}</span>
-          <span aria-hidden>⬇️</span>
+          <span>Request CV via Email</span>
+          <span aria-hidden>📄</span>
         </a>
       </div>
 
       {/* Contact Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
         <a
           href={`mailto:${EMAIL}`}
           className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5 hover:border-white/30 transition group"
@@ -94,6 +100,23 @@ const Contact = () => {
           </div>
           <div className="text-white/70 text-[clamp(12px,2.5vw,14px)] truncate">
             {GITHUB_DISPLAY}
+          </div>
+        </a>
+
+        <a
+          href={WEBSITE}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5 hover:border-white/30 transition group"
+        >
+          <div className="flex items-center gap-3 mb-2">
+            <div className="text-2xl">🌐</div>
+            <div className="text-white font-semibold text-[clamp(16px,3vw,18px)]">
+              Website
+            </div>
+          </div>
+          <div className="text-white/70 text-[clamp(12px,2.5vw,14px)] truncate">
+            {WEBSITE_DISPLAY}
           </div>
         </a>
       </div>
