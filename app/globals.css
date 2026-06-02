@@ -19,6 +19,43 @@
   }
 }
 
+html,
+body {
+  /* clip prevents the horizontal scrollbar without breaking position: sticky
+     in descendants (unlike overflow-x: hidden) */
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+html {
+  /* color-scheme tells the browser to use dark native UI (including the
+     scrollbar) so the track is no longer rendered with a white default.
+     Do NOT set background on <html> — that would stop <body>'s background
+     from propagating to the canvas and cover the fixed BackgroundVideo. */
+  color-scheme: dark;
+  /* Firefox scrollbar styling */
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  scrollbar-width: thin;
+}
+
+/* WebKit / Chromium scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

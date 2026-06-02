@@ -290,21 +290,22 @@ const AboutMe = () => {
             {TECH_META.map((card, i) => (
               <div
                 key={i}
-                style={{ ["--accent" as string]: card.accent }}
-                className="group relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 transition-all duration-300 hover:border-[var(--accent)]/40 hover:-translate-y-1"
+                className="group relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 transition-all duration-300 hover:border-white/40 hover:-translate-y-1"
               >
-                {/* accent corner glow */}
+                {/* white corner glow */}
                 <div
                   className="pointer-events-none absolute inset-0 rounded-2xl opacity-40 transition-opacity duration-500 group-hover:opacity-80"
                   style={{
-                    background: `radial-gradient(circle at top right, ${card.accent}33, transparent 55%)`,
+                    background:
+                      "radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 55%)",
                   }}
                 />
                 {/* top accent line */}
                 <div
                   className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-50 transition-opacity duration-300 group-hover:opacity-90"
                   style={{
-                    background: `linear-gradient(90deg, transparent, ${card.accent}, transparent)`,
+                    background:
+                      "linear-gradient(90deg, transparent, rgba(255,255,255,0.85), transparent)",
                   }}
                 />
                 <div className="relative">
@@ -312,8 +313,8 @@ const AboutMe = () => {
                     <div
                       className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl ring-1 ring-inset transition-transform duration-300 group-hover:scale-110"
                       style={{
-                        backgroundColor: `${card.accent}1F`,
-                        boxShadow: `inset 0 0 0 1px ${card.accent}55`,
+                        backgroundColor: "rgba(255,255,255,0.08)",
+                        boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.25)",
                       }}
                     >
                       {card.icon}

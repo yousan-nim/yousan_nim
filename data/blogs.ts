@@ -12,13 +12,13 @@ export type BlogSection = {
 
 export type BlogSectionGroup =
   | "Projects"
-  | "Pattern Design"
+  | "Patterns & Principles"
   | "System Architecture"
   | "Learn";
 
 export const BLOG_SECTIONS: BlogSectionGroup[] = [
   "Projects",
-  "Pattern Design",
+  "Patterns & Principles",
   "System Architecture",
   "Learn",
 ];
@@ -38,86 +38,104 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "shipping-ai-products-without-fake-magic",
-    title: "Shipping AI Products Without Fake Magic",
+    slug: "ai-human-interactive-holovue",
+    title: "AI Human Interactive on HOLOVUE",
     section: "Projects",
-    category: "AI Product",
-    date: "May 12, 2026",
-    readTime: "7 min read",
+    category: "AI / Interactive",
+    date: "Coming soon",
+    readTime: "Draft",
     excerpt:
-      "The fastest way to lose trust in an AI feature is to promise intelligence when the product still behaves like a demo.",
-    tags: ["OpenAI", "UX", "RAG", "Product Strategy"],
+      "Project write-up coming soon — an AI-driven interactive human experience built on the HOLOVUE platform.",
+    tags: ["Coming Soon"],
     sections: [
       {
-        heading: "Start with the workflow, not the model",
+        heading: "Overview",
         paragraphs: [
-          "Most AI features fail because the team starts by picking a model and only later asks what user problem it should solve.",
-          "A stronger approach is to map the exact moment where a user is blocked, then decide whether AI should summarize, classify, generate, or retrieve the next useful step.",
-        ],
-        bullets: [
-          "Define the user action that must become faster or clearer.",
-          "Limit the first version to one obvious job.",
-          "Measure whether the output reduces manual work.",
-        ],
-      },
-      {
-        heading: "Design for verification",
-        paragraphs: [
-          "Good AI UX does not pretend the answer is always correct. It gives users enough context to verify the response quickly.",
-          "That means clear citations, visible source data, and interfaces that make editing the draft easier than rewriting it from scratch.",
-        ],
-      },
-      {
-        heading: "Production quality is mostly systems work",
-        paragraphs: [
-          "Once the demo is approved, the real effort starts: prompt versioning, fallback handling, latency budgets, logging, and safe retries.",
-          "Teams that treat these concerns as core product work ship slower at first, but they avoid the expensive rewrite that usually follows a flashy prototype.",
+          "Details for this project will be added here. Placeholder kept so the section appears in the Projects list while the full case study is being prepared.",
         ],
       },
     ],
-    takeaway:
-      "Useful AI feels dependable before it feels impressive. The product should help users judge the answer, not just admire it.",
+    takeaway: "Detailed write-up coming soon.",
   },
   {
-    slug: "why-portfolios-should-feel-fast",
-    title: "Why Portfolios Should Feel Fast Before They Feel Fancy",
-    section: "Pattern Design",
-    category: "Frontend",
-    date: "April 28, 2026",
-    readTime: "5 min read",
+    slug: "ecom-api-spring-boot",
+    title: "ECOM API — Java Spring Boot",
+    section: "Projects",
+    category: "Backend / Java",
+    date: "Coming soon",
+    readTime: "Draft",
     excerpt:
-      "A portfolio is a product pitch. If it stutters, hides the message, or makes the reader work too hard, it undercuts the case immediately.",
-    tags: ["Next.js", "Performance", "Motion", "Design"],
+      "E-commerce API service built with Java Spring Boot — architecture, endpoints, and lessons learned will be documented here.",
+    tags: ["Coming Soon"],
     sections: [
       {
-        heading: "The first screen carries the argument",
+        heading: "Overview",
         paragraphs: [
-          "A visitor decides within seconds whether the site feels serious. Typography, spacing, and load behavior communicate more than a long introduction ever will.",
-          "The hero should answer three things quickly: who you are, what you build, and why the work matters.",
-        ],
-      },
-      {
-        heading: "Motion needs a job",
-        paragraphs: [
-          "Animation is valuable when it guides attention or reinforces hierarchy. It becomes noise when it delays reading or competes with the actual message.",
-          "Parallax, video, and layered backgrounds can work well, but only if the text remains stable and easy to parse.",
-        ],
-        bullets: [
-          "Keep the content readable during motion.",
-          "Prefer subtle depth over constant movement.",
-          "Treat loading states as part of the brand impression.",
-        ],
-      },
-      {
-        heading: "Structured content beats decorative content",
-        paragraphs: [
-          "Case studies, measurable outcomes, and clearly grouped experience sections make the strongest portfolios easier to scan.",
-          "When the content model is solid, the visual layer can become more expressive without losing clarity.",
+          "Details for this project will be added here. Placeholder kept so the section appears in the Projects list while the full case study is being prepared.",
         ],
       },
     ],
-    takeaway:
-      "A portfolio should look deliberate, but its main job is to make confidence easy for the reader.",
+    takeaway: "Detailed write-up coming soon.",
+  },
+  {
+    slug: "minigames",
+    title: "MiniGames",
+    section: "Projects",
+    category: "Web Games",
+    date: "Coming soon",
+    readTime: "Draft",
+    excerpt:
+      "A collection of small, focused web games — full breakdown of mechanics, stack, and design notes coming soon.",
+    tags: ["Coming Soon"],
+    sections: [
+      {
+        heading: "Overview",
+        paragraphs: [
+          "Details for this project will be added here. Placeholder kept so the section appears in the Projects list while the full case study is being prepared.",
+        ],
+      },
+    ],
+    takeaway: "Detailed write-up coming soon.",
+  },
+  {
+    slug: "zyta-well-building-monitoring",
+    title: "Zyta Well-Building Monitoring",
+    section: "Projects",
+    category: "IoT / Monitoring",
+    date: "Coming soon",
+    readTime: "Draft",
+    excerpt:
+      "Real-time monitoring system for well-building environments under the Zyta platform — case study coming soon.",
+    tags: ["Coming Soon"],
+    sections: [
+      {
+        heading: "Overview",
+        paragraphs: [
+          "Details for this project will be added here. Placeholder kept so the section appears in the Projects list while the full case study is being prepared.",
+        ],
+      },
+    ],
+    takeaway: "Detailed write-up coming soon.",
+  },
+  {
+    slug: "caregiver-application",
+    title: "CareGiver Application",
+    section: "Projects",
+    category: "Healthcare App",
+    date: "Coming soon",
+    readTime: "Draft",
+    excerpt:
+      "Application supporting caregivers and the people they look after — full write-up of features and architecture coming soon.",
+    tags: ["Coming Soon"],
+    sections: [
+      {
+        heading: "Overview",
+        paragraphs: [
+          "Details for this project will be added here. Placeholder kept so the section appears in the Projects list while the full case study is being prepared.",
+        ],
+      },
+    ],
+    takeaway: "Detailed write-up coming soon.",
   },
   {
     slug: "from-research-prototype-to-production-stack",
@@ -197,9 +215,449 @@ export const blogPosts: BlogPost[] = [
       "Good full-stack work creates momentum for the next feature, not just a working demo for the current one.",
   },
   {
+    slug: "oop-pillars-in-practice",
+    title: "Object-Oriented Programming Pillars",
+    section: "Patterns & Principles",
+    category: "OOP Fundamentals",
+    date: "May 20, 2026",
+    readTime: "14 min read",
+    excerpt:
+      "Encapsulation, abstraction, inheritance, polymorphism, and composition — five working ideas that turn loose code into a maintainable object-oriented system.",
+    tags: ["OOP", "Encapsulation", "Polymorphism", "Composition", "Architecture"],
+    sections: [
+      {
+        heading: "Encapsulation",
+        paragraphs: [
+          "Encapsulation is bundling data and the operations that work on that data into a single unit, while hiding the internal state from the outside world. The object owns its data; callers interact with intent-revealing methods instead of touching fields directly.",
+          "The point is not secrecy — it is control. By forcing access through methods, the object can validate inputs, enforce invariants, and keep itself in a legal state at all times. Callers depend on what the object does, not on how it stores things, which means internal refactors do not ripple outward.",
+          "A common mistake is to add a getter and setter for every private field. That looks like encapsulation but is really a struct in disguise — any caller can still walk the object into an invalid state. Real encapsulation exposes behavior, not raw data: deposit and withdraw, not setBalance.",
+        ],
+        bullets: [
+          "Make state private by default; expose intent through methods, not raw fields.",
+          "Validate at the boundary so the object cannot enter an invalid state.",
+          "Prefer immutable updates — methods return new state rather than mutating shared references.",
+          "If a getter and setter exist for every field, the encapsulation is fake.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `class BankAccount {
+  #balance: number;
+
+  constructor(opening: number) {
+    if (opening < 0) throw new Error("opening balance must be non-negative");
+    this.#balance = opening;
+  }
+
+  deposit(amount: number): void {
+    if (amount <= 0) throw new Error("deposit must be positive");
+    this.#balance += amount;
+  }
+
+  withdraw(amount: number): void {
+    if (amount <= 0 || amount > this.#balance) {
+      throw new Error("invalid withdrawal");
+    }
+    this.#balance -= amount;
+  }
+
+  get balance(): number {
+    return this.#balance;
+  }
+}`,
+          },
+          {
+            language: "Go",
+            code: `package bank
+
+// 'balance' is lowercase — unexported, invisible to other packages.
+type Account struct {
+	balance int64
+}
+
+func NewAccount(opening int64) (*Account, error) {
+	if opening < 0 {
+		return nil, errors.New("opening balance must be non-negative")
+	}
+	return &Account{balance: opening}, nil
+}
+
+func (a *Account) Deposit(amount int64) error {
+	if amount <= 0 {
+		return errors.New("deposit must be positive")
+	}
+	a.balance += amount
+	return nil
+}
+
+func (a *Account) Withdraw(amount int64) error {
+	if amount <= 0 || amount > a.balance {
+		return errors.New("invalid withdrawal")
+	}
+	a.balance -= amount
+	return nil
+}
+
+func (a *Account) Balance() int64 { return a.balance }`,
+          },
+          {
+            language: "Java",
+            code: `public class BankAccount {
+    private long balance;
+
+    public BankAccount(long opening) {
+        if (opening < 0)
+            throw new IllegalArgumentException("opening balance must be non-negative");
+        this.balance = opening;
+    }
+
+    public void deposit(long amount) {
+        if (amount <= 0)
+            throw new IllegalArgumentException("deposit must be positive");
+        this.balance += amount;
+    }
+
+    public void withdraw(long amount) {
+        if (amount <= 0 || amount > balance)
+            throw new IllegalArgumentException("invalid withdrawal");
+        this.balance -= amount;
+    }
+
+    public long getBalance() {
+        return balance;
+    }
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Abstraction",
+        paragraphs: [
+          "Abstraction is modeling the essential features of an entity while ignoring details that callers do not care about. An interface should describe what a thing does, not how — the domain vocabulary on the outside, the implementation tucked away on the inside.",
+          "Encapsulation and abstraction overlap, but the intent is different. Encapsulation hides data; abstraction hides complexity. The first is about access control, the second is about choosing the right concept for the reader. A class with the right abstraction reads like the business: Cart, Invoice, Reservation — not RowOfStringToObject.",
+          "Beware of leaky abstractions. When an interface forces callers to know about HTTP status codes, database error types, or the fact that there's a queue underneath, the abstraction has failed. The test is simple: can you swap the implementation without changing any caller? If not, the boundary is too thin.",
+        ],
+        bullets: [
+          "Name methods after the user's intent, not the implementation step.",
+          "Hide collaborators (databases, http clients, queues) behind a domain-language interface.",
+          "An abstraction is good when you can swap the implementation without changing callers.",
+          "Watch for leaky abstractions — error types, status codes, or quirks that force callers to handle internals.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// Abstraction: domain vocabulary; implementation is irrelevant to callers.
+interface Cart {
+  add(productId: string, qty: number): void;
+  remove(productId: string): void;
+  total(): Money;
+  checkout(payment: PaymentMethod): Receipt;
+}
+
+// One possible implementation — could be backed by Redis, SQL, or in-memory.
+class InMemoryCart implements Cart {
+  private items = new Map<string, number>();
+  add(productId: string, qty: number) { /* ... */ }
+  remove(productId: string) { /* ... */ }
+  total(): Money { /* ... */ }
+  checkout(payment: PaymentMethod): Receipt { /* ... */ }
+}`,
+          },
+          {
+            language: "Go",
+            code: `// Small interface describing what callers actually care about.
+type Cart interface {
+	Add(productID string, qty int) error
+	Remove(productID string) error
+	Total() Money
+	Checkout(payment PaymentMethod) (Receipt, error)
+}
+
+// One implementation — consumers never have to know which one.
+type InMemoryCart struct {
+	items map[string]int
+}
+
+func (c *InMemoryCart) Add(id string, qty int) error            { /* ... */ return nil }
+func (c *InMemoryCart) Remove(id string) error                   { /* ... */ return nil }
+func (c *InMemoryCart) Total() Money                             { /* ... */ return Money{} }
+func (c *InMemoryCart) Checkout(p PaymentMethod) (Receipt, error) { /* ... */ return Receipt{}, nil }`,
+          },
+          {
+            language: "Java",
+            code: `// Abstraction in the consumer's language.
+public interface Cart {
+    void add(String productId, int qty);
+    void remove(String productId);
+    Money total();
+    Receipt checkout(PaymentMethod payment);
+}
+
+// Implementation detail lives on the other side of the interface.
+public class InMemoryCart implements Cart {
+    private final Map<String, Integer> items = new HashMap<>();
+
+    public void add(String productId, int qty) { /* ... */ }
+    public void remove(String productId) { /* ... */ }
+    public Money total() { /* ... */ return Money.ZERO; }
+    public Receipt checkout(PaymentMethod payment) { /* ... */ return new Receipt(); }
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Inheritance",
+        paragraphs: [
+          "Inheritance lets a derived class reuse and extend behavior from a base class, establishing an 'is-a' relationship. Every Dog is an Animal, so anything that handles an Animal automatically handles a Dog. That shared contract is what makes subtype polymorphism possible.",
+          "The power is code reuse plus a uniform interface. The danger is tight coupling: changes to the base ripple into every subclass, and deep hierarchies become hard to reason about. Many systems that look like they need inheritance are actually better modeled as composition — 'has-a' or 'uses-a' instead of 'is-a'.",
+          "Use inheritance when the relationship is genuinely 'is-a' and the subclass honors the Liskov Substitution Principle. If you find yourself overriding a method to throw 'not supported', or checking the concrete type from outside, inheritance is the wrong tool. Keep hierarchies shallow — two levels is usually enough.",
+        ],
+        bullets: [
+          "Inherit only when the subclass truly conforms to the base's contract.",
+          "Keep hierarchies shallow — two levels is usually plenty.",
+          "Prefer abstract base classes; concrete base classes invite accidental coupling.",
+          "If overriding a method means throwing 'not supported', stop inheriting.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `abstract class Animal {
+  constructor(protected readonly name: string) {}
+
+  abstract speak(): string;
+
+  introduce(): string {
+    return \`Hi, I'm \${this.name}, and I say "\${this.speak()}".\`;
+  }
+}
+
+class Dog extends Animal {
+  speak(): string { return "Woof"; }
+}
+
+class Cat extends Animal {
+  speak(): string { return "Meow"; }
+}
+
+const animals: Animal[] = [new Dog("Rex"), new Cat("Mia")];
+animals.forEach((a) => console.log(a.introduce()));`,
+          },
+          {
+            language: "Go",
+            code: `// Go has no classical inheritance — it uses interfaces + embedding.
+type Animal interface {
+	Speak() string
+	Name() string
+}
+
+// Embedding gives the "shared base" effect without an inheritance tree.
+type baseAnimal struct{ name string }
+
+func (b baseAnimal) Name() string { return b.name }
+
+type Dog struct{ baseAnimal }
+
+func (Dog) Speak() string { return "Woof" }
+
+type Cat struct{ baseAnimal }
+
+func (Cat) Speak() string { return "Meow" }
+
+func Introduce(a Animal) string {
+	return fmt.Sprintf("Hi, I'm %s, and I say %q.", a.Name(), a.Speak())
+}`,
+          },
+          {
+            language: "Java",
+            code: `public abstract class Animal {
+    protected final String name;
+
+    protected Animal(String name) { this.name = name; }
+
+    public abstract String speak();
+
+    public String introduce() {
+        return "Hi, I'm %s, and I say \\"%s\\".".formatted(name, speak());
+    }
+}
+
+public class Dog extends Animal {
+    public Dog(String name) { super(name); }
+    @Override public String speak() { return "Woof"; }
+}
+
+public class Cat extends Animal {
+    public Cat(String name) { super(name); }
+    @Override public String speak() { return "Meow"; }
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Polymorphism",
+        paragraphs: [
+          "Polymorphism is the ability to treat objects of different concrete types through a common interface, with each type responding in its own way. Caller code talks to the abstraction; the runtime picks the right implementation based on the object's actual type.",
+          "There are three flavors worth knowing. Subtype polymorphism is the classic one — a Dog used as an Animal. Parametric polymorphism is what generics give you — a Container that works for any T. Ad-hoc polymorphism is overloading or operator dispatch — the same name, different signatures. When most engineers say 'polymorphism' they mean the subtype kind.",
+          "Polymorphism is the mechanism that makes the Open/Closed Principle practical. Once callers depend only on the interface, new concrete types can be added without touching existing code. A common smell that polymorphism is missing: long if/else or switch chains that branch on a type field — those almost always want an interface and a few implementations instead.",
+        ],
+        bullets: [
+          "Design the interface first — the right abstraction makes polymorphism feel inevitable, not forced.",
+          "Avoid checking the concrete type with 'instanceof' or type switches in business logic.",
+          "Prefer composition + small interfaces over wide base classes for polymorphic behavior.",
+          "Downcasting is usually a sign the abstraction is wrong.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `interface Shape {
+  area(): number;
+}
+
+class Circle implements Shape {
+  constructor(private radius: number) {}
+  area() { return Math.PI * this.radius ** 2; }
+}
+
+class Rectangle implements Shape {
+  constructor(private w: number, private h: number) {}
+  area() { return this.w * this.h; }
+}
+
+// Caller treats every Shape uniformly; the runtime picks the right area().
+function totalArea(shapes: Shape[]): number {
+  return shapes.reduce((sum, s) => sum + s.area(), 0);
+}`,
+          },
+          {
+            language: "Go",
+            code: `type Shape interface {
+	Area() float64
+}
+
+type Circle struct{ Radius float64 }
+
+func (c Circle) Area() float64 { return math.Pi * c.Radius * c.Radius }
+
+type Rectangle struct{ W, H float64 }
+
+func (r Rectangle) Area() float64 { return r.W * r.H }
+
+// One function, many shapes — that is polymorphism.
+func TotalArea(shapes []Shape) float64 {
+	var sum float64
+	for _, s := range shapes {
+		sum += s.Area()
+	}
+	return sum
+}`,
+          },
+          {
+            language: "Java",
+            code: `public interface Shape {
+    double area();
+}
+
+public class Circle implements Shape {
+    private final double radius;
+    public Circle(double radius) { this.radius = radius; }
+    @Override public double area() { return Math.PI * radius * radius; }
+}
+
+public class Rectangle implements Shape {
+    private final double w, h;
+    public Rectangle(double w, double h) { this.w = w; this.h = h; }
+    @Override public double area() { return w * h; }
+}
+
+public double totalArea(List<Shape> shapes) {
+    return shapes.stream().mapToDouble(Shape::area).sum();
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Composition over Inheritance",
+        paragraphs: [
+          "A long-running rule in object-oriented design: prefer building objects out of smaller collaborators ('has-a') over deriving them from a base class ('is-a'). Composition gives you a system you can rewire; inheritance gives you a system you can only re-derive.",
+          "Composition is more flexible because behavior becomes data. Instead of class FastCar extends Car, model class Car { engine: Engine; brakes: Brakes } and pass different implementations in. The same Car can be a sports car, a city car, or an autonomous vehicle just by changing the parts injected into it. Tests can swap a real Engine for a fake one with zero ceremony.",
+          "Inheritance still has a place — sealed hierarchies, clear 'is-a' relationships, frameworks that demand a base class — but it should not be the default reach. The question to ask before extending a class is 'do I really mean is, or do I mean has?' If the answer is 'has', the constructor parameter is almost always the better tool than the extends keyword.",
+        ],
+        bullets: [
+          "Ask 'is' or 'has'? 'Has' almost always points to composition.",
+          "Pass collaborators in via the constructor; never 'new' them inside the class.",
+          "A class that takes 5+ dependencies is doing too much — split it.",
+          "When tempted to add a method to a base class, extract a small interface and compose it instead.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// Behavior comes from injected collaborators, not from a parent class.
+interface Engine { start(): void; }
+interface Brakes { stop(): void; }
+
+class Car {
+  constructor(
+    private engine: Engine,
+    private brakes: Brakes,
+  ) {}
+
+  drive() { this.engine.start(); /* ... */ }
+  halt()  { this.brakes.stop();  /* ... */ }
+}
+
+// Swap any collaborator without subclassing Car.
+const sportsCar = new Car(new V8Engine(), new CeramicBrakes());
+const cityCar   = new Car(new ElectricEngine(), new RegenerativeBrakes());`,
+          },
+          {
+            language: "Go",
+            code: `type Engine interface{ Start() }
+type Brakes interface{ Stop() }
+
+type Car struct {
+	Engine Engine
+	Brakes Brakes
+}
+
+func (c Car) Drive() { c.Engine.Start() /* ... */ }
+func (c Car) Halt()  { c.Brakes.Stop()  /* ... */ }
+
+// Compose different cars from different parts — no inheritance required.
+sports := Car{Engine: V8{},       Brakes: Ceramic{}}
+city   := Car{Engine: Electric{}, Brakes: Regen{}}`,
+          },
+          {
+            language: "Java",
+            code: `public interface Engine { void start(); }
+public interface Brakes { void stop(); }
+
+public class Car {
+    private final Engine engine;
+    private final Brakes brakes;
+
+    public Car(Engine engine, Brakes brakes) {
+        this.engine = engine;
+        this.brakes = brakes;
+    }
+
+    public void drive() { engine.start(); /* ... */ }
+    public void halt()  { brakes.stop();  /* ... */ }
+}
+
+// Behavior is configured, not inherited.
+var sportsCar = new Car(new V8Engine(), new CeramicBrakes());
+var cityCar   = new Car(new ElectricEngine(), new RegenerativeBrakes());`,
+          },
+        ],
+      },
+    ],
+    takeaway:
+      "OOP at its core is about modeling change. Encapsulation owns invariants, abstraction names the domain, inheritance shares contracts when truly 'is-a', polymorphism keeps callers stable, and composition keeps the system flexible. Use them deliberately, not reflexively.",
+  },
+  {
     slug: "solid-principles-in-practice",
     title: "SOLID Principles in Practice",
-    section: "Pattern Design",
+    section: "Patterns & Principles",
     category: "Design Principles",
     date: "May 24, 2026",
     readTime: "12 min read",
@@ -604,7 +1062,7 @@ var service = new RegistrationService(new PostgresUserRepository());`,
   {
     slug: "creational-design-patterns",
     title: "Creational Design Patterns",
-    section: "Pattern Design",
+    section: "Patterns & Principles",
     category: "Design Patterns",
     date: "May 25, 2026",
     readTime: "14 min read",
@@ -1140,7 +1598,7 @@ System.out.println(a == b); // true`,
   {
     slug: "structural-design-patterns",
     title: "Structural Design Patterns",
-    section: "Pattern Design",
+    section: "Patterns & Principles",
     category: "Design Patterns",
     date: "May 25, 2026",
     readTime: "16 min read",
@@ -1823,6 +2281,1581 @@ class LazyImage implements Image {
     ],
     takeaway:
       "Structural patterns are seven ways to wire objects together without rigid inheritance: Adapter translates, Bridge separates two axes, Composite builds trees, Decorator wraps in behavior, Facade simplifies, Flyweight shares memory, and Proxy guards access. They all trade a little extra indirection for a lot of flexibility.",
+  },
+  {
+    slug: "behavioral-design-patterns",
+    title: "Behavioral Design Patterns",
+    section: "Patterns & Principles",
+    category: "Design Patterns",
+    date: "May 26, 2026",
+    readTime: "20 min read",
+    excerpt:
+      "Behavioral patterns are about how objects talk to each other — who knows what, who triggers what, and how a request flows through the system. Here are all ten, from Chain of Responsibility to Visitor.",
+    tags: ["Design Patterns", "Behavioral", "OOP", "Architecture", "Communication"],
+    sections: [
+      {
+        heading: "How behavioral patterns fit together",
+        paragraphs: [
+          "Behavioral design patterns are concerned with algorithms and the assignment of responsibilities between objects. Where creational patterns answer how objects are made and structural patterns answer how they fit together, behavioral patterns answer how they collaborate.",
+          "The shared problem is communication. Tightly-coupled objects that call each other directly are hard to test, hard to extend, and tend to grow long switch statements that mix unrelated concerns. Behavioral patterns push that communication behind an interface — a handler chain, a command object, a mediator, a strategy, an observer list — so each side can change independently.",
+          "Read them as answers to specific collaboration questions: pass a request along until something handles it (Chain of Responsibility), turn an action into a first-class object (Command), traverse a collection without exposing it (Iterator), route messages through a single hub (Mediator), snapshot state without leaking internals (Memento), broadcast events to many listeners (Observer), let an object change behavior when its state changes (State), swap an algorithm at runtime (Strategy), share an algorithm skeleton across subclasses (Template Method), and add new operations to a class hierarchy without editing the classes (Visitor).",
+        ],
+        bullets: [
+          "Chain of Responsibility — pass a request along a chain of handlers until one handles it.",
+          "Command — turn a request into an object you can pass around, queue, log, and undo.",
+          "Iterator — traverse a collection without exposing its representation.",
+          "Mediator — replace direct dependencies between objects with a single hub.",
+          "Memento — save and restore an object's state without breaking encapsulation.",
+          "Observer — subscribe many objects to events on another object.",
+          "State — let an object change behavior when its internal state changes.",
+          "Strategy — define a family of interchangeable algorithms.",
+          "Template Method — fix the algorithm skeleton in a base class; let subclasses fill steps.",
+          "Visitor — add new operations to a class hierarchy without modifying the classes.",
+        ],
+      },
+      {
+        heading: "Chain of Responsibility",
+        paragraphs: [
+          "Chain of Responsibility lets you pass a request along a chain of handlers. Each handler either processes the request or forwards it to the next one. The sender does not know — and does not care — which handler ends up doing the work.",
+          "It is the cure for the giant 'if auth fails return X; else if rate-limited return Y; else if cached return Z; else run the real handler' pile. Each check becomes its own handler with a clear job. You can reorder them, add a new one, or skip one entirely just by changing how the chain is wired.",
+          "Each handler shares a small interface (handle the request, hold a reference to the next handler) and is otherwise free to do whatever it needs. That makes the chain easy to compose at runtime and easy to test one link at a time.",
+        ],
+        bullets: [
+          "Use when your program must handle a variety of requests in several ways, but the exact handler and its order are decided at runtime.",
+          "Use when a request must be handled by several handlers in a specific sequence.",
+          "Pro: control over the order of handling; separates invoking from handling (SRP); new handlers are additive (OCP).",
+          "Con: a request can fall off the end of the chain without being handled if no handler catches it.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `abstract class Handler {
+  protected next?: Handler;
+
+  setNext(h: Handler): Handler {
+    this.next = h;
+    return h;
+  }
+
+  // Default behavior: forward to the next handler.
+  handle(request: string): string | null {
+    return this.next ? this.next.handle(request) : null;
+  }
+}
+
+class AuthHandler extends Handler {
+  handle(req: string): string | null {
+    if (!req.includes("token")) return "Auth failed";
+    return super.handle(req);
+  }
+}
+
+class RateLimitHandler extends Handler {
+  handle(req: string): string | null {
+    if (req.includes("flood")) return "Rate limited";
+    return super.handle(req);
+  }
+}
+
+class BusinessHandler extends Handler {
+  handle(req: string) {
+    return "OK: " + req;
+  }
+}
+
+const chain = new AuthHandler();
+chain.setNext(new RateLimitHandler()).setNext(new BusinessHandler());
+chain.handle("token=abc");`,
+          },
+          {
+            language: "Go",
+            code: `type Handler interface {
+	Handle(req string) string
+}
+
+type AuthHandler struct{ Next Handler }
+
+func (a AuthHandler) Handle(req string) string {
+	if !strings.Contains(req, "token") {
+		return "Auth failed"
+	}
+	if a.Next != nil {
+		return a.Next.Handle(req)
+	}
+	return "OK"
+}
+
+type RateLimitHandler struct{ Next Handler }
+
+func (r RateLimitHandler) Handle(req string) string {
+	if strings.Contains(req, "flood") {
+		return "Rate limited"
+	}
+	if r.Next != nil {
+		return r.Next.Handle(req)
+	}
+	return "OK"
+}
+
+type BusinessHandler struct{}
+
+func (BusinessHandler) Handle(req string) string { return "OK: " + req }
+
+func main() {
+	chain := AuthHandler{Next: RateLimitHandler{Next: BusinessHandler{}}}
+	fmt.Println(chain.Handle("token=abc"))
+}`,
+          },
+          {
+            language: "Java",
+            code: `abstract class Handler {
+    protected Handler next;
+
+    Handler setNext(Handler h) { this.next = h; return h; }
+
+    String handle(String req) {
+        return next != null ? next.handle(req) : "";
+    }
+}
+
+class AuthHandler extends Handler {
+    String handle(String req) {
+        if (!req.contains("token")) return "Auth failed";
+        return super.handle(req);
+    }
+}
+
+class BusinessHandler extends Handler {
+    String handle(String req) { return "OK: " + req; }
+}
+
+Handler chain = new AuthHandler();
+chain.setNext(new BusinessHandler());
+chain.handle("token=abc");`,
+          },
+        ],
+      },
+      {
+        heading: "Command",
+        paragraphs: [
+          "Command turns a request into a stand-alone object that contains everything needed to execute it. Once an action is an object, you can pass it as a parameter, queue it, log it, or undo it — none of which is possible with a plain method call.",
+          "It cleans up the classic GUI mess where every button knows about the service it calls. Instead, a button holds a Command object and only calls execute() on it. The same command can be triggered by a menu, a keyboard shortcut, or a remote API without duplicating logic.",
+          "Because every command shares one interface, an invoker (button, scheduler, undo manager) is decoupled from the receiver (the thing that actually does the work). You add a new action by adding a new command class — no existing code has to change.",
+        ],
+        bullets: [
+          "Use to parameterize objects with operations, like assigning different actions to the same button.",
+          "Use to queue, schedule, or send operations over a network — anything that needs a request as data.",
+          "Use to implement undo/redo by keeping a history of commands.",
+          "Pro: decouples invokers from receivers; new commands are additive (OCP); simple commands compose into macro commands.",
+          "Con: adds a layer between sender and receiver; lots of small classes.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `interface Command {
+  execute(): void;
+}
+
+// Receiver — the thing that does the work.
+class Light {
+  on() { console.log("light on"); }
+  off() { console.log("light off"); }
+}
+
+class LightOnCommand implements Command {
+  constructor(private light: Light) {}
+  execute() { this.light.on(); }
+}
+
+class LightOffCommand implements Command {
+  constructor(private light: Light) {}
+  execute() { this.light.off(); }
+}
+
+// Invoker — holds a Command but knows nothing about the receiver.
+class RemoteButton {
+  constructor(private command: Command) {}
+  press() { this.command.execute(); }
+}
+
+const light = new Light();
+new RemoteButton(new LightOnCommand(light)).press();`,
+          },
+          {
+            language: "Go",
+            code: `type Command interface {
+	Execute()
+}
+
+type Light struct{}
+
+func (Light) On()  { fmt.Println("light on") }
+func (Light) Off() { fmt.Println("light off") }
+
+type LightOnCommand struct{ light Light }
+
+func (c LightOnCommand) Execute() { c.light.On() }
+
+// Invoker holds any Command.
+type RemoteButton struct{ cmd Command }
+
+func (r RemoteButton) Press() { r.cmd.Execute() }
+
+func main() {
+	RemoteButton{cmd: LightOnCommand{light: Light{}}}.Press()
+}`,
+          },
+          {
+            language: "Java",
+            code: `interface Command {
+    void execute();
+}
+
+class Light {
+    void on() { System.out.println("light on"); }
+    void off() { System.out.println("light off"); }
+}
+
+class LightOnCommand implements Command {
+    private final Light light;
+    LightOnCommand(Light light) { this.light = light; }
+    public void execute() { light.on(); }
+}
+
+class RemoteButton {
+    private final Command command;
+    RemoteButton(Command command) { this.command = command; }
+    void press() { command.execute(); }
+}
+
+Light light = new Light();
+new RemoteButton(new LightOnCommand(light)).press();`,
+          },
+        ],
+      },
+      {
+        heading: "Iterator",
+        paragraphs: [
+          "Iterator extracts traversal behavior into a separate object, letting clients walk through a collection without seeing how the collection stores its items.",
+          "Without it, collections either grow methods for every traversal you can think of, or clients must know if they are dealing with an array, a tree, or a graph in order to walk it. Both options leak the data structure into the rest of the code.",
+          "With Iterator, the collection just exposes a way to get an iterator. The iterator carries the position, and clients only ever see hasNext / next. New collections can plug in by providing a new iterator, and you can run two iterations in parallel by creating two iterators.",
+        ],
+        bullets: [
+          "Use when a collection has complex internals you want to hide from clients.",
+          "Use to reduce repeated traversal code across the application.",
+          "Use to make client code work with any collection through one interface.",
+          "Pro: separates traversal from storage (SRP); supports parallel iterations and new traversal types (OCP); iteration can be paused and resumed.",
+          "Con: overkill for trivial collections; specialized direct access can be faster.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `interface Iter<T> {
+  next(): T | undefined;
+  hasNext(): boolean;
+}
+
+class NumberCollection {
+  constructor(private items: number[]) {}
+
+  iterator(): Iter<number> {
+    let index = 0;
+    return {
+      next: () => this.items[index++],
+      hasNext: () => index < this.items.length,
+    };
+  }
+}
+
+const it = new NumberCollection([1, 2, 3]).iterator();
+while (it.hasNext()) console.log(it.next());`,
+          },
+          {
+            language: "Go",
+            code: `type Iterator interface {
+	HasNext() bool
+	Next() int
+}
+
+type NumberCollection struct{ items []int }
+
+func (c NumberCollection) Iterator() Iterator {
+	return &numberIterator{items: c.items}
+}
+
+type numberIterator struct {
+	items []int
+	idx   int
+}
+
+func (it *numberIterator) HasNext() bool { return it.idx < len(it.items) }
+
+func (it *numberIterator) Next() int {
+	v := it.items[it.idx]
+	it.idx++
+	return v
+}
+
+func main() {
+	coll := NumberCollection{items: []int{1, 2, 3}}
+	for it := coll.Iterator(); it.HasNext(); {
+		fmt.Println(it.Next())
+	}
+}`,
+          },
+          {
+            language: "Java",
+            code: `interface MyIterator<T> {
+    boolean hasNext();
+    T next();
+}
+
+class NumberCollection {
+    private final List<Integer> items;
+    NumberCollection(List<Integer> items) { this.items = items; }
+
+    MyIterator<Integer> iterator() {
+        return new MyIterator<>() {
+            int idx = 0;
+            public boolean hasNext() { return idx < items.size(); }
+            public Integer next() { return items.get(idx++); }
+        };
+    }
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Mediator",
+        paragraphs: [
+          "Mediator restricts direct communication between objects and forces them to talk through a single mediator object. Components stop calling each other and start raising events that the mediator routes.",
+          "It is the antidote to UI dialogs where a checkbox toggles a text field which enables a submit button which validates a date picker — and every component holds a reference to every other. With a mediator, each component holds only the mediator. All cross-component logic lives in one place: easy to read, easy to change.",
+          "The downside is that the mediator can quietly absorb every rule in the dialog and turn into a god object. Use it when the wiring really is many-to-many; for two components, a direct call is fine.",
+        ],
+        bullets: [
+          "Use when a set of classes is tightly coupled and hard to change because of mutual dependencies.",
+          "Use when reusing a component is hard because it depends on too many other components.",
+          "Use when you find yourself creating tons of subclasses just to reuse logic across configurations.",
+          "Pro: centralizes communication; reduces coupling between components; components become easier to reuse.",
+          "Con: a mediator can grow into a god object that owns every rule in the system.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `interface DialogMediator {
+  notify(sender: string, event: string): void;
+}
+
+class Button {
+  constructor(private mediator: DialogMediator) {}
+  click() { this.mediator.notify("button", "click"); }
+}
+
+class TextInput {
+  text = "";
+  constructor(private mediator: DialogMediator) {}
+  clear() { this.text = ""; }
+}
+
+// Mediator owns the rules between components.
+class LoginDialog implements DialogMediator {
+  username = new TextInput(this);
+  button = new Button(this);
+
+  notify(sender: string, event: string) {
+    if (sender === "button" && event === "click") {
+      console.log("submit " + this.username.text);
+      this.username.clear();
+    }
+  }
+}
+
+const dialog = new LoginDialog();
+dialog.username.text = "ada";
+dialog.button.click();`,
+          },
+          {
+            language: "Go",
+            code: `type Mediator interface {
+	Notify(sender, event string)
+}
+
+type Button struct{ M Mediator }
+
+func (b Button) Click() { b.M.Notify("button", "click") }
+
+type TextInput struct {
+	M    Mediator
+	Text string
+}
+
+func (t *TextInput) Clear() { t.Text = "" }
+
+// Concrete mediator coordinates components.
+type LoginDialog struct {
+	Username *TextInput
+}
+
+func (d *LoginDialog) Notify(sender, event string) {
+	if sender == "button" && event == "click" {
+		fmt.Println("submit", d.Username.Text)
+		d.Username.Clear()
+	}
+}
+
+func main() {
+	d := &LoginDialog{}
+	d.Username = &TextInput{M: d}
+	button := Button{M: d}
+	d.Username.Text = "ada"
+	button.Click()
+}`,
+          },
+          {
+            language: "Java",
+            code: `interface DialogMediator {
+    void notify(String sender, String event);
+}
+
+class Button {
+    private final DialogMediator mediator;
+    Button(DialogMediator m) { this.mediator = m; }
+    void click() { mediator.notify("button", "click"); }
+}
+
+class TextInput {
+    String text = "";
+    private final DialogMediator mediator;
+    TextInput(DialogMediator m) { this.mediator = m; }
+    void clear() { text = ""; }
+}
+
+class LoginDialog implements DialogMediator {
+    final TextInput username = new TextInput(this);
+    final Button button = new Button(this);
+
+    public void notify(String sender, String event) {
+        if (sender.equals("button") && event.equals("click")) {
+            System.out.println("submit " + username.text);
+            username.clear();
+        }
+    }
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Memento",
+        paragraphs: [
+          "Memento lets you save and restore the previous state of an object without exposing its internal structure. It is the textbook answer to the undo problem.",
+          "The naive approach — let the history class read private fields — breaks encapsulation. The next refactor of the object will break every place that reads its internals. Memento gives that responsibility back to the object itself.",
+          "Three roles work together. The originator (the object you are snapshotting) creates and consumes mementos. The memento is a sealed snapshot of state, readable only by the originator. The caretaker (history stack, transaction manager) holds mementos but never looks inside them.",
+        ],
+        bullets: [
+          "Use to capture and restore an object's state without exposing its internals.",
+          "Use when direct access to fields, getters, or setters would break encapsulation.",
+          "Pro: state can be saved without breaking encapsulation; the originator stays focused on its own job.",
+          "Con: large or frequent snapshots use a lot of memory; caretakers must manage memento lifecycles.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// Immutable snapshot exposing nothing useful to outsiders.
+class EditorMemento {
+  constructor(public readonly content: string) {}
+}
+
+class Editor {
+  private content = "";
+
+  type(text: string) { this.content += text; }
+  save(): EditorMemento { return new EditorMemento(this.content); }
+  restore(m: EditorMemento) { this.content = m.content; }
+  get text() { return this.content; }
+}
+
+// Caretaker only stores mementos.
+class History {
+  private stack: EditorMemento[] = [];
+  push(m: EditorMemento) { this.stack.push(m); }
+  pop() { return this.stack.pop(); }
+}
+
+const editor = new Editor();
+const history = new History();
+editor.type("hello ");
+history.push(editor.save());
+editor.type("world");
+const prev = history.pop();
+if (prev) editor.restore(prev);`,
+          },
+          {
+            language: "Go",
+            code: `type EditorMemento struct{ content string }
+
+type Editor struct{ content string }
+
+func (e *Editor) Type(s string)           { e.content += s }
+func (e *Editor) Save() EditorMemento     { return EditorMemento{content: e.content} }
+func (e *Editor) Restore(m EditorMemento) { e.content = m.content }
+
+// Caretaker stores mementos without inspecting them.
+type History struct{ stack []EditorMemento }
+
+func (h *History) Push(m EditorMemento) { h.stack = append(h.stack, m) }
+
+func (h *History) Pop() (EditorMemento, bool) {
+	if len(h.stack) == 0 {
+		return EditorMemento{}, false
+	}
+	last := len(h.stack) - 1
+	m := h.stack[last]
+	h.stack = h.stack[:last]
+	return m, true
+}`,
+          },
+          {
+            language: "Java",
+            code: `class Editor {
+    private String content = "";
+
+    static class Memento {
+        private final String content;
+        private Memento(String content) { this.content = content; }
+    }
+
+    void type(String s) { content += s; }
+    Memento save() { return new Memento(content); }
+    void restore(Memento m) { this.content = m.content; }
+}
+
+class History {
+    private final Deque<Editor.Memento> stack = new ArrayDeque<>();
+    void push(Editor.Memento m) { stack.push(m); }
+    Editor.Memento pop() { return stack.pop(); }
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Observer",
+        paragraphs: [
+          "Observer defines a subscription mechanism: a publisher keeps a list of subscribers and notifies them whenever something interesting happens. Subscribers do not have to poll, and the publisher does not need to know who they are.",
+          "It models the natural way real-world events flow: a stock ticker emits a new price, every chart that subscribed receives it. Subscribers come and go without the publisher caring; the publisher emits without knowing what each subscriber will do with the event.",
+          "All subscribers share the same notification interface, which is what makes this loose coupling work. Add a new subscriber type and the publisher needs no edits.",
+        ],
+        bullets: [
+          "Use when changes to one object require updating others, and the set of others changes at runtime.",
+          "Use when some objects must observe others only temporarily or in specific scenarios.",
+          "Pro: new subscribers integrate without modifying the publisher (OCP); subscriptions are wired at runtime.",
+          "Con: subscribers are notified in an unspecified order; surprise dependencies can creep in via events.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `type Listener<T> = (event: T) => void;
+
+class EventEmitter<T> {
+  private listeners = new Set<Listener<T>>();
+
+  subscribe(fn: Listener<T>) {
+    this.listeners.add(fn);
+    return () => this.listeners.delete(fn);
+  }
+
+  emit(event: T) {
+    this.listeners.forEach((fn) => fn(event));
+  }
+}
+
+const stock = new EventEmitter<number>();
+const unsub = stock.subscribe((price) => console.log("alert " + price));
+stock.emit(101); // every listener is notified
+unsub();`,
+          },
+          {
+            language: "Go",
+            code: `type Listener func(price int)
+
+type StockTicker struct{ subs []Listener }
+
+func (s *StockTicker) Subscribe(l Listener) func() {
+	s.subs = append(s.subs, l)
+	idx := len(s.subs) - 1
+	return func() {
+		s.subs = append(s.subs[:idx], s.subs[idx+1:]...)
+	}
+}
+
+func (s *StockTicker) Emit(price int) {
+	for _, l := range s.subs {
+		l(price)
+	}
+}
+
+func main() {
+	ticker := &StockTicker{}
+	unsub := ticker.Subscribe(func(p int) { fmt.Println("alert", p) })
+	ticker.Emit(101)
+	unsub()
+}`,
+          },
+          {
+            language: "Java",
+            code: `interface PriceListener {
+    void onPrice(int price);
+}
+
+class StockTicker {
+    private final List<PriceListener> subs = new ArrayList<>();
+
+    void subscribe(PriceListener l) { subs.add(l); }
+    void unsubscribe(PriceListener l) { subs.remove(l); }
+
+    void emit(int price) {
+        for (PriceListener l : subs) l.onPrice(price);
+    }
+}
+
+StockTicker ticker = new StockTicker();
+PriceListener alert = p -> System.out.println("alert " + p);
+ticker.subscribe(alert);
+ticker.emit(101);`,
+          },
+        ],
+      },
+      {
+        heading: "State",
+        paragraphs: [
+          "State lets an object alter its behavior when its internal state changes. From the outside it looks as if the object changed its class.",
+          "Without it, you end up with methods that switch on a state field: a publish() method that behaves one way in Draft, another in Moderation, another in Published. Every change to the state machine forces edits in every method.",
+          "With it, each state becomes its own class implementing a shared state interface. The context delegates calls to the current state object, and the transitions are just 'swap to a new state object'. Adding a new state means adding one class — nothing else has to change.",
+        ],
+        bullets: [
+          "Use when an object behaves very differently depending on its state, and that state-specific code changes often.",
+          "Use to replace huge conditionals based on a state field.",
+          "Use when duplicate code appears across similar states or transitions.",
+          "Pro: state-specific code is isolated (SRP); new states are additive (OCP); the context shrinks dramatically.",
+          "Con: overkill for tiny state machines that rarely change.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `interface DocState {
+  publish(doc: MyDocument): void;
+}
+
+class Draft implements DocState {
+  publish(doc: MyDocument) {
+    console.log("submitted to moderation");
+    doc.setState(new Moderation());
+  }
+}
+
+class Moderation implements DocState {
+  publish(doc: MyDocument) {
+    console.log("published");
+    doc.setState(new Published());
+  }
+}
+
+class Published implements DocState {
+  publish() { console.log("already public"); }
+}
+
+class MyDocument {
+  private state: DocState = new Draft();
+  setState(s: DocState) { this.state = s; }
+  publish() { this.state.publish(this); }
+}
+
+const doc = new MyDocument();
+doc.publish(); // Draft -> Moderation
+doc.publish(); // Moderation -> Published
+doc.publish(); // already public`,
+          },
+          {
+            language: "Go",
+            code: `type DocState interface {
+	Publish(d *Document)
+}
+
+type Document struct{ state DocState }
+
+func (d *Document) SetState(s DocState) { d.state = s }
+func (d *Document) Publish()            { d.state.Publish(d) }
+
+type Draft struct{}
+
+func (Draft) Publish(d *Document) {
+	fmt.Println("submitted to moderation")
+	d.SetState(Moderation{})
+}
+
+type Moderation struct{}
+
+func (Moderation) Publish(d *Document) {
+	fmt.Println("published")
+	d.SetState(Published{})
+}
+
+type Published struct{}
+
+func (Published) Publish(d *Document) { fmt.Println("already public") }`,
+          },
+          {
+            language: "Java",
+            code: `interface DocState {
+    void publish(MyDocument doc);
+}
+
+class Draft implements DocState {
+    public void publish(MyDocument doc) {
+        System.out.println("submitted to moderation");
+        doc.setState(new Moderation());
+    }
+}
+
+class Moderation implements DocState {
+    public void publish(MyDocument doc) {
+        System.out.println("published");
+        doc.setState(new Published());
+    }
+}
+
+class Published implements DocState {
+    public void publish(MyDocument doc) {
+        System.out.println("already public");
+    }
+}
+
+class MyDocument {
+    private DocState state = new Draft();
+    void setState(DocState s) { this.state = s; }
+    void publish() { state.publish(this); }
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Strategy",
+        paragraphs: [
+          "Strategy defines a family of algorithms, puts each one in its own class, and makes them interchangeable. The context (the class that uses the algorithm) holds a reference to a strategy object and delegates the actual work.",
+          "It replaces the bloated class with a giant switch picking between car / walk / transit routing, each algorithm hidden in its own class with the same simple interface. The context never knows what kind of strategy it has.",
+          "Compared to State (which is similar in shape), Strategy strategies are usually independent of each other — they do not transition between themselves. The client typically picks one and uses it for the whole operation.",
+        ],
+        bullets: [
+          "Use when you want to switch algorithms at runtime.",
+          "Use when you have many similar classes that differ only in how they execute a behavior.",
+          "Use to isolate the algorithm from the business logic that calls it.",
+          "Use to replace a massive conditional that selects among algorithm variants.",
+          "Pro: swap algorithms at runtime; isolate algorithm details (SRP); replaces inheritance with composition; new strategies are additive (OCP).",
+          "Con: overkill if you only have a couple of strategies that never change; clients must know enough to pick.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `interface RouteStrategy {
+  build(from: string, to: string): string;
+}
+
+class CarStrategy implements RouteStrategy {
+  build(from: string, to: string) {
+    return "Driving: " + from + " -> " + to;
+  }
+}
+
+class WalkStrategy implements RouteStrategy {
+  build(from: string, to: string) {
+    return "Walking: " + from + " -> " + to;
+  }
+}
+
+class Navigator {
+  constructor(private strategy: RouteStrategy) {}
+  setStrategy(s: RouteStrategy) { this.strategy = s; }
+  route(from: string, to: string) {
+    return this.strategy.build(from, to);
+  }
+}
+
+const nav = new Navigator(new CarStrategy());
+console.log(nav.route("A", "B"));
+nav.setStrategy(new WalkStrategy());
+console.log(nav.route("A", "B"));`,
+          },
+          {
+            language: "Go",
+            code: `type RouteStrategy interface {
+	Build(from, to string) string
+}
+
+type CarStrategy struct{}
+
+func (CarStrategy) Build(from, to string) string {
+	return "Driving: " + from + " -> " + to
+}
+
+type WalkStrategy struct{}
+
+func (WalkStrategy) Build(from, to string) string {
+	return "Walking: " + from + " -> " + to
+}
+
+type Navigator struct{ Strategy RouteStrategy }
+
+func (n Navigator) Route(from, to string) string {
+	return n.Strategy.Build(from, to)
+}
+
+func main() {
+	nav := Navigator{Strategy: CarStrategy{}}
+	fmt.Println(nav.Route("A", "B"))
+	nav.Strategy = WalkStrategy{}
+	fmt.Println(nav.Route("A", "B"))
+}`,
+          },
+          {
+            language: "Java",
+            code: `interface RouteStrategy {
+    String build(String from, String to);
+}
+
+class CarStrategy implements RouteStrategy {
+    public String build(String from, String to) {
+        return "Driving: " + from + " -> " + to;
+    }
+}
+
+class WalkStrategy implements RouteStrategy {
+    public String build(String from, String to) {
+        return "Walking: " + from + " -> " + to;
+    }
+}
+
+class Navigator {
+    private RouteStrategy strategy;
+    Navigator(RouteStrategy s) { this.strategy = s; }
+    void setStrategy(RouteStrategy s) { this.strategy = s; }
+    String route(String from, String to) {
+        return strategy.build(from, to);
+    }
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Template Method",
+        paragraphs: [
+          "Template Method defines the skeleton of an algorithm in a base class and lets subclasses override individual steps without changing the overall structure.",
+          "It is the cure for several classes that all perform 'load, transform, output' in the same order but differ in how each step works. Without the pattern, you copy the orchestration code three times and tweak it slightly in each subclass.",
+          "With it, the base class owns the order; subclasses fill in the steps. Optional steps become 'hooks' with a default implementation that subclasses can override when needed.",
+        ],
+        bullets: [
+          "Use when subclasses should extend only a few specific steps of an algorithm, not the whole thing.",
+          "Use when several classes share an algorithm with minor variations between steps.",
+          "Pro: clients can customize specific steps without touching the algorithm's structure; duplication is consolidated upward.",
+          "Con: the fixed skeleton can feel restrictive; overriding steps can quietly violate LSP; many steps make the template hard to read.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `abstract class ReportBuilder {
+  // Template method — the algorithm skeleton.
+  build(): string {
+    const data = this.loadData();
+    const body = this.format(data);
+    return this.wrap(body);
+  }
+
+  protected abstract loadData(): string[];
+  protected abstract format(data: string[]): string;
+
+  // Hook with a default; subclasses may override.
+  protected wrap(body: string): string {
+    return "REPORT\\n" + body;
+  }
+}
+
+class CsvReport extends ReportBuilder {
+  protected loadData() { return ["a,1", "b,2"]; }
+  protected format(data: string[]) { return data.join("\\n"); }
+}
+
+class JsonReport extends ReportBuilder {
+  protected loadData() { return ['{"a":1}']; }
+  protected format(data: string[]) { return "[" + data.join(",") + "]"; }
+}
+
+console.log(new CsvReport().build());`,
+          },
+          {
+            language: "Go",
+            code: `// Go favors composition: the "template" is a function that
+// drives an interface with the variable steps.
+type ReportBuilder interface {
+	LoadData() []string
+	Format(data []string) string
+}
+
+func Build(b ReportBuilder) string {
+	data := b.LoadData()
+	body := b.Format(data)
+	return "REPORT\\n" + body
+}
+
+type CsvReport struct{}
+
+func (CsvReport) LoadData() []string       { return []string{"a,1", "b,2"} }
+func (CsvReport) Format(d []string) string { return strings.Join(d, "\\n") }
+
+func main() {
+	fmt.Println(Build(CsvReport{}))
+}`,
+          },
+          {
+            language: "Java",
+            code: `abstract class ReportBuilder {
+    // Template method is final so the skeleton cannot be changed.
+    final String build() {
+        List<String> data = loadData();
+        String body = format(data);
+        return wrap(body);
+    }
+
+    protected abstract List<String> loadData();
+    protected abstract String format(List<String> data);
+
+    // Hook with a default implementation.
+    protected String wrap(String body) {
+        return "REPORT\\n" + body;
+    }
+}
+
+class CsvReport extends ReportBuilder {
+    protected List<String> loadData() { return List.of("a,1", "b,2"); }
+    protected String format(List<String> d) { return String.join("\\n", d); }
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Visitor",
+        paragraphs: [
+          "Visitor lets you separate an algorithm from the objects it operates on. New operations are added as new visitor classes; the element classes do not change.",
+          "It is the pattern reached for when you have a stable hierarchy of element types and a growing set of operations on them — exporting to XML, computing area, validating, pricing — and you would rather not edit every element class every time a new operation appears.",
+          "The mechanism is double dispatch: each element implements accept(visitor), which calls back the visitor method specific to that element type. The right behavior is selected by the type of both the element and the visitor — something a normal virtual call cannot do.",
+        ],
+        bullets: [
+          "Use to perform an operation across all nodes of a complex object structure.",
+          "Use to keep auxiliary behaviors (export, report, validate) out of the core domain classes.",
+          "Use when a behavior makes sense only for some classes of a hierarchy.",
+          "Pro: new operations are additive without touching elements (OCP); related operations live together (SRP); visitors can accumulate state during traversal.",
+          "Con: adding or removing an element type forces updating every visitor; visitors may not see private state of elements.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `interface ShapeVisitor {
+  visitCircle(c: Circle): void;
+  visitSquare(s: Square): void;
+}
+
+interface Shape {
+  accept(v: ShapeVisitor): void;
+}
+
+class Circle implements Shape {
+  constructor(public radius: number) {}
+  accept(v: ShapeVisitor) { v.visitCircle(this); }
+}
+
+class Square implements Shape {
+  constructor(public side: number) {}
+  accept(v: ShapeVisitor) { v.visitSquare(this); }
+}
+
+// A new operation lives entirely outside the shape classes.
+class AreaVisitor implements ShapeVisitor {
+  total = 0;
+  visitCircle(c: Circle) { this.total += Math.PI * c.radius * c.radius; }
+  visitSquare(s: Square) { this.total += s.side * s.side; }
+}
+
+const shapes: Shape[] = [new Circle(2), new Square(3)];
+const area = new AreaVisitor();
+shapes.forEach((s) => s.accept(area));
+console.log(area.total);`,
+          },
+          {
+            language: "Go",
+            code: `type ShapeVisitor interface {
+	VisitCircle(c Circle)
+	VisitSquare(s Square)
+}
+
+type Shape interface {
+	Accept(v ShapeVisitor)
+}
+
+type Circle struct{ Radius float64 }
+
+func (c Circle) Accept(v ShapeVisitor) { v.VisitCircle(c) }
+
+type Square struct{ Side float64 }
+
+func (s Square) Accept(v ShapeVisitor) { v.VisitSquare(s) }
+
+// New operation as a separate visitor.
+type AreaVisitor struct{ Total float64 }
+
+func (a *AreaVisitor) VisitCircle(c Circle) { a.Total += 3.14159 * c.Radius * c.Radius }
+func (a *AreaVisitor) VisitSquare(s Square) { a.Total += s.Side * s.Side }
+
+func main() {
+	shapes := []Shape{Circle{Radius: 2}, Square{Side: 3}}
+	area := &AreaVisitor{}
+	for _, s := range shapes {
+		s.Accept(area)
+	}
+	fmt.Println(area.Total)
+}`,
+          },
+          {
+            language: "Java",
+            code: `interface ShapeVisitor {
+    void visitCircle(Circle c);
+    void visitSquare(Square s);
+}
+
+interface Shape {
+    void accept(ShapeVisitor v);
+}
+
+class Circle implements Shape {
+    final double radius;
+    Circle(double r) { this.radius = r; }
+    public void accept(ShapeVisitor v) { v.visitCircle(this); }
+}
+
+class Square implements Shape {
+    final double side;
+    Square(double s) { this.side = s; }
+    public void accept(ShapeVisitor v) { v.visitSquare(this); }
+}
+
+class AreaVisitor implements ShapeVisitor {
+    double total = 0;
+    public void visitCircle(Circle c) {
+        total += Math.PI * c.radius * c.radius;
+    }
+    public void visitSquare(Square s) {
+        total += s.side * s.side;
+    }
+}`,
+          },
+        ],
+      },
+    ],
+    takeaway:
+      "Behavioral patterns route requests, events, and algorithms through interfaces so the callers and callees never depend on each other directly. Pick the one that names the problem: a chain of checks, a request-as-object, a traversal, a hub, a snapshot, a subscription, a state machine, an interchangeable algorithm, a fixed skeleton, or a new operation on a fixed hierarchy.",
+  },
+  {
+    slug: "nextjs-rendering-strategies",
+    title: "Next.js Rendering Strategies: SSR, SSG, ISR, RSC, PPR, Streaming, Edge, and SSE",
+    section: "System Architecture",
+    category: "Next.js",
+    date: "May 27, 2026",
+    readTime: "22 min read",
+    excerpt:
+      "Next.js gives you eight different ways to ship the same page. Pick wrong and the app is slow, stale, or expensive to run. Here is what each strategy actually does, when to reach for it, and how it looks in code.",
+    tags: ["Next.js", "React", "SSR", "SSG", "ISR", "Edge", "Performance"],
+    sections: [
+      {
+        heading: "Why rendering strategy is half your Next.js design",
+        paragraphs: [
+          "Most of what makes a Next.js app feel fast — or feel slow, or cost a lot to run — comes down to one decision per route: when do we render the HTML, and where? Build time, request time, after the page is on the client, or somewhere in between? Next.js lets you mix all of these in the same app, sometimes in the same page, and the App Router quietly does most of it by default.",
+          "The cost of getting it wrong is bigger than it looks. A static marketing page accidentally turned dynamic (because someone read a cookie at the wrong layer) goes from CDN-served in a few milliseconds to hitting an origin server on every visit. A dashboard accidentally cached returns stale numbers to a finance team. A blog rebuilt fully on every deploy can take ten minutes when ISR would have finished it in seconds.",
+          "Below is the full set: what each one means, how to opt into it in the App Router, when to use it, and the pitfalls to watch for. The examples all use TypeScript and Next.js 14 / 15 conventions.",
+        ],
+        bullets: [
+          "SSR — render HTML on the server, fresh on every request.",
+          "SSG — render HTML once at build time and serve it as static files.",
+          "ISR — static, but periodically (or on-demand) regenerated.",
+          "CSR — render only on the client with JavaScript.",
+          "RSC — React Server Components that run on the server and ship no JS for themselves.",
+          "Streaming SSR — flush HTML in chunks using Suspense.",
+          "PPR — partial prerendering: static shell plus dynamic islands in one response.",
+          "Edge runtime — run server code at the CDN edge instead of a regional origin.",
+          "SSE — keep an HTTP stream open and push events from server to client.",
+        ],
+      },
+      {
+        heading: "SSR — Server-Side Rendering",
+        paragraphs: [
+          "SSR means the HTML is generated on the server every time a request comes in. The user gets fully-formed HTML on first paint, which is good for SEO and for any data that has to be fresh per request — a logged-in dashboard, a personalized feed, a real-time price.",
+          "In the App Router you do not call a special function for SSR. A page becomes dynamic the moment you read something that varies per request: cookies(), headers(), searchParams, or a fetch() with cache: 'no-store'. You can also force it explicitly with `export const dynamic = 'force-dynamic'`. In the Pages Router the equivalent is getServerSideProps.",
+          "The cost is real. Every request runs through your origin, which means slower TTFB than static and more compute on every visit. Use SSR when the data must be correct now and per user — not just because rendering on the server 'feels safer'.",
+        ],
+        bullets: [
+          "Use when the page is personalized, authenticated, or shows data that must not be cached.",
+          "App Router opts in automatically when you read cookies, headers, searchParams, or use uncached fetch.",
+          "Pages Router uses getServerSideProps.",
+          "Pro: always fresh, SEO-friendly, fully server-rendered HTML.",
+          "Con: slowest of the server strategies; load scales with traffic; harder to put behind a CDN.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// app/dashboard/page.tsx
+import { cookies } from "next/headers";
+
+// Reading cookies forces this page to render per request.
+export default async function Dashboard() {
+  const session = (await cookies()).get("session")?.value;
+
+  const user = await fetch("https://api.example.com/me", {
+    headers: { Authorization: "Bearer " + (session ?? "") },
+    cache: "no-store", // explicit opt out of caching
+  }).then((r) => r.json());
+
+  return (
+    <main>
+      <h1>Welcome {user.name}</h1>
+      <p>Balance: {user.balance}</p>
+    </main>
+  );
+}`,
+          },
+        ],
+      },
+      {
+        heading: "SSG — Static Site Generation",
+        paragraphs: [
+          "SSG renders HTML once, at build time. The output is a plain file the CDN can serve in a few milliseconds, with no server work per request. For pages that change rarely, this is by far the cheapest and fastest option.",
+          "In the App Router, a page is statically rendered by default unless something pushes it into dynamic mode. For dynamic routes you describe the set of paths to prerender with generateStaticParams(). The Pages Router equivalent is getStaticProps + getStaticPaths.",
+          "The trade-off is freshness: data is frozen at build time. If your CMS publishes a typo correction five minutes after deploy, the live site still shows the typo until you rebuild. ISR (next section) is the usual answer.",
+        ],
+        bullets: [
+          "Use for marketing pages, landing pages, docs, and any blog where rebuilds are acceptable.",
+          "App Router: just an async server component with no dynamic inputs; add generateStaticParams() for dynamic routes.",
+          "Pages Router: getStaticProps + getStaticPaths.",
+          "Pro: fastest possible response; CDN-cacheable; scales for free.",
+          "Con: data is only as fresh as your last build.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// app/blog/[slug]/page.tsx
+import { notFound } from "next/navigation";
+
+// Tells Next which slugs to prerender at build time.
+export async function generateStaticParams() {
+  const posts = await fetch("https://cms.example.com/posts").then((r) =>
+    r.json(),
+  );
+  return posts.map((p: { slug: string }) => ({ slug: p.slug }));
+}
+
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await fetch("https://cms.example.com/posts/" + slug, {
+    // force-cache is the default at build time; shown here for clarity.
+    cache: "force-cache",
+  }).then((r) => r.json());
+
+  if (!post) notFound();
+  return (
+    <article>
+      <h1>{post.title}</h1>
+      <div>{post.body}</div>
+    </article>
+  );
+}`,
+          },
+        ],
+      },
+      {
+        heading: "ISR — Incremental Static Regeneration",
+        paragraphs: [
+          "ISR is SSG with an expiry. Pages are served statically until their cache entry is older than a configured TTL; the next request after expiry gets the stale version while Next regenerates the page in the background, and the new version replaces the old one. From the user's perspective, the site is always fast; from the operator's perspective, content updates automatically without a redeploy.",
+          "In the App Router you control it with `export const revalidate = N` (seconds) at the route level, or per-fetch with `next: { revalidate: N, tags: [...] }`. The Pages Router equivalent is `revalidate` returned from getStaticProps.",
+          "ISR also supports on-demand revalidation. When a CMS publishes new content, hit a webhook that calls revalidatePath() or revalidateTag() and the affected pages refresh immediately — no waiting for the TTL, no full rebuild.",
+        ],
+        bullets: [
+          "Use for content that updates predictably (every minute, every hour) or via CMS webhooks.",
+          "Time-based: `export const revalidate = 60` or fetch with `next: { revalidate: 60 }`.",
+          "Tag-based on-demand: tag your fetches and call revalidateTag('news') from a server action.",
+          "Pro: as fast as static, but data stays fresh without rebuilds.",
+          "Con: a user can occasionally see a stale page; tags and timings have to be planned.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// app/news/page.tsx
+// Whole page is cached and re-generated at most every 60 seconds.
+export const revalidate = 60;
+
+export default async function News() {
+  const articles = await fetch("https://api.example.com/news", {
+    next: { revalidate: 60, tags: ["news"] },
+  }).then((r) => r.json());
+
+  return (
+    <ul>
+      {articles.map((a: { id: string; title: string }) => (
+        <li key={a.id}>{a.title}</li>
+      ))}
+    </ul>
+  );
+}
+
+// app/api/cms-hook/route.ts — call this from your CMS webhook.
+import { revalidateTag } from "next/cache";
+
+export async function POST() {
+  revalidateTag("news"); // every fetch tagged "news" is now stale
+  return Response.json({ ok: true });
+}`,
+          },
+        ],
+      },
+      {
+        heading: "CSR — Client-Side Rendering",
+        paragraphs: [
+          "CSR means the server sends a near-empty HTML shell and the browser executes JavaScript to fetch data and render the UI. In Next.js this is what happens inside any component marked `\"use client\"` that fetches data in useEffect or via a library like SWR / React Query.",
+          "CSR is the right choice for highly interactive surfaces — dashboards with frequent polling, infinite scroll feeds, real-time editors — where the value of streaming a fully-rendered HTML on first load is small compared to the JS that has to run anyway.",
+          "The downside is the loading flash and worse SEO. Search crawlers see the empty shell. Time-to-first-content is held hostage by the network latency of the data call, not by the HTML response. Most Next.js apps use CSR for parts of a page, not the whole page.",
+        ],
+        bullets: [
+          "Use for interactive widgets and pages where the JS has to run anyway.",
+          "Implement with `\"use client\"` + useState/useEffect, or a data library like SWR.",
+          "Pro: maximum interactivity; light server load; reactive updates feel natural.",
+          "Con: empty shell hurts SEO; loading flashes; bigger JS bundle on the client.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `"use client";
+import { useEffect, useState } from "react";
+
+export default function LivePrices() {
+  const [prices, setPrices] = useState<number[] | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const tick = async () => {
+      const data = await fetch("/api/prices").then((r) => r.json());
+      if (!cancelled) setPrices(data);
+    };
+
+    tick();
+    const id = setInterval(tick, 5000);
+    return () => {
+      cancelled = true;
+      clearInterval(id);
+    };
+  }, []);
+
+  if (!prices) return <p>Loading...</p>;
+  return (
+    <ul>
+      {prices.map((p, i) => (
+        <li key={i}>{p}</li>
+      ))}
+    </ul>
+  );
+}`,
+          },
+        ],
+      },
+      {
+        heading: "RSC — React Server Components",
+        paragraphs: [
+          "React Server Components are the default in the App Router. They run only on the server, can be async, can hit a database or filesystem directly, and ship no JavaScript for themselves to the client. They are the reason an App Router page can fetch from your DB inside the component without an API layer in between.",
+          "The mental model: a Server Component is a React component that produces a chunk of HTML (and a small description of any client components inside it). It cannot use useState or onClick because it does not run in the browser. To add interactivity, drop in a Client Component (`\"use client\"`); the server renders around it and the client takes over for that subtree.",
+          "Server-only modules (database clients, secrets, file system) live safely inside RSC because the file never reaches the browser. If you accidentally import a server-only module in a client component, Next.js fails the build instead of leaking it.",
+        ],
+        bullets: [
+          "Default in the App Router; opt out with `\"use client\"` at the top of a component file.",
+          "Async by default — fetch data inline with await.",
+          "Cannot use state, effects, or event handlers; pass data down to client components for those.",
+          "Pro: smaller client bundle; data fetching close to the source; safe by construction.",
+          "Con: rules around server/client boundaries take time to learn; serializable props only.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// app/users/page.tsx
+// No "use client" -> this is a Server Component.
+import { db } from "@/lib/db"; // server-only module
+import UserActions from "./UserActions"; // a client component
+
+export default async function Users() {
+  // Run SQL directly on the server. No JS for this query is ever shipped.
+  const users = await db.query("SELECT id, name FROM users LIMIT 50");
+
+  return (
+    <ul>
+      {users.map((u: { id: number; name: string }) => (
+        <li key={u.id}>
+          {u.name}
+          {/* Client island for interactivity. */}
+          <UserActions userId={u.id} />
+        </li>
+      ))}
+    </ul>
+  );
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Streaming SSR with Suspense",
+        paragraphs: [
+          "Streaming is what happens when the server flushes HTML in pieces over a single HTTP response instead of waiting until the whole page is ready. The user sees the static header, navigation, and any already-resolved content immediately; the slow parts arrive a moment later and slot into the placeholders.",
+          "In the App Router you get streaming for free by wrapping a slow async server component in <Suspense>. Anything above the boundary is sent first; the component inside resolves on its own timeline and is streamed in as soon as it is ready. The `loading.tsx` file at any route segment is sugar for the same idea — it wraps the segment in a Suspense boundary with that fallback.",
+          "Streaming does not change what is rendered; it changes when each piece is flushed. It pairs naturally with the other strategies — you can stream parts of an SSR page, an RSC tree, or a PPR page.",
+        ],
+        bullets: [
+          "Use to ship the fast bits of a page first while slower fetches finish.",
+          "Wrap async server components in <Suspense fallback={...}>.",
+          "Drop a loading.tsx alongside page.tsx to wrap the whole segment automatically.",
+          "Pro: dramatically better perceived performance; no extra code on the client.",
+          "Con: streamed fragments can shift layout if fallbacks are not sized; some CDNs need configuration to pass chunked responses through.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// app/dashboard/page.tsx
+import { Suspense } from "react";
+
+async function Stats() {
+  // Pretend this takes 1.5s.
+  const stats = await fetch("https://api.example.com/stats", {
+    cache: "no-store",
+  }).then((r) => r.json());
+  return <pre>{JSON.stringify(stats, null, 2)}</pre>;
+}
+
+async function Activity() {
+  const activity = await fetch("https://api.example.com/activity").then((r) =>
+    r.json(),
+  );
+  return <pre>{JSON.stringify(activity, null, 2)}</pre>;
+}
+
+export default function Dashboard() {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <p>This shell is flushed first.</p>
+
+      <Suspense fallback={<p>Loading stats...</p>}>
+        <Stats />
+      </Suspense>
+
+      <Suspense fallback={<p>Loading activity...</p>}>
+        <Activity />
+      </Suspense>
+    </div>
+  );
+}`,
+          },
+        ],
+      },
+      {
+        heading: "PPR — Partial Prerendering",
+        paragraphs: [
+          "Partial Prerendering, introduced as experimental in Next.js 14 and more stable in 15, is the natural endgame of mixing static and dynamic in the same page. The static shell of a route is prerendered into a single HTML response; everything that depends on the request (cookies, search params, uncached fetches) is rendered dynamically and streamed into Suspense holes in that shell.",
+          "The benefit is concrete: the user gets a CDN-fast first byte with the product description, layout, hero image, footer — all the parts that never change per user — and the cart count, recommendations, or live price slot in a moment later. You stop having to choose 'is this whole route static or whole route dynamic' for pages that are clearly both.",
+          "Enable PPR in next.config (incremental mode lets you opt in route by route) and add `export const experimental_ppr = true` on the routes that should use it. Wrap the dynamic islands in <Suspense>.",
+        ],
+        bullets: [
+          "Use for pages that are mostly static but have a small dynamic island (cart, user badge, live price).",
+          "Turn on `experimental.ppr = 'incremental'` in next.config and `experimental_ppr = true` per route.",
+          "Wrap dynamic parts in <Suspense> so the static shell can be prerendered around them.",
+          "Pro: best of both worlds — static speed, dynamic correctness — in one response.",
+          "Con: still maturing; some debugging surprises around what counts as dynamic; not all hosting providers support it equally.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// next.config.ts
+// experimental: { ppr: "incremental" }
+
+// app/product/[id]/page.tsx
+import { Suspense } from "react";
+import { cookies } from "next/headers";
+
+export const experimental_ppr = true;
+
+async function Cart() {
+  // Per-user, per-request — must be dynamic.
+  const sid = (await cookies()).get("sid")?.value;
+  const items = await fetch("https://api.example.com/cart?sid=" + sid, {
+    cache: "no-store",
+  }).then((r) => r.json());
+  return <aside>Cart: {items.length} items</aside>;
+}
+
+export default async function Product({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  // Static product info -> prerendered into the shell.
+  const product = await fetch("https://cms.example.com/products/" + id).then(
+    (r) => r.json(),
+  );
+
+  return (
+    <main>
+      <h1>{product.name}</h1>
+      <p>{product.description}</p>
+
+      <Suspense fallback={<aside>Loading cart...</aside>}>
+        <Cart />
+      </Suspense>
+    </main>
+  );
+}`,
+          },
+        ],
+      },
+      {
+        heading: "Edge Runtime vs Node Runtime",
+        paragraphs: [
+          "Every route in Next.js runs on one of two runtimes: the Node runtime (a regular Node.js server in one region) or the Edge runtime (a V8 isolate replicated across the CDN's points of presence, closer to your users). You choose with `export const runtime = 'edge'` or `'nodejs'` on a route, middleware, or layout. Middleware always runs on Edge.",
+          "Edge is great for routing decisions, geolocation, A/B test bucketing, redirects, and small dynamic responses where latency dominates: it can run within ~30ms of the user. The price is a stripped-down runtime — no Node APIs, no native modules, limited CPU and memory, smaller bundle ceiling. Anything that needs the full Node API (Postgres clients, image processing, large libraries) must stay on the Node runtime.",
+          "Edge is not a rendering strategy on its own — it is a deploy target for SSR, RSC, route handlers, and middleware. You can do SSR on Edge or on Node; the rendering logic is the same.",
+        ],
+        bullets: [
+          "Use Edge for small, latency-sensitive code: redirects, geolocation, auth checks, AI proxies, streaming responses.",
+          "Stay on Node for heavy work, native modules, or anything needing the full Node API.",
+          "Set per-route: `export const runtime = \"edge\";` or `\"nodejs\";`.",
+          "Pro: ~30ms to user globally; cheap; auto-scaled by the CDN.",
+          "Con: limited APIs and resources; harder to debug; not always cheaper for high CPU work.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// app/api/geo/route.ts
+import { NextRequest } from "next/server";
+
+// Run this route on the edge network instead of a Node origin.
+export const runtime = "edge";
+
+export async function GET(req: NextRequest) {
+  const country = req.headers.get("x-vercel-ip-country") ?? "unknown";
+  const city = req.headers.get("x-vercel-ip-city") ?? "unknown";
+  return Response.json({ country, city });
+}
+
+// middleware.ts — middleware always runs on Edge.
+import { NextResponse, type NextRequest } from "next/server";
+
+export function middleware(req: NextRequest) {
+  const country = req.headers.get("x-vercel-ip-country");
+  if (country === "TH") {
+    return NextResponse.rewrite(new URL("/th" + req.nextUrl.pathname, req.url));
+  }
+  return NextResponse.next();
+}`,
+          },
+        ],
+      },
+      {
+        heading: "SSE — Server-Sent Events for real-time streaming",
+        paragraphs: [
+          "SSE is not a rendering strategy — it is a transport. The server keeps a single HTTP response open and pushes a stream of text events to the browser; the browser consumes them with the built-in EventSource API. Compared to WebSockets, SSE is one-way (server → client only), works over normal HTTP, auto-reconnects on disconnect, and is by far the simplest way to push updates.",
+          "In Next.js you implement SSE in a Route Handler that returns a Response wrapping a ReadableStream, with Content-Type 'text/event-stream'. Each message follows the SSE wire format: `data: <payload>` followed by a blank line. The client reads `e.data` from EventSource onmessage.",
+          "This is the standard way to stream AI tokens (LLM responses) into a chat UI, push live counters into a dashboard, or trickle notifications to a logged-in tab. For two-way communication or binary data, reach for WebSockets instead.",
+        ],
+        bullets: [
+          "Use for one-way server-to-client pushes: AI token streaming, live counters, notifications.",
+          "Server: a Route Handler returning a ReadableStream with Content-Type 'text/event-stream'.",
+          "Client: const es = new EventSource('/api/stream'); es.onmessage = (e) => ....",
+          "Pro: trivial protocol; works through proxies; auto-reconnects; one HTTP connection.",
+          "Con: one direction only; some legacy CDNs/proxies buffer streams; not for binary payloads.",
+        ],
+        code: [
+          {
+            language: "TypeScript",
+            code: `// app/api/stream/route.ts
+export const runtime = "nodejs";
+
+export async function GET() {
+  const encoder = new TextEncoder();
+
+  const stream = new ReadableStream({
+    async start(controller) {
+      for (let i = 0; i < 5; i++) {
+        // SSE wire format: "data: <payload>\\n\\n"
+        const payload =
+          "data: " + JSON.stringify({ tick: i }) + "\\n\\n";
+        controller.enqueue(encoder.encode(payload));
+        await new Promise((r) => setTimeout(r, 1000));
+      }
+      controller.close();
+    },
+  });
+
+  return new Response(stream, {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive",
+    },
+  });
+}
+
+// app/ticker/Ticker.tsx — client side.
+"use client";
+import { useEffect, useState } from "react";
+
+export default function Ticker() {
+  const [events, setEvents] = useState<string[]>([]);
+
+  useEffect(() => {
+    const source = new EventSource("/api/stream");
+    source.onmessage = (e) => setEvents((prev) => [...prev, e.data]);
+    source.onerror = () => source.close();
+    return () => source.close();
+  }, []);
+
+  return <pre>{events.join("\\n")}</pre>;
+}`,
+          },
+        ],
+      },
+      {
+        heading: "How to choose",
+        paragraphs: [
+          "Start with what the data needs, not what the framework defaults to. If the page has no per-user data and only changes when content is published, you want SSG or ISR. If it must reflect the current user or current minute, you want SSR or RSC. If it is mostly static with a small live island, PPR fits exactly. If it is interactive enough that the JS has to run anyway, CSR is fine.",
+          "Then add streaming wherever a single slow fetch is holding the rest of the page hostage. And use the Edge runtime for tiny, latency-sensitive endpoints — auth checks, AI proxies, geolocation rewrites — but keep heavy work on Node.",
+          "A pragmatic default for a new App Router project: RSC + ISR for everything, Suspense around any slow async tree, sprinkle CSR for interactive widgets, and turn on PPR once your hosting platform supports it.",
+        ],
+        bullets: [
+          "Marketing / docs / static blog → SSG (or ISR if content changes via CMS).",
+          "CMS-driven pages → ISR with revalidate + tag-based on-demand revalidation.",
+          "Personalized dashboard / authenticated views → SSR or RSC with no-store fetch.",
+          "Mostly static with a dynamic island (cart, badge) → PPR + Suspense.",
+          "Highly interactive widget (editor, infinite feed) → CSR inside a server-rendered shell.",
+          "Slow async tree blocking a fast shell → wrap in <Suspense> for streaming.",
+          "Tiny latency-critical endpoint (redirect, geo, AI proxy) → Edge runtime.",
+          "Real-time push (AI tokens, live counters, notifications) → SSE.",
+        ],
+      },
+    ],
+    takeaway:
+      "There is no single right rendering strategy in Next.js — only the right one per route, and sometimes per fragment. Match the data's freshness requirements first, layer streaming on top for perceived speed, and only fall back to fully dynamic rendering when something really must run on every request.",
   },
 ];
 

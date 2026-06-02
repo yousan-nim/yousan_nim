@@ -2,7 +2,10 @@
 
 import { BLOG_SECTIONS, blogPosts, type CodeExample } from "@/data/blogs";
 import { useRouter, useSearchParams } from "next/navigation";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+
+const PATTERN_GROUP_CATEGORY = "Design Patterns";
+const PATTERN_GROUP_LABEL = "Pattern Designs";
 
 const CodeLangContext = createContext<{
   lang: string | null;
@@ -121,6 +124,25 @@ export default function BlogWorkspace() {
   const searchParams = useSearchParams();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [codeLang, setCodeLang] = useState<string | null>(null);
+  const [openGroups, setOpenGroups] = useState<Set<string>>(() => {
+    const initial = new Set<string>();
+    const slug = searchParams.get("post");
+    const initialPost =
+      blogPosts.find((post) => post.slug === slug) ?? blogPosts[0];
+    if (initialPost.category === PATTERN_GROUP_CATEGORY) {
+      initial.add(PATTERN_GROUP_LABEL);
+    }
+    return initial;
+  });
+
+  const toggleGroup = (label: string) => {
+    setOpenGroups((prev) => {
+      const next = new Set(prev);
+      if (next.has(label)) next.delete(label);
+      else next.add(label);
+      return next;
+    });
+  };
 
   const selectedSlug = searchParams.get("post");
   const selectedPost =
@@ -129,6 +151,17 @@ export default function BlogWorkspace() {
     id: createSectionId(section.heading),
     label: section.heading,
   }));
+
+  useEffect(() => {
+    if (selectedPost.category === PATTERN_GROUP_CATEGORY) {
+      setOpenGroups((prev) => {
+        if (prev.has(PATTERN_GROUP_LABEL)) return prev;
+        const next = new Set(prev);
+        next.add(PATTERN_GROUP_LABEL);
+        return next;
+      });
+    }
+  }, [selectedPost.category]);
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -183,34 +216,87 @@ export default function BlogWorkspace() {
           {/* Left sidebar */}
           <aside className={mobileNavOpen ? "block" : "hidden lg:block"}>
             <nav className="space-y-8 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pr-2">
-              {groupedPosts.map(({ section, posts }) => (
-                <div key={section}>
-                  <div className="px-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
-                    {section}
-                  </div>
-                  <ul className="mt-3 space-y-1 border-l border-white/10">
-                    {posts.map((post) => {
-                      const active = post.slug === selectedPost.slug;
-                      return (
-                        <li key={post.slug}>
+              {groupedPosts.map(({ section, posts }) => {
+                const groupPosts = posts.filter(
+                  (p) => p.category === PATTERN_GROUP_CATEGORY,
+                );
+                const regularPosts = posts.filter(
+                  (p) => p.category !== PATTERN_GROUP_CATEGORY,
+                );
+                const groupOpen = openGroups.has(PATTERN_GROUP_LABEL);
+                const groupHasActive = groupPosts.some(
+                  (p) => p.slug === selectedPost.slug,
+                );
+
+                const renderPostButton = (post: (typeof posts)[number]) => {
+                  const active = post.slug === selectedPost.slug;
+                  return (
+                    <li key={post.slug}>
+                      <button
+                        type="button"
+                        onClick={() => selectPost(post.slug)}
+                        className={[
+                          "-ml-px block w-full border-l-2 px-4 py-1.5 text-left text-sm leading-6 transition",
+                          active
+                            ? "border-purple-400 font-medium text-white"
+                            : "border-transparent text-white/55 hover:border-white/30 hover:text-white",
+                        ].join(" ")}
+                      >
+                        {post.title}
+                      </button>
+                    </li>
+                  );
+                };
+
+                return (
+                  <div key={section}>
+                    <div className="px-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
+                      {section}
+                    </div>
+                    <ul className="mt-3 space-y-1 border-l border-white/10">
+                      {regularPosts.map(renderPostButton)}
+
+                      {groupPosts.length > 0 && (
+                        <li>
                           <button
                             type="button"
-                            onClick={() => selectPost(post.slug)}
+                            onClick={() => toggleGroup(PATTERN_GROUP_LABEL)}
+                            aria-expanded={groupOpen}
                             className={[
-                              "-ml-px block w-full border-l-2 px-4 py-1.5 text-left text-sm leading-6 transition",
-                              active
-                                ? "border-purple-400 font-medium text-white"
+                              "-ml-px flex w-full items-center gap-2 border-l-2 px-4 py-1.5 text-left text-sm leading-6 transition",
+                              groupHasActive && !groupOpen
+                                ? "border-purple-400/60 font-medium text-white"
                                 : "border-transparent text-white/55 hover:border-white/30 hover:text-white",
                             ].join(" ")}
                           >
-                            {post.title}
+                            <svg
+                              viewBox="0 0 20 20"
+                              className={[
+                                "h-3 w-3 shrink-0 transition-transform duration-200",
+                                groupOpen ? "rotate-90" : "",
+                              ].join(" ")}
+                              fill="currentColor"
+                              aria-hidden
+                            >
+                              <path d="M7 5l6 5-6 5V5z" />
+                            </svg>
+                            <span>{PATTERN_GROUP_LABEL}</span>
+                            <span className="ml-auto text-[10px] text-white/35">
+                              {groupPosts.length}
+                            </span>
                           </button>
+
+                          {groupOpen && (
+                            <ul className="ml-3 mt-1 space-y-1 border-l border-white/10">
+                              {groupPosts.map(renderPostButton)}
+                            </ul>
+                          )}
                         </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
+                      )}
+                    </ul>
+                  </div>
+                );
+              })}
             </nav>
           </aside>
 
@@ -222,7 +308,7 @@ export default function BlogWorkspace() {
               <span className="text-white/40">{selectedPost.category}</span>
             </div>
 
-            <h1 className="mt-4 max-w-3xl text-[clamp(32px,4.4vw,56px)] font-black leading-[1.02] tracking-tight text-white">
+            <h1 className="mt-4 truncate text-[clamp(24px,3.4vw,48px)] font-black leading-[1.05] tracking-tight text-white">
               {selectedPost.title}
             </h1>
 
