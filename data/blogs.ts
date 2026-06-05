@@ -59,23 +59,297 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "ecom-api-spring-boot",
-    title: "ECOM API — Java Spring Boot",
+    title: "ECOM Platform — Java Spring Boot Microservices",
     section: "Projects",
     category: "Backend / Java",
-    date: "Coming soon",
-    readTime: "Draft",
+    date: "May 28, 2026",
+    readTime: "11 min read",
     excerpt:
-      "E-commerce API service built with Java Spring Boot — architecture, endpoints, and lessons learned will be documented here.",
-    tags: ["Coming Soon"],
+      "A production-grade e-commerce backend built as a Maven multi-module monorepo: four independent Spring Boot services, four PostgreSQL databases, one nginx gateway, and a strict set of rules that keep the system from drifting into a distributed monolith.",
+    tags: ["Spring Boot", "Java", "PostgreSQL", "Microservices", "Docker"],
     sections: [
       {
         heading: "Overview",
         paragraphs: [
-          "Details for this project will be added here. Placeholder kept so the section appears in the Projects list while the full case study is being prepared.",
+          "ECOM Platform is a production-grade e-commerce backend built as a Maven multi-module monorepo that ships four independent Spring Boot services — user, catalog, order, payment — each owning its own PostgreSQL database. The split follows strict database-per-service boundaries: no cross-service joins, no shared schemas, no shared tables. Each service can scale, deploy, and evolve on its own timeline.",
+          "The single most consequential rule is the database boundary. No service ever queries another service's tables. Cross-service references travel by public_id (UUID v7) in API payloads, and downstream services snapshot whatever data they depend on (price, product name) into their own tables. That keeps reads fast, ownership unambiguous, and migrations safe.",
+          "The whole stack runs under docker compose with separate stacks for local, dev, and prod. Flyway manages append-only migrations per database, nginx fronts everything on port 8080 as the single public entry point, and every service ships its own OpenAPI / Swagger UI. A single Makefile owns every common task — start the stack, run migrations, open a psql shell, build, test, reset volumes.",
+        ],
+        bullets: [
+          "4 Spring Boot services + 4 PostgreSQL databases — strict database-per-service ownership.",
+          "nginx API gateway on :8080 as the single public entry point.",
+          "JWT auth in user-service; Flyway migrations per DB; Swagger UI on every service.",
+          "Docker Compose stacks for local / dev / prod, all behind one Makefile.",
+        ],
+      },
+      {
+        heading: "Architecture",
+        paragraphs: [
+          "The system has four roles, four codebases, four databases. nginx fronts everything on port 8080 and routes by URL prefix to one of the services: user-service (:8084) for auth and accounts, catalog-service (:8081) for vendors, products, variants, and inventory, order-service (:8082) for carts, orders, shipments, coupons, and reviews, and payment-service (:8083) for payments, refunds, payouts, and webhooks.",
+          "Each service owns a PostgreSQL database — user_db, catalog_db, order_db, payment_db — and is the sole writer to its tables. Cross-service traffic is HTTP (REST today, events later), never JOINs. When order-service needs product data, it calls catalog over HTTP and snapshots the result into order_items, so subsequent reads never have to reach back across the boundary.",
+          "The architecture is deliberately conservative: nginx today, Spring Cloud Gateway tomorrow if routing logic grows; UUID v7 today so public IDs can move across services without rebasing internal foreign keys; an event bus (Kafka or RabbitMQ) is on the roadmap once order ↔ payment ↔ catalog flows justify it.",
+        ],
+        code: [
+          {
+            language: "Diagram",
+            code: `                            ┌──────────────────────┐
+                            │  nginx gateway :8080 │
+                            └──────────┬───────────┘
+            ┌──────────────┬───────────┴───────────┬──────────────┐
+            ▼              ▼                       ▼              ▼
+       ┌─────────┐   ┌─────────┐             ┌─────────┐   ┌─────────┐
+       │  user   │   │ catalog │             │  order  │   │ payment │
+       │  :8084  │   │  :8081  │             │  :8082  │   │  :8083  │
+       └────┬────┘   └────┬────┘             └────┬────┘   └────┬────┘
+            │             │                       │             │
+            ▼             ▼                       ▼             ▼
+       ┌────────┐    ┌──────────┐            ┌─────────┐   ┌──────────┐
+       │ user_  │    │ catalog_ │            │ order_  │   │ payment_ │
+       │   db   │    │    db    │            │    db   │   │    db    │
+       └────────┘    └──────────┘            └─────────┘   └──────────┘`,
+          },
+        ],
+      },
+      {
+        heading: "Tech stack",
+        paragraphs: [
+          "Runtime is Java 21 LTS — virtual threads ready — on Spring Boot 3.4. Persistence is Spring Data JPA on Hibernate 6 over PostgreSQL 16. Schema migrations are managed by Flyway 10 per database, with append-only V<n>__*.sql files. Build is Maven 3.9 multi-module, where a parent pom.xml at the repo root pins shared versions and plugin configuration.",
+          "Auth uses JJWT 0.12 to sign and validate short-lived JWTs in user-service. API docs use springdoc-openapi 2.7, so every service exposes a Swagger UI on its own port. Containers are Docker + docker compose. The gateway is nginx today; the door is intentionally left open to swap in Spring Cloud Gateway when routing logic outgrows static configuration.",
+          "Tests use JUnit 5 + Mockito for unit tests and Testcontainers for integration — real PostgreSQL is spun up in Docker so JPA, Flyway, and SQL behavior match production exactly. No H2 dialect surprises, no test-only schema drift.",
+        ],
+        bullets: [
+          "Java 21 (LTS) on Spring Boot 3.4.",
+          "PostgreSQL 16 + Flyway 10, one database per service.",
+          "JJWT 0.12 for JWT signing; springdoc-openapi 2.7 for Swagger UI on every service.",
+          "Build: Maven 3.9 multi-module; Containers: Docker + docker compose.",
+          "Tests: JUnit 5 + Mockito + Testcontainers (real PostgreSQL 16 in Docker).",
+        ],
+      },
+      {
+        heading: "Repository layout",
+        paragraphs: [
+          "The repo is a single Maven multi-module monorepo. The parent pom.xml at the root pins shared dependency versions and plugin configuration; each service is its own module under services/<svc>/ with its own Dockerfile, pom.xml, application{,-local,-dev,-prod}.yml profiles, and Flyway migrations.",
+          "Infrastructure (nginx config, pgAdmin server pre-registration) lives outside services. Documentation lives in docs/ and is the source of truth for architectural rules, database design conventions, dev workflow, operations, and the long-term roadmap.",
+          "Inside each service the package layout is a standard Spring Boot pattern: config/, domain/, repository/, service/, security/ (where applicable), and web/. Resources hold application.yml profiles per environment and Flyway migrations under db/migration/.",
+        ],
+        bullets: [
+          "Parent pom.xml at repo root manages versions; each service module inherits.",
+          "Each service: Dockerfile, pom.xml, application{,-local,-dev,-prod}.yml, db/migration/.",
+          "Standard Spring layout: config / domain / repository / service / security / web.",
+          "docs/ holds architecture.md, database-design.md, development.md, operations.md, roadmap-expert.md.",
+        ],
+        code: [
+          {
+            language: "Tree",
+            code: `ECOM-SPRING-BOOT/
+├── pom.xml                        ← parent POM (multi-module)
+├── Makefile                       ← every common task is a target
+├── docker-compose.yml             ← base: DBs + services + gateway + pgAdmin
+├── docker-compose.local.yml       ← local overrides (IDE-friendly)
+├── docker-compose.dev.yml
+├── docker-compose.prod.yml
+├── .env.{example,local,dev,prod}
+├── docs/                          ← architecture, database-design, ...
+├── services/
+│   ├── user-service/              ← auth, users, JWT      :8084
+│   ├── catalog-service/           ← vendors, products     :8081
+│   ├── order-service/             ← carts, orders         :8082
+│   └── payment-service/           ← payments, refunds     :8083
+├── infra/
+│   └── nginx/nginx.conf           ← API gateway routing
+└── docker/
+    └── pgadmin/servers.json       ← pre-registers 4 DBs in pgAdmin`,
+          },
+        ],
+      },
+      {
+        heading: "Key architectural rules",
+        paragraphs: [
+          "These seven rules are the spine of the system. Breaking any of them creates the kind of distributed monolith microservices were supposed to prevent. They are codified in docs/database-design.md and enforced by code review.",
+          "The most non-obvious rule is the public_id / internal id split. Internal joins inside a single service still use BIGSERIAL for compact, cache-friendly keys; UUID v7 is reserved for anything that crosses a service boundary or is exposed through the public API. UUID v7 is monotonic — timestamp prefix — so it indexes well, unlike random v4 UUIDs that fragment B-tree pages.",
+          "Money is stored as BIGINT in the smallest unit (satang for THB, cents for USD), with currency in a separate CHAR(3) column. Never float, never DECIMAL on the wire. Timestamps are always TIMESTAMPTZ stored in UTC; presentation handles the user's timezone.",
+        ],
+        bullets: [
+          "No cross-service foreign keys — refer to other services by public_id UUID only.",
+          "Snapshot data you depend on — copy price + product_name into order_items, never JOIN back across services.",
+          "One database per service — never share a DB; fetch via REST or events instead.",
+          "Migrations are append-only — once V<n> is applied, never edit; create V<n+1>__alter_xxx.sql.",
+          "Money is BIGINT in the smallest unit; currency is a separate CHAR(3) column.",
+          "Timestamps are TIMESTAMPTZ — store UTC, display in user timezone.",
+          "Public IDs are UUID v7; internal joins use BIGSERIAL.",
+        ],
+        code: [
+          {
+            language: "SQL",
+            code: `-- order_items: snapshot of catalog data, captured at order time.
+CREATE TABLE order_items (
+    id                 BIGSERIAL    PRIMARY KEY,
+    order_id           BIGINT       NOT NULL REFERENCES orders(id),
+
+    -- cross-service reference: never a FK, just the public_id.
+    product_public_id  UUID         NOT NULL,
+
+    -- snapshot fields: never JOIN back to catalog.
+    product_name       VARCHAR(255) NOT NULL,
+    unit_price         BIGINT       NOT NULL,   -- satang
+    currency           CHAR(3)      NOT NULL,   -- e.g. 'THB'
+    quantity           INT          NOT NULL,
+
+    created_at         TIMESTAMPTZ  NOT NULL DEFAULT now(),
+    updated_at         TIMESTAMPTZ  NOT NULL DEFAULT now()
+);`,
+          },
+        ],
+      },
+      {
+        heading: "Endpoints and API gateway",
+        paragraphs: [
+          "All public traffic enters through nginx on port 8080 and is routed to the right service by URL prefix. The gateway is intentionally simple — static rewrites in nginx.conf — so traffic is predictable and the routing layer can be reasoned about offline.",
+          "Authentication lives in user-service. POST /api/v1/auth/register creates an account; POST /api/v1/auth/login returns a short-lived JWT signed with JWT_SECRET. Subsequent calls send Authorization: Bearer <token> and any service that needs identity validates the signature with the same secret.",
+          "Each service ships its own springdoc-openapi UI for development at /swagger-ui.html on the service's own port. Health and liveness endpoints (/api/v1/ping, /actuator/*) are intentionally not routed through the gateway — operators hit each service directly so a failing gateway never hides a failing service.",
+        ],
+        bullets: [
+          "Single public entry: http://localhost:8080 → nginx → service.",
+          "Auth: POST /api/v1/auth/register → POST /api/v1/auth/login → Authorization: Bearer <token>.",
+          "OpenAPI UI per service: :8081–:8084 /swagger-ui.html.",
+          "Health endpoints (/actuator/*) hit each service directly, not via the gateway.",
+        ],
+        code: [
+          {
+            language: "Bash",
+            code: `# Register
+curl -X POST http://localhost:8080/api/v1/auth/register \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "email": "alice@example.com",
+    "password": "P@ssw0rd!",
+    "name": "Alice"
+  }'
+
+# Log in -> capture JWT
+TOKEN=$(curl -s -X POST http://localhost:8080/api/v1/auth/login \\
+  -H "Content-Type: application/json" \\
+  -d '{"email":"alice@example.com","password":"P@ssw0rd!"}' \\
+  | jq -r '.data.accessToken')
+
+# Authenticated request
+curl http://localhost:8080/api/v1/users/me \\
+  -H "Authorization: Bearer $TOKEN"`,
+          },
+        ],
+      },
+      {
+        heading: "Local development workflow",
+        paragraphs: [
+          "Local development is driven by the Makefile. make up-local starts the four Postgres containers plus pgAdmin; make migrate-all applies every Flyway migration. From there you can either run each service from your IDE (recommended for quick reload and debugging) or bring up everything as containers with make up-local-full.",
+          "pgAdmin pre-registers all four databases via docker/pgadmin/servers.json, so the moment the stack is up you can browse user_db, catalog_db, order_db, payment_db without any manual setup. make tables lists tables in every DB, and make psql-<svc> drops you straight into a service's database.",
+          "Configuration is environment-scoped: .env.local, .env.dev, .env.prod, each derived from a matching .env.*.example template. The first make up-* run auto-copies the example if no env file exists, so a fresh clone goes from clone to running stack with a single command.",
+        ],
+        bullets: [
+          "make up-local — start 4 Postgres + pgAdmin (no apps).",
+          "make up-local-full — build + start all services + gateway.",
+          "make migrate-all / make migrate-<svc> — apply Flyway migrations.",
+          "make tables — list tables in every DB; make psql-<svc> — open a psql shell.",
+          "make build / make test — build all services / run all tests.",
+          "make db-reset — DESTRUCTIVE: drop and recreate all DB volumes.",
+        ],
+        code: [
+          {
+            language: "Bash",
+            code: `# 1) Start the 4 Postgres databases + pgAdmin
+make up-local
+
+# 2) Apply Flyway migrations to all 4 databases
+make migrate-all
+
+# 3) Verify schema
+make tables                # lists tables in every DB
+open http://localhost:5050 # pgAdmin (servers pre-registered)
+
+# 4a) Run services from your IDE (recommended)
+#     one Spring Boot run config per service
+
+# 4b) ...or run everything in containers
+make up-local-full         # build + start all 4 services + gateway`,
+          },
+        ],
+      },
+      {
+        heading: "Testing",
+        paragraphs: [
+          "The testing strategy is unit tests for pure business logic and Testcontainers for anything that touches the database. JUnit 5 + Mockito cover services and pure functions; Testcontainers boots a real PostgreSQL 16 container in Docker for integration tests so JPA, Flyway, and SQL behavior match production exactly — no H2 dialect surprises.",
+          "Each service can be tested in isolation with mvn -pl services/<svc> -am test. The integration tests do not share a database between services — by design, since the production split forbids it. The result is that a green test on one service really does mean that service is correct, independent of the others.",
+          "Docker must be running for integration tests. Testcontainers pulls and starts the postgres:16 image on first use; subsequent runs reuse the cached image and start in a second or two.",
+        ],
+        bullets: [
+          "Unit tests: JUnit 5 + Mockito.",
+          "Integration tests: Testcontainers — real Postgres 16 in Docker.",
+          "No shared test database between services — mirrors production isolation.",
+          "mvn -pl services/<svc> -am test — test a single service.",
+        ],
+        code: [
+          {
+            language: "Bash",
+            code: `# Run all tests across all services
+make test
+# or:
+mvn -B test
+
+# Run a single service's tests
+mvn -B -pl services/user-service -am test
+
+# Single test class
+mvn -B -pl services/user-service test -Dtest=AuthServiceTest`,
+          },
+        ],
+      },
+      {
+        heading: "Deployment and production checklist",
+        paragraphs: [
+          "Deployment is docker compose with environment-specific overrides. make build compiles every service jar; make up-dev and make up-prod bring up the corresponding stack. Dev rebuilds images on the fly; prod expects images to already exist (pulled from a registry).",
+          "The production checklist enforces the boundary between 'works on local' and 'safe to expose'. .env.prod is never committed, JWT_SECRET must be a long random value (256-bit or more), Swagger UI is disabled (no need to advertise the schema externally), and TLS is terminated at the gateway or upstream LB.",
+          "Operationally, each Postgres volume has its own backup schedule, logs go from stdout to an aggregator, and /actuator/health is wired to liveness and readiness probes so the orchestrator restarts only the service that is actually unhealthy.",
+        ],
+        bullets: [
+          ".env.prod filled in — never commit; store secrets in a real manager.",
+          "JWT_SECRET set to a long random value (256-bit+); rotate DB passwords from defaults.",
+          "SWAGGER_ENABLED=false in prod.",
+          "TLS at the gateway or upstream LB; all Flyway migrations applied (make migrate-all).",
+          "Backups configured per Postgres volume; log shipping to an aggregator.",
+          "/actuator/health wired to liveness / readiness probes.",
+        ],
+        code: [
+          {
+            language: "Bash",
+            code: `# Build all service jars
+make build
+
+# Then build & start the dev / prod stack
+make up-dev      # builds images on the fly
+make up-prod     # expects images to be prebuilt or in registry`,
+          },
+        ],
+      },
+      {
+        heading: "Roadmap",
+        paragraphs: [
+          "The shipped pieces are the foundation: a 4-service monorepo, per-service Postgres and Flyway, nginx gateway, Swagger per service, JWT auth in user-service. The next layer is what makes a small e-commerce backend into a robust one.",
+          "Inter-service auth (service tokens or mTLS) replaces today's implicit trust between containers. An event bus (Kafka or RabbitMQ) decouples order ↔ payment ↔ catalog flows that today rely on synchronous HTTP. The outbox pattern guarantees that a domain change and its event are published atomically — no lost events, no double-published ones.",
+          "The gateway is intentionally provisional. nginx is enough today; Spring Cloud Gateway is the planned upgrade when routing logic outgrows static config. A CI/CD pipeline (GitHub Actions: build → test → push images) and an observability stack (Prometheus + Grafana + Tempo / Loki) round out the production-readiness story.",
+        ],
+        bullets: [
+          "Shipped: 4-service monorepo, per-service Postgres + Flyway, nginx + Swagger, JWT auth.",
+          "Next: inter-service auth (service tokens / mTLS).",
+          "Event bus (Kafka / RabbitMQ) for order ↔ payment ↔ catalog flows.",
+          "Outbox pattern for reliable event publishing.",
+          "Swap nginx → Spring Cloud Gateway when routing logic grows.",
+          "CI/CD: GitHub Actions for build → test → push images.",
+          "Observability: Prometheus + Grafana + Tempo / Loki.",
         ],
       },
     ],
-    takeaway: "Detailed write-up coming soon.",
+    takeaway:
+      "The ECOM Platform is an exercise in keeping microservices honest: four small, single-purpose Spring Boot services, four isolated databases, one gateway, strict rules about IDs, money, and migrations. The real boundary between services is the database, not the codebase — and that one discipline is what stops the system from drifting back into a distributed monolith.",
   },
   {
     slug: "minigames",
@@ -216,7 +490,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "oop-pillars-in-practice",
-    title: "Object-Oriented Programming Pillars",
+    title: "Object-Oriented Programming",
     section: "Patterns & Principles",
     category: "OOP Fundamentals",
     date: "May 20, 2026",
@@ -656,7 +930,7 @@ var cityCar   = new Car(new ElectricEngine(), new RegenerativeBrakes());`,
   },
   {
     slug: "solid-principles-in-practice",
-    title: "SOLID Principles in Practice",
+    title: "SOLID Principles",
     section: "Patterns & Principles",
     category: "Design Principles",
     date: "May 24, 2026",
