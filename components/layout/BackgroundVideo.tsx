@@ -9,13 +9,53 @@ type Props = {
 };
 
 /**
+ * Static "space nebula" gradient used as a fallback when the heavy background
+ * video should not load (mobile, reduced-motion, or Save-Data). Keeps the
+ * cosmic-glass mood without shipping a 25MB asset to phones.
+ */
+function NebulaFallback() {
+  return (
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "radial-gradient(120% 80% at 15% 10%, rgba(168,85,247,0.22), transparent 55%)," +
+          "radial-gradient(120% 90% at 85% 20%, rgba(34,211,238,0.18), transparent 55%)," +
+          "radial-gradient(140% 120% at 50% 110%, rgba(99,102,241,0.20), transparent 60%)," +
+          "#0b0b12",
+      }}
+    />
+  );
+}
+
+/**
  * BackgroundVideo
- * - Increases darkness as user scrolls down
- * - No color changes, just progressive darkening overlay
+ * - Loads the video only on capable devices (desktop, motion allowed, no Save-Data)
+ * - Falls back to a lightweight CSS nebula otherwise
+ * - Darkens progressively as the user scrolls
  */
 export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Props) {
   const [aboutVisible, setAboutVisible] = useState(false);
   const [scrollDarkness, setScrollDarkness] = useState(0);
+  // null = undecided (SSR / first paint), true/false after capability check
+  const [useVideo, setUseVideo] = useState<boolean | null>(null);
+
+  // Decide whether to load the heavy video (client-only capability check).
+  // Show it everywhere — including mobile — and only opt OUT on genuine user
+  // signals: reduced-motion, Data Saver, or a very slow (2g) connection.
+  useEffect(() => {
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    // @ts-expect-error - Network Information API is not in TS lib
+    const conn = navigator.connection;
+    const saveData = Boolean(conn?.saveData);
+    const slowNetwork = conn?.effectiveType
+      ? /^(slow-2g|2g)$/.test(conn.effectiveType)
+      : false;
+
+    setUseVideo(!prefersReduced && !saveData && !slowNetwork);
+  }, []);
 
   useEffect(() => {
     const target = document.getElementById("about");
@@ -27,7 +67,6 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
       },
       {
         root: null,
-        // Trigger when section is around the middle of the viewport
         rootMargin: "-40% 0px -40% 0px",
         threshold: [0, 0.25, 0.5, 0.75, 1],
       }
@@ -43,15 +82,10 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
     return defaultSrc;
   }, [aboutVisible, aboutSrc, defaultSrc]);
 
-  // Ref for scroll-linked pan effect
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // Scroll horizontally pans the video from left to right via object-position
-  // Also updates darkness based on scroll progress
+  // Scroll → pan the video + progressive darkness
   useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-
     let ticking = false;
     const handleScroll = () => {
       if (ticking) return;
@@ -61,13 +95,11 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
         const scrollMax = Math.max(1, doc.scrollHeight - window.innerHeight);
         const y = window.scrollY;
         const progress = Math.min(1, Math.max(0, y / scrollMax));
-        // Move from ~10% (left) to ~90% (right)
-        const pos = 0 + progress * 90;
-        el.style.objectPosition = `${pos}% center`;
 
-        // Update darkness: 0 at top, 0.6 at bottom (60% black overlay)
+        const el = videoRef.current;
+        if (el) el.style.objectPosition = `${progress * 90}% center`;
+
         setScrollDarkness(progress * 0.3);
-
         ticking = false;
       });
     };
@@ -75,37 +107,45 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [src]);
+  }, [src, useVideo]);
 
-  // Dispatch a "bg-ready" event when the video can play through
+  // Signal readiness so the Preloader can hide even without a video
   useEffect(() => {
+    if (useVideo === false) {
+      window.dispatchEvent(new Event("bg-ready"));
+      return;
+    }
     const video = videoRef.current;
     if (!video) return;
 
-    const onReady = () => {
-      window.dispatchEvent(new Event("bg-ready"));
-    };
-
+    const onReady = () => window.dispatchEvent(new Event("bg-ready"));
     video.addEventListener("canplaythrough", onReady, { once: true });
     return () => video.removeEventListener("canplaythrough", onReady);
-  }, [src]);
+  }, [src, useVideo]);
 
   return (
     <div className={"fixed inset-0 -z-10"} aria-hidden>
-      <video
-        ref={videoRef}
-        key={src} // forces reload when src changes
-        autoPlay
-        loop
-        muted
-        playsInline
-        className={
-          className ||
-          "w-full h-full object-cover opacity-70 will-change-[object-position]"
-        }
-      >
-        <source src={src} type="video/mp4" />
-      </video>
+      {/* Nebula is always the base layer: instant paint while the video streams,
+          and the graceful fallback when the video is skipped. */}
+      <NebulaFallback />
+
+      {useVideo && (
+        <video
+          ref={videoRef}
+          key={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className={
+            className ||
+            "absolute inset-0 w-full h-full object-cover opacity-70 will-change-[object-position]"
+          }
+        >
+          <source src={src} type="video/mp4" />
+        </video>
+      )}
 
       {/* Progressive darkness overlay based on scroll */}
       <div

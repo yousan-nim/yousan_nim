@@ -18,7 +18,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://yousan-nim.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Yousan Nim – Full‑Stack Developer",
     template: "%s | Yousan Nim",
@@ -81,6 +84,32 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Pongchanok Nuamteam",
+  alternateName: "Yousan Nim",
+  url: SITE_URL,
+  jobTitle: "Full-Stack Developer & AI Engineer",
+  description:
+    "Full-stack developer building high-quality web applications, CMS platforms, and AI-driven assistants with Next.js, React, and OpenAI/RAG pipelines.",
+  knowsAbout: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Node.js",
+    "AI",
+    "RAG",
+    "MongoDB",
+    "Docker",
+    "Kubernetes",
+  ],
+  sameAs: [
+    "https://github.com/yousan-nim",
+    "https://www.linkedin.com/in/yousan-nim/",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -91,6 +120,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#121212] min-h-screen overflow-x-hidden relative`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <I18nProvider>
           <NextTopLoader color="#a855f7" showSpinner={false} />
           <Preloader />

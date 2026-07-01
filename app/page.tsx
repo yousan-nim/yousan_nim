@@ -14,7 +14,7 @@ export default function Home() {
 
       {/* Education */}
       <section id="education" className="py-20 md:py-28 min-h-screen">
-        <div className="w-[95%] md:w-[80%] xl:max-w-screen-5xl mx-auto">
+        <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
           <EducationLazy />
         </div>
       </section>

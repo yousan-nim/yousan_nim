@@ -2,6 +2,13 @@
 
 import React from "react";
 import { useI18n } from "@/lib/i18n/I18nProvider";
+import {
+  FaEnvelope,
+  FaRegFileLines,
+  FaLinkedinIn,
+  FaGithub,
+  FaGlobe,
+} from "react-icons/fa6";
 
 const Contact = () => {
   const { t } = useI18n();
@@ -40,7 +47,7 @@ const Contact = () => {
           className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-white text-black px-5 py-3 font-semibold hover:bg-white/90 transition"
         >
           <span>{c.emailMe}</span>
-          <span aria-hidden>✉️</span>
+          <FaEnvelope aria-hidden className="text-sm" />
         </a>
         <a
           href={CV_REQUEST_MAILTO}
@@ -48,7 +55,7 @@ const Contact = () => {
           title="Send an email to request the latest CV"
         >
           <span>Request CV via Email</span>
-          <span aria-hidden>📄</span>
+          <FaRegFileLines aria-hidden className="text-sm" />
         </a>
       </div>
 
@@ -59,7 +66,7 @@ const Contact = () => {
           className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5 hover:border-white/30 transition group"
         >
           <div className="flex items-center gap-3 mb-2">
-            <div className="text-2xl">✉️</div>
+            <FaEnvelope aria-hidden className="text-xl text-white/80" />
             <div className="text-white font-semibold text-[clamp(16px,3vw,18px)]">
               {c.email}
             </div>
@@ -76,7 +83,7 @@ const Contact = () => {
           className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5 hover:border-white/30 transition group"
         >
           <div className="flex items-center gap-3 mb-2">
-            <div className="text-2xl">🔗</div>
+            <FaLinkedinIn aria-hidden className="text-xl text-[#0A66C2]" />
             <div className="text-white font-semibold text-[clamp(16px,3vw,18px)]">
               {c.linkedin}
             </div>
@@ -93,7 +100,7 @@ const Contact = () => {
           className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5 hover:border-white/30 transition group"
         >
           <div className="flex items-center gap-3 mb-2">
-            <div className="text-2xl">🐙</div>
+            <FaGithub aria-hidden className="text-xl text-white/90" />
             <div className="text-white font-semibold text-[clamp(16px,3vw,18px)]">
               {c.github}
             </div>
@@ -110,7 +117,7 @@ const Contact = () => {
           className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5 hover:border-white/30 transition group"
         >
           <div className="flex items-center gap-3 mb-2">
-            <div className="text-2xl">🌐</div>
+            <FaGlobe aria-hidden className="text-xl text-cyan-300/90" />
             <div className="text-white font-semibold text-[clamp(16px,3vw,18px)]">
               Website
             </div>

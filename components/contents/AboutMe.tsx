@@ -33,6 +33,17 @@ import {
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import { TbBrandVscode } from "react-icons/tb";
+import {
+  LuLayoutTemplate,
+  LuServer,
+  LuDatabase,
+  LuCloud,
+  LuBrainCircuit,
+  LuWrench,
+  LuZap,
+  LuGauge,
+  LuClapperboard,
+} from "react-icons/lu";
 
 const STEP_CIRCLE = [
   "bg-white ring-white/20 text-black",
@@ -42,13 +53,13 @@ const STEP_CIRCLE = [
   "bg-gray-700 ring-gray-200/20 text-white",
 ];
 
-const FOCUS_ICONS = ["⚡", "📉", "🎬"];
+const FOCUS_ICONS: IconType[] = [LuZap, LuGauge, LuClapperboard];
 
 type Tech = { name: string; Icon?: IconType; color?: string };
 
-const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
+const TECH_META: { Icon: IconType; accent: string; techs: Tech[] }[] = [
   {
-    icon: "⚛️",
+    Icon: LuLayoutTemplate,
     accent: "#38BDF8",
     techs: [
       { name: "React", Icon: SiReact, color: "#61DAFB" },
@@ -60,7 +71,7 @@ const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
     ],
   },
   {
-    icon: "🚂",
+    Icon: LuServer,
     accent: "#34D399",
     techs: [
       { name: "Node.js", Icon: SiNodedotjs, color: "#5FA04E" },
@@ -73,7 +84,7 @@ const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
     ],
   },
   {
-    icon: "🗄️",
+    Icon: LuDatabase,
     accent: "#FBBF24",
     techs: [
       { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
@@ -83,7 +94,7 @@ const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
     ],
   },
   {
-    icon: "☁️",
+    Icon: LuCloud,
     accent: "#60A5FA",
     techs: [
       { name: "Docker", Icon: SiDocker, color: "#2496ED" },
@@ -94,7 +105,7 @@ const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
     ],
   },
   {
-    icon: "🤖",
+    Icon: LuBrainCircuit,
     accent: "#F472B6",
     techs: [
       { name: "PyTorch", Icon: SiPytorch, color: "#EE4C2C" },
@@ -105,7 +116,7 @@ const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
     ],
   },
   {
-    icon: "🛠️",
+    Icon: LuWrench,
     accent: "#FB923C",
     techs: [
       { name: "Git", Icon: SiGit, color: "#F05032" },
@@ -265,7 +276,12 @@ const AboutMe = () => {
                 key={i}
                 className="rounded-lg border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-6 hover:border-white/30 transition"
               >
-                <div className="text-3xl mb-3">{FOCUS_ICONS[i]}</div>
+                <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.06] ring-1 ring-inset ring-white/15">
+                {React.createElement(FOCUS_ICONS[i], {
+                  className: "text-2xl text-white",
+                  "aria-hidden": true,
+                })}
+              </div>
                 <h3 className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-3">
                   {f.title}
                 </h3>
@@ -311,13 +327,17 @@ const AboutMe = () => {
                 <div className="relative">
                   <div className="flex items-center gap-3 mb-6">
                     <div
-                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-2xl ring-1 ring-inset transition-transform duration-300 group-hover:scale-110"
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ring-1 ring-inset transition-transform duration-300 group-hover:scale-110"
                       style={{
                         backgroundColor: "rgba(255,255,255,0.08)",
                         boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.25)",
                       }}
                     >
-                      {card.icon}
+                      <card.Icon
+                        aria-hidden
+                        className="text-2xl"
+                        style={{ color: card.accent }}
+                      />
                     </div>
                     <h3 className="font-bold text-[clamp(18px,3vw,22px)] text-white">
                       {a.techCards[i]}

@@ -47,9 +47,9 @@ const FloatingAction = () => {
           {...(external
             ? { target: "_blank", rel: "noopener noreferrer" }
             : {})}
-          className="group relative flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition-all duration-200 hover:bg-white/10 hover:text-white"
+          className="group relative flex h-11 w-11 items-center justify-center rounded-full text-white/70 transition-all duration-200 hover:bg-white/10 hover:text-white"
         >
-          <Icon className="text-base transition-transform duration-200 group-hover:scale-110" />
+          <Icon className="text-lg transition-transform duration-200 group-hover:scale-110" />
           {/* tooltip on the left */}
           <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-md border border-white/10 bg-black/90 px-2 py-1 text-xs font-medium text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100">
             {label}

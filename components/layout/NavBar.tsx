@@ -176,9 +176,14 @@ export default function Navbar() {
           </nav>
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
-            <button className="rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition">
-              {t.nav.signIn}
-            </button>
+            <a
+              href="/cv/Pongchanok_Nuamteam_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition"
+            >
+              {t.nav.resume}
+            </a>
           </div>
 
           {/* Mobile language switcher */}
