@@ -4,6 +4,21 @@ import React from "react";
 import { useI18n } from "@/lib/i18n/I18nProvider";
 import { IconType } from "react-icons";
 import {
+  FiActivity,
+  FiBarChart2,
+  FiCheckCircle,
+  FiCloud,
+  FiCode,
+  FiCpu,
+  FiDatabase,
+  FiFileText,
+  FiMonitor,
+  FiServer,
+  FiTool,
+  FiUploadCloud,
+  FiZap,
+} from "react-icons/fi";
+import {
   SiReact,
   SiNextdotjs,
   SiTypescript,
@@ -42,14 +57,21 @@ const STEP_CIRCLE = [
   "bg-gray-700 ring-gray-200/20 text-white",
 ];
 
-const FOCUS_ICONS = ["⚡", "📉", "🎬"];
+const PROCESS_ICONS: IconType[] = [
+  FiFileText,
+  FiCode,
+  FiCheckCircle,
+  FiUploadCloud,
+  FiBarChart2,
+];
+
+const FOCUS_ICONS: IconType[] = [FiZap, FiActivity, FiCpu];
 
 type Tech = { name: string; Icon?: IconType; color?: string };
 
-const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
+const TECH_META: { Icon: IconType; techs: Tech[] }[] = [
   {
-    icon: "⚛️",
-    accent: "#38BDF8",
+    Icon: FiMonitor,
     techs: [
       { name: "React", Icon: SiReact, color: "#61DAFB" },
       { name: "React Native", Icon: SiReact, color: "#61DAFB" },
@@ -60,8 +82,7 @@ const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
     ],
   },
   {
-    icon: "🚂",
-    accent: "#34D399",
+    Icon: FiServer,
     techs: [
       { name: "Node.js", Icon: SiNodedotjs, color: "#5FA04E" },
       { name: "Express", Icon: SiExpress, color: "#FFFFFF" },
@@ -73,8 +94,7 @@ const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
     ],
   },
   {
-    icon: "🗄️",
-    accent: "#FBBF24",
+    Icon: FiDatabase,
     techs: [
       { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
       { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
@@ -83,8 +103,7 @@ const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
     ],
   },
   {
-    icon: "☁️",
-    accent: "#60A5FA",
+    Icon: FiCloud,
     techs: [
       { name: "Docker", Icon: SiDocker, color: "#2496ED" },
       { name: "Kubernetes", Icon: SiKubernetes, color: "#326CE5" },
@@ -94,8 +113,7 @@ const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
     ],
   },
   {
-    icon: "🤖",
-    accent: "#F472B6",
+    Icon: FiCpu,
     techs: [
       { name: "PyTorch", Icon: SiPytorch, color: "#EE4C2C" },
       { name: "OpenAI", Icon: SiOpenai, color: "#FFFFFF" },
@@ -105,8 +123,7 @@ const TECH_META: { icon: string; accent: string; techs: Tech[] }[] = [
     ],
   },
   {
-    icon: "🛠️",
-    accent: "#FB923C",
+    Icon: FiTool,
     techs: [
       { name: "Git", Icon: SiGit, color: "#F05032" },
       { name: "VS Code", Icon: TbBrandVscode, color: "#007ACC" },
@@ -128,35 +145,34 @@ const AboutMe = () => {
   const { t } = useI18n();
   const a = t.about;
 
-
-  // py-20 md:py-28 bg-white/5 min-h-screen
-
   return (
-    <section id="about" className="py-20">
+    <section id="about" className="scroll-mt-24 py-20">
       <div className="max-w-[90%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
-        <h1 className="text-white font-semibold uppercase text-[clamp(32px,6vw,56px)] text-start mb-8">
+        <h2 className="mb-8 text-start text-[clamp(32px,6vw,56px)] font-semibold uppercase text-white">
           {a.title}
-        </h1>
+        </h2>
 
         {/* Main Story */}
         <div className="grid lg:grid-cols-2 gap-4 mb-12">
           {/* Left: Personal Journey */}
-          <div className="space-y-6 rounded-lg border border-white/10 bg-white/2 backdrop-blur p-5">
-            <div className="prose prose-invert max-w-none">
-              <p className="text-white text-[clamp(16px,2.5vw,20px)] leading-relaxed indent-8">
+          <div className="space-y-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl">
+            <div className="max-w-none space-y-5">
+              <p className="text-[clamp(16px,2.5vw,20px)] leading-8 text-slate-100/90">
                 {a.p1}
               </p>
-              <p className="text-white text-[clamp(16px,2.5vw,20px)] leading-relaxed indent-8">
+              <p className="text-[clamp(16px,2.5vw,20px)] leading-8 text-slate-100/90">
                 {a.p2pre}
                 <span className="text-white font-semibold">
                   {a.p2highlight}
                 </span>
                 {a.p2post}
               </p>
-              <p className="text-white text-[clamp(16px,2.5vw,20px)] leading-relaxed indent-8">
+              <p className="text-[clamp(16px,2.5vw,20px)] leading-8 text-slate-100/90">
                 {a.p3pre}
                 {a.p3mid}
-                <span className="text-gray-300">{a.p3highlight}</span>
+                <span className="font-medium text-emerald-200/88">
+                  {a.p3highlight}
+                </span>
                 {a.p3post}
               </p>
             </div>
@@ -167,12 +183,12 @@ const AboutMe = () => {
             {STATS.map((s) => (
               <div
                 key={s.key}
-                className="rounded-lg border border-white/10 bg-white/2 backdrop-blur p-5 text-center flex flex-col justify-center"
+                className="flex flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-xl"
               >
-                <div className="text-[clamp(32px,5vw,48px)] font-bold text-gray-100/98 mb-1">
+                <div className="mb-1 text-[clamp(32px,5vw,48px)] font-bold text-gray-100/98">
                   {s.value}
                 </div>
-                <div className="text-white text-[clamp(12px,2vw,16px)] uppercase tracking-wide">
+                <div className="text-[clamp(12px,2vw,16px)] uppercase tracking-wide text-slate-300">
                   {a[s.key]}
                 </div>
               </div>
@@ -182,13 +198,13 @@ const AboutMe = () => {
 
         {/* Software Development Lifecycle */}
         <div className="mb-12">
-          <h2 className="text-white font-semibold text-[clamp(24px,4vw,36px)] mb-8 text-center">
+          <h3 className="mb-8 text-center text-[clamp(24px,4vw,36px)] font-semibold text-white">
             {a.processTitle}
-          </h2>
-          <p className="hidden md:block text-white/70 text-center text-[clamp(14px,2.5vw,18px)] mb-12 max-w-3xl mx-auto">
+          </h3>
+          <p className="mx-auto mb-12 hidden max-w-3xl text-center text-[clamp(14px,2.5vw,18px)] text-white/70 md:block">
             {a.processSubtitle}
           </p>
-          <p className="md:hidden text-white/70 text-center text-[clamp(12px,3.5vw,16px)] mb-8 mx-auto">
+          <p className="mx-auto mb-8 text-center text-[clamp(12px,3.5vw,16px)] text-white/70 md:hidden">
             {a.processSubtitleMobile}
           </p>
 
@@ -215,11 +231,24 @@ const AboutMe = () => {
                         {a.step} {i + 1}
                       </div>
                       <div
-                        className={`text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2 ${
-                          isLeft ? "md:text-right" : ""
-                        }`}
+                        className={[
+                          "mb-3 flex items-center gap-3",
+                          isLeft ? "md:flex-row-reverse" : "",
+                        ].join(" ")}
                       >
-                        {step.title}
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-emerald-200">
+                          {React.createElement(PROCESS_ICONS[i], {
+                            className: "text-lg",
+                            "aria-hidden": true,
+                          })}
+                        </div>
+                        <h4
+                          className={`text-white font-semibold text-[clamp(18px,3vw,22px)] ${
+                            isLeft ? "md:text-right" : ""
+                          }`}
+                        >
+                          {step.title}
+                        </h4>
                       </div>
                       <div
                         className={`text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed mb-3 hidden md:block ${
@@ -256,19 +285,24 @@ const AboutMe = () => {
 
         {/* Current Focus Areas */}
         <div className="mb-12">
-          <h2 className="text-white font-semibold text-[clamp(24px,4vw,36px)] mb-8 text-center">
+          <h3 className="mb-8 text-center text-[clamp(24px,4vw,36px)] font-semibold text-white">
             {a.focusTitle}
-          </h2>
+          </h3>
           <div className="grid md:grid-cols-3 gap-5">
             {a.focus.map((f, i) => (
               <div
                 key={i}
-                className="rounded-lg border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-6 hover:border-white/30 transition"
+                className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-6 transition hover:border-white/30"
               >
-                <div className="text-3xl mb-3">{FOCUS_ICONS[i]}</div>
-                <h3 className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-3">
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.05] text-emerald-200">
+                  {React.createElement(FOCUS_ICONS[i], {
+                    className: "text-xl",
+                    "aria-hidden": true,
+                  })}
+                </div>
+                <h4 className="mb-3 text-[clamp(18px,3vw,22px)] font-semibold text-white">
                   {f.title}
-                </h3>
+                </h4>
                 <p className="text-white/70 text-[clamp(14px,2.2vw,16px)] leading-relaxed">
                   {f.desc}
                 </p>
@@ -279,9 +313,9 @@ const AboutMe = () => {
 
         {/* Technical Expertise */}
         <div>
-          <h2 className="text-white font-semibold text-[clamp(24px,4vw,36px)] mb-4 text-center">
+          <h3 className="mb-4 text-center text-[clamp(24px,4vw,36px)] font-semibold text-white">
             {a.techTitle}
-          </h2>
+          </h3>
           <p className="text-white/80 mb-12 text-[clamp(14px,2.5vw,18px)] leading-relaxed text-center max-w-3xl mx-auto">
             {a.techSubtitle}
           </p>
@@ -317,11 +351,11 @@ const AboutMe = () => {
                         boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.25)",
                       }}
                     >
-                      {card.icon}
+                      <card.Icon aria-hidden className="text-[22px] text-white" />
                     </div>
-                    <h3 className="font-bold text-[clamp(18px,3vw,22px)] text-white">
+                    <h4 className="font-bold text-[clamp(18px,3vw,22px)] text-white">
                       {a.techCards[i]}
-                    </h3>
+                    </h4>
                   </div>
                   <div className="grid grid-cols-4 gap-2.5 sm:gap-3">
                     {card.techs.map((tech) =>
@@ -329,6 +363,8 @@ const AboutMe = () => {
                         <div
                           key={tech.name}
                           style={{ ["--brand" as string]: tech.color }}
+                          title={tech.name}
+                          aria-label={tech.name}
                           className="group/item relative flex aspect-square items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-all duration-200 hover:-translate-y-1 hover:border-[var(--brand)] hover:bg-white/[0.08] hover:shadow-[0_0_24px_-6px_var(--brand)]"
                         >
                           <tech.Icon

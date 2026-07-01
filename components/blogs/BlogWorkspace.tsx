@@ -12,7 +12,7 @@ const CodeLangContext = createContext<{
   setLang: (lang: string) => void;
 }>({ lang: null, setLang: () => {} });
 
-const readerId = "blog-reader";
+const readerId = "main-content";
 
 // VS Code "Dark+" inspired palette
 const SYNTAX = {
@@ -301,7 +301,11 @@ export default function BlogWorkspace() {
           </aside>
 
           {/* Main content */}
-          <main id={readerId} className="min-w-0 scroll-mt-24 bg-black/80 p-4 rounded-2xl lg:p-8">
+          <main
+            id={readerId}
+            tabIndex={-1}
+            className="min-w-0 scroll-mt-24 rounded-2xl bg-black/80 p-4 lg:p-8"
+          >
             <div className="flex flex-wrap items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.26em] text-purple-300/80">
               <span>{selectedPost.section}</span>
               <span className="h-1 w-1 rounded-full bg-white/25" />

@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/NavBar";
 import BackgroundVideo from "@/components/layout/BackgroundVideo";
-import Preloader from "@/components/common/Preloader";
 import NextTopLoader from "nextjs-toploader";
 import FloatingAction from "@/components/common/FloatingAction";
 import { I18nProvider } from "@/lib/i18n/I18nProvider";
@@ -19,6 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yousan-nim.com"),
   title: {
     default: "Yousan Nim – Full‑Stack Developer",
     template: "%s | Yousan Nim",
@@ -89,14 +89,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#121212] min-h-screen overflow-x-hidden relative`}
+        className={`${geistSans.variable} ${geistMono.variable} relative min-h-screen antialiased`}
       >
         <I18nProvider>
-          <NextTopLoader color="#a855f7" showSpinner={false} />
-          <Preloader />
+          <a href="#main-content" className="skip-link">
+            Skip to content
+          </a>
+          <NextTopLoader color="#34d399" showSpinner={false} />
           <BackgroundVideo defaultSrc="/bg/238264.mp4" />
-          <FloatingAction />
           <Navbar />
+          <FloatingAction />
           {children}
         </I18nProvider>
       </body>

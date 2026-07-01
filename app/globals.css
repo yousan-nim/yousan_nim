@@ -1,44 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --background: #121212;
-  --foreground: #171717;
+  --background: #08111f;
+  --foreground: #f8fafc;
+  --surface: rgba(15, 23, 42, 0.72);
+  --surface-strong: rgba(15, 23, 42, 0.9);
+  --surface-muted: rgba(30, 41, 59, 0.58);
+  --border: rgba(148, 163, 184, 0.2);
+  --accent: #34d399;
+  --accent-strong: #10b981;
+  --muted-foreground: rgba(226, 232, 240, 0.72);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 html,
 body {
-  /* clip prevents the horizontal scrollbar without breaking position: sticky
-     in descendants (unlike overflow-x: hidden) */
   overflow-x: clip;
   max-width: 100%;
 }
 
 html {
-  /* color-scheme tells the browser to use dark native UI (including the
-     scrollbar) so the track is no longer rendered with a white default.
-     Do NOT set background on <html> — that would stop <body>'s background
-     from propagating to the canvas and cover the fixed BackgroundVideo. */
   color-scheme: dark;
-  /* Firefox scrollbar styling */
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
   scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
   scrollbar-width: thin;
 }
 
-/* WebKit / Chromium scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -59,5 +59,55 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
+  line-height: 1.5;
+}
+
+::selection {
+  background: rgba(52, 211, 153, 0.24);
+  color: var(--foreground);
+}
+
+a,
+button {
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 1000;
+  transform: translateY(-180%);
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  color: var(--foreground);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

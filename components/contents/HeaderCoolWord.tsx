@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { useI18n } from "@/lib/i18n/I18nProvider";
 
@@ -56,15 +57,18 @@ const HeaderCoolWord = () => {
       id="home"
       aria-label="Hero"
       ref={sectionRef}
-      className="relative h-[130vh] lg:h-screen"
+      className="relative min-h-[100svh] lg:min-h-screen"
     >
       <div className="relative w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto h-full">
         <div
-          className="absolute z-10 left-0 top-[30%] sm:top-[18%] w-full flex justify-center xl:justify-start will-change-transform transform-gpu"
+          className="absolute left-0 top-[24%] z-10 flex w-full justify-center will-change-transform transform-gpu sm:top-[18%] xl:justify-start"
           aria-labelledby="hero-title"
           ref={heroRef}
         >
           <div className="cq mx-0 max-w-full md:w-[min(92vw,720px)] h-full">
+            <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.32em] text-emerald-300/85 xl:text-left">
+              Full-Stack Developer • AI Engineer
+            </p>
             <h1
               id="hero-title"
               className="antialiased font-extrabold uppercase tracking-tight text-white m-auto"
@@ -98,9 +102,9 @@ const HeaderCoolWord = () => {
             <p
               className="
         w-full m-auto lg:w-full mt-4 xl:mt-6
-        max-w-[60ch]
-        text-white/90 uppercase font-semibold
-        text-[clamp(11px,2.5vw,18px)] leading-5
+        max-w-[58ch]
+        text-slate-100/88 font-medium
+        text-[clamp(14px,2.5vw,18px)] leading-7
         text-center xl:text-left lg:ml-0
       "
             >
@@ -120,27 +124,24 @@ const HeaderCoolWord = () => {
   "
         ref={bottomRef}
       >
-        <h1
+        <p
           className="
             rounded-xl
-            text-[clamp(28px,6vw,52px)] leading-[0.9]
+            text-[clamp(30px,6vw,52px)] leading-[0.9]
             uppercase font-black
             text-transparent bg-clip-text
             bg-gradient-to-br from-white/30 via-white to-white/20 
             drop-shadow-[0_1px_0_rgba(255,255,255,0.25)]
           "
         >
-          Pongchanok Nuamteam
-        </h1>
+          Yousan Nim
+        </p>
 
         <p
           className="
       mt-3 md:mt-4
-      text-[clamp(14px,3.5vw,20px)] leading-snug
-      uppercase font-black
-      text-transparent bg-clip-text
-      bg-gradient-to-br from-white/30 via-white to-white/20
-      drop-shadow-[0_1px_0_rgba(255,255,255,0.2)]
+      text-[clamp(15px,3.5vw,20px)] leading-relaxed
+      font-medium text-slate-200/80
     "
         >
           {t.hero.role}
@@ -154,11 +155,10 @@ const HeaderCoolWord = () => {
           <a
             href="#contact"
             className="
-        inline-flex items-center justify-center rounded-md
-        px-4 md:px-5 py-2 md:py-2.5
-        text-xs md:text-sm font-medium
-        bg-white/20 border border-white/30 text-white
-        hover:bg-white/30 transition-all duration-200
+        inline-flex min-h-11 items-center justify-center rounded-full
+        border border-emerald-400/30 bg-emerald-400/16 px-5 py-2.5
+        text-sm font-semibold text-white
+        hover:border-emerald-300/50 hover:bg-emerald-400/24 transition-all duration-200
       "
           >
             {t.hero.contact}
@@ -167,47 +167,26 @@ const HeaderCoolWord = () => {
           <a
             href="#projects"
             className="
-        inline-flex items-center justify-center rounded-md
-        px-4 md:px-5 py-2 md:py-2.5
-        text-xs md:text-sm font-medium
-        bg-white/5 border border-white/10 text-slate-200
-        hover:bg-white/10 transition-all duration-200
+        inline-flex min-h-11 items-center justify-center rounded-full
+        border border-white/14 bg-white/6 px-5 py-2.5
+        text-sm font-medium text-slate-200
+        hover:border-white/30 hover:bg-white/10 transition-all duration-200
       "
           >
             {t.hero.projects}
           </a>
 
-          <a
-            href="https://github.com/yousan-nim"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/blogs"
             className="
-        inline-flex items-center justify-center rounded-md
-        px-4 md:px-5 py-2 md:py-2.5
-        text-xs md:text-sm font-medium
-        bg-transparent border border-white/15 text-white/90
-        hover:bg-white/10 transition-all duration-200
+        inline-flex min-h-11 items-center justify-center rounded-full
+        border border-transparent px-4 py-2.5
+        text-sm font-medium text-slate-300
+        hover:text-white transition-all duration-200
       "
-            aria-label="GitHub"
           >
-            {t.hero.github}
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/yousan-nim/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-        inline-flex items-center justify-center rounded-md
-        px-4 md:px-5 py-2 md:py-2.5
-        text-xs md:text-sm font-medium
-        bg-transparent border border-white/15 text-white/90
-        hover:bg-white/10 transition-all duration-200
-      "
-            aria-label="LinkedIn"
-          >
-            LinkedIn
-          </a>
+            {t.nav.blogs}
+          </Link>
         </div>
       </div>
     </section>

@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import { FiFileText, FiGlobe, FiMail } from "react-icons/fi";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { useI18n } from "@/lib/i18n/I18nProvider";
 
 const Contact = () => {
@@ -14,9 +16,9 @@ const Contact = () => {
   const GITHUB_DISPLAY = "github.com/yousan-nim";
   const WEBSITE_DISPLAY = "yousan-nim.com";
   const CV_REQUEST_MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent(
-    "Requesting CV — Pongchanok Nuamteam"
+    "Requesting CV — Yousan Nim"
   )}&body=${encodeURIComponent(
-    "Hi Pongchanok,\n\nI'd like to request your latest CV. A bit about me and the role:\n\n— \n\nThanks!"
+    "Hi Yousan,\n\nI'd like to request your latest CV. A bit about me and the role:\n\n— \n\nThanks!"
   )}`;
 
   return (
@@ -37,18 +39,18 @@ const Contact = () => {
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
         <a
           href={`mailto:${EMAIL}`}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-white text-black px-5 py-3 font-semibold hover:bg-white/90 transition"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 font-semibold text-black transition hover:bg-white/90 sm:w-auto"
         >
+          <FiMail aria-hidden />
           <span>{c.emailMe}</span>
-          <span aria-hidden>✉️</span>
         </a>
         <a
           href={CV_REQUEST_MAILTO}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 text-white px-5 py-3 font-semibold hover:border-white/40 transition"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-3 font-semibold text-white transition hover:border-white/40 sm:w-auto"
           title="Send an email to request the latest CV"
         >
-          <span>Request CV via Email</span>
-          <span aria-hidden>📄</span>
+          <FiFileText aria-hidden />
+          <span>{c.downloadResume}</span>
         </a>
       </div>
 
@@ -59,12 +61,12 @@ const Contact = () => {
           className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5 hover:border-white/30 transition group"
         >
           <div className="flex items-center gap-3 mb-2">
-            <div className="text-2xl">✉️</div>
+            <FiMail aria-hidden className="text-xl text-emerald-200" />
             <div className="text-white font-semibold text-[clamp(16px,3vw,18px)]">
               {c.email}
             </div>
           </div>
-          <div className="text-white/70 text-[clamp(12px,2.5vw,14px)] truncate">
+          <div className="break-all text-[clamp(12px,2.5vw,14px)] text-white/70">
             {EMAIL}
           </div>
         </a>
@@ -76,12 +78,12 @@ const Contact = () => {
           className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5 hover:border-white/30 transition group"
         >
           <div className="flex items-center gap-3 mb-2">
-            <div className="text-2xl">🔗</div>
+            <FaLinkedinIn aria-hidden className="text-lg text-emerald-200" />
             <div className="text-white font-semibold text-[clamp(16px,3vw,18px)]">
               {c.linkedin}
             </div>
           </div>
-          <div className="text-white/70 text-[clamp(12px,2.5vw,14px)] truncate">
+          <div className="break-all text-[clamp(12px,2.5vw,14px)] text-white/70">
             {LINKEDIN_DISPLAY}
           </div>
         </a>
@@ -93,12 +95,12 @@ const Contact = () => {
           className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5 hover:border-white/30 transition group"
         >
           <div className="flex items-center gap-3 mb-2">
-            <div className="text-2xl">🐙</div>
+            <FaGithub aria-hidden className="text-lg text-emerald-200" />
             <div className="text-white font-semibold text-[clamp(16px,3vw,18px)]">
               {c.github}
             </div>
           </div>
-          <div className="text-white/70 text-[clamp(12px,2.5vw,14px)] truncate">
+          <div className="break-all text-[clamp(12px,2.5vw,14px)] text-white/70">
             {GITHUB_DISPLAY}
           </div>
         </a>
@@ -110,12 +112,12 @@ const Contact = () => {
           className="rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent p-5 hover:border-white/30 transition group"
         >
           <div className="flex items-center gap-3 mb-2">
-            <div className="text-2xl">🌐</div>
+            <FiGlobe aria-hidden className="text-xl text-emerald-200" />
             <div className="text-white font-semibold text-[clamp(16px,3vw,18px)]">
               Website
             </div>
           </div>
-          <div className="text-white/70 text-[clamp(12px,2.5vw,14px)] truncate">
+          <div className="break-all text-[clamp(12px,2.5vw,14px)] text-white/70">
             {WEBSITE_DISPLAY}
           </div>
         </a>

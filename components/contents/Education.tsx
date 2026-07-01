@@ -10,16 +10,16 @@ const Education = () => {
   const items = t.education.items;
   return (
     <div>
-      <h2 className="text-white font-semibold uppercase text-[clamp(32px,6vw,56px)] text-start lg:text-center mb-8">
+      <h2 className="mb-8 text-start text-[clamp(32px,6vw,56px)] font-semibold uppercase text-white lg:text-center">
         {t.education.title}
       </h2>
 
       {/* Mosaic layout: left-top (40%), center, right-bottom (40%) */}
       <div className="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-4 md:gap-6 max-w-screen-2xl mx-auto ">
         <div className="md:col-span-5 md:col-start-8 md:row-start-1 rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
-          <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2">
+          <h3 className="mb-2 text-[clamp(18px,3vw,22px)] font-semibold text-white">
             {items[0].degree}
-          </div>
+          </h3>
           <div className="text-white/80 text-[clamp(14px,2.2vw,16px)] mb-2">
             {items[0].school}
           </div>
@@ -29,9 +29,9 @@ const Education = () => {
         </div>
 
         <div className="md:col-span-6 md:col-start-6 md:row-start-2 rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
-          <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2">
+          <h3 className="mb-2 text-[clamp(18px,3vw,22px)] font-semibold text-white">
             {items[1].degree}
-          </div>
+          </h3>
           <div className="text-white/80 text-[clamp(14px,2.2vw,16px)] mb-2">
             {items[1].school}
           </div>
@@ -41,9 +41,9 @@ const Education = () => {
         </div>
 
         <div className="md:col-span-3 md:col-start-4 md:row-start-3 rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-transparent backdrop-blur p-6">
-          <div className="text-white font-semibold text-[clamp(18px,3vw,22px)] mb-2">
+          <h3 className="mb-2 text-[clamp(18px,3vw,22px)] font-semibold text-white">
             {items[2].degree}
-          </div>
+          </h3>
           <div className="text-white/80 text-[clamp(14px,2.2vw,16px)] mb-2">
             {items[2].school}
           </div>

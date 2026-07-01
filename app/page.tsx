@@ -7,13 +7,16 @@ import Projects from "@/components/contents/Projects";
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main id="main-content" tabIndex={-1} className="relative">
       <HeaderCoolWord />
       <AboutMe />
       <Exp />
 
       {/* Education */}
-      <section id="education" className="py-20 md:py-28 min-h-screen">
+      <section
+        id="education"
+        className="scroll-mt-24 py-20 md:py-28 min-h-screen"
+      >
         <div className="w-[95%] md:w-[80%] xl:max-w-screen-5xl mx-auto">
           <EducationLazy />
         </div>
@@ -51,14 +54,20 @@ export default function Home() {
       </section> */}
 
       {/* Projects */}
-      <section id="projects" className="py-20 md:py-28 min-h-screen">
+      <section
+        id="projects"
+        className="scroll-mt-24 py-20 md:py-28 min-h-screen"
+      >
         <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
           <Projects />
         </div>
       </section>
 
       {/* Contact */}
-      <section id="contact" className="min-h-screen flex flex-col justify-center py-20 md:py-28 bg-white/5 px-4 lg:px-0">
+      <section
+        id="contact"
+        className="scroll-mt-24 flex min-h-screen flex-col justify-center bg-white/5 px-4 py-20 md:py-28 lg:px-0"
+      >
         <Contact />
       </section>
     </main>

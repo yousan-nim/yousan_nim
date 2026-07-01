@@ -42,6 +42,7 @@ const NAV_ITEMS: NavItem[] = [
 
 const BLOGS_ITEM = NAV_ITEMS.find((item) => item.labelKey === "blogs")!;
 const PRIMARY_ITEMS = NAV_ITEMS.filter((item) => item.labelKey !== "blogs");
+const CTA_TARGET = "contact";
 
 export default function Navbar() {
   const { t } = useI18n();
@@ -145,6 +146,7 @@ export default function Navbar() {
 
           setOpen(false);
         }}
+        aria-current={activeItem ? "page" : undefined}
         className={[baseClasses, stateClasses].join(" ")}
       >
         {t.nav[item.labelKey]}
@@ -153,42 +155,41 @@ export default function Navbar() {
   };
 
   return (
-    <header className="absolute top-0 lg:top-2 inset-x-0 z-40 flex justify-center">
-      <div className="mt-2 w-[95%] md:w-[98%] xl:max-w-screen rounded-xl ">
-        <div className="mx-auto flex h-14 items-center justify-between 
-          max-w-[1200px] lg:max-w-[1400px] xl:max-w-[1600px] 2xl:max-w-screen-2xl min-[1920px]:max-w-[1920px] min-[2560px]:max-w-[2200px]
-          ">
+    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 py-3">
+      <div className="w-full max-w-[1500px] rounded-full border border-white/10 bg-slate-950/68 shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
+        <div className="mx-auto flex min-h-16 items-center justify-between px-3 md:px-5">
           {/* Logo / Name */}
-          <Link href="/" className="shrink-0">
-            <span className="font-semibold tracking-wide text-sm md:text-base lg:text-lg 2xl:text-xl text-white text-start">
+          <Link href="/" className="shrink-0 rounded-full px-2 py-1">
+            <span className="text-sm font-semibold tracking-[0.22em] text-white md:text-base">
               YOUSAN NIM
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-2 lg:gap-3 2xl:gap-4">
+          <nav className="hidden items-center gap-1 lg:flex lg:gap-2">
             {PRIMARY_ITEMS.map((item) => renderNavLink(item))}
-            <span
-              aria-hidden
-              className="mx-1 h-5 w-px bg-white/25"
-            />
+            <span aria-hidden className="mx-1 h-5 w-px bg-white/20" />
             {renderNavLink(BLOGS_ITEM)}
           </nav>
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
-            <button className="rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition">
+            <Link
+              href={isHome ? `#${CTA_TARGET}` : `/#${CTA_TARGET}`}
+              onClick={(e) => handleSectionClick(e, CTA_TARGET)}
+              className="inline-flex min-h-11 items-center justify-center rounded-full border border-emerald-400/25 bg-emerald-400/16 px-4 py-2 text-sm font-semibold text-white transition hover:border-emerald-300/50 hover:bg-emerald-400/24"
+            >
               {t.nav.signIn}
-            </button>
+            </Link>
           </div>
 
           {/* Mobile language switcher */}
-          <div className="lg:hidden mr-2">
+          <div className="mr-2 lg:hidden">
             <LanguageSwitcher />
           </div>
 
           {/* Mobile toggle */}
           <button
-            className="rounded-md p-2 text-slate-200 hover:bg-white/10 lg:hidden border-[1px] border-white/10"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-slate-200 transition hover:bg-white/10 lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -208,12 +209,19 @@ export default function Navbar() {
         <div
           id="mobile-nav"
           className={[
-            "lg:hidden transition-[max-height] duration-200 overflow-hidden",
+            "overflow-hidden px-3 transition-[max-height,opacity] duration-200 lg:hidden",
             open ? "max-h-96" : "max-h-0",
           ].join(" ")}
         >
-          <div className="space-y-1 border-t border-white/10 bg-[#0f1115] p-2">
+          <div className="mb-3 space-y-1 rounded-3xl border border-white/10 bg-slate-950/96 p-2 shadow-[0_18px_50px_rgba(0,0,0,0.35)]">
             {NAV_ITEMS.map((item) => renderNavLink(item, true))}
+            <Link
+              href={isHome ? `#${CTA_TARGET}` : `/#${CTA_TARGET}`}
+              onClick={(e) => handleSectionClick(e, CTA_TARGET)}
+              className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-2xl border border-emerald-400/25 bg-emerald-400/16 px-4 py-3 text-sm font-semibold text-white transition hover:border-emerald-300/50 hover:bg-emerald-400/24"
+            >
+              {t.nav.signIn}
+            </Link>
           </div>
         </div>
       </div>

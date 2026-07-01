@@ -80,11 +80,11 @@ type Dict = {
   };
   projects: {
     title: string;
-    placeholder: string;
-    comingSoonBadge: string;
-    comingSoonTitle: string;
-    comingSoonBody: string;
-    notifyMe: string;
+    intro: string;
+    featuredLabel: string;
+    walkthrough: string;
+    readBlogs: string;
+    ndaNote: string;
   };
   preloader: { loading: string };
 };
@@ -97,7 +97,7 @@ const en: Dict = {
     projects: "Projects",
     blogs: "Blogs",
     contact: "Contact",
-    signIn: "Sign In",
+    signIn: "Let's Talk",
   },
   hero: {
     line1: "Crafting code into",
@@ -105,8 +105,8 @@ const en: Dict = {
     tagline:
       "I merge creativity with logic to build solutions that inspire and endure.",
     role: "Full-Stack Developer & AI Engineer",
-    contact: "Contact",
-    projects: "Projects",
+    contact: "Let's Talk",
+    projects: "Selected Work",
     github: "GitHub",
   },
   about: {
@@ -131,31 +131,31 @@ const en: Dict = {
     step: "Step",
     steps: [
       {
-        title: "Planning & Design 📋",
+        title: "Planning & Design",
         desc: "Define requirements, architecture, and tech stack selection",
         descMobile: "Plan scope, architecture, stack",
         tags: ["User Stories", "Database", "API Design"],
       },
       {
-        title: "Development 💻",
+        title: "Development",
         desc: "Build frontend, backend APIs, and integrate features",
         descMobile: "Build UI, APIs, features",
         tags: ["Components", "APIs", "State Mgmt"],
       },
       {
-        title: "Testing & QA 🧪",
+        title: "Testing & QA",
         desc: "Comprehensive testing and quality assurance",
         descMobile: "Unit, integration, E2E",
         tags: ["Unit Tests", "Integration", "E2E"],
       },
       {
-        title: "Deployment 🚀",
+        title: "Deployment",
         desc: "CI/CD pipelines and cloud deployment setup",
         descMobile: "Automate and deploy to cloud",
         tags: ["Docker", "CI/CD", "AWS/Vultr"],
       },
       {
-        title: "Monitoring 📊",
+        title: "Monitoring",
         desc: "Track performance and continuously optimize",
         descMobile: "Monitor, analyze, iterate",
         tags: ["Analytics", "Performance", "Iteration"],
@@ -251,20 +251,21 @@ const en: Dict = {
       "I'm open to full-time roles, contracts, or collaborations. Let's talk about how I can help deliver value to your team.",
     subtitleMobile: "Open to roles and collabs — let's talk.",
     emailMe: "Email Me",
-    downloadResume: "Download Resume",
+    downloadResume: "Request CV",
     email: "Email",
     linkedin: "LinkedIn",
     github: "GitHub",
-    note: "Prefer email for the fastest response.",
+    note: "Email is best. Typical response within 24 hours.",
   },
   projects: {
     title: "Projects",
-    placeholder: "Short description goes here.",
-    comingSoonBadge: "Coming Soon",
-    comingSoonTitle: "Selected work is on the way",
-    comingSoonBody:
-      "Case studies, live demos, and source code are being curated. In the meantime, feel free to reach out for a walkthrough of recent work.",
-    notifyMe: "Notify me by email",
+    intro:
+      "A selection of shipped products, internal platforms, and AI experiences with measurable outcomes.",
+    featuredLabel: "Featured work",
+    walkthrough: "Request walkthrough",
+    readBlogs: "Read engineering notes",
+    ndaNote:
+      "More client work is available on request, including private demos and architecture walkthroughs under NDA.",
   },
   preloader: { loading: "Loading…" },
 };
@@ -277,7 +278,7 @@ const th: Dict = {
     projects: "ผลงาน",
     blogs: "บทความ",
     contact: "ติดต่อ",
-    signIn: "เข้าสู่ระบบ",
+    signIn: "มาคุยกัน",
   },
   hero: {
     line1: "เปลี่ยนโค้ดให้กลายเป็น",
@@ -285,8 +286,8 @@ const th: Dict = {
     tagline:
       "ผมผสานความคิดสร้างสรรค์กับตรรกะ เพื่อสร้างโซลูชันที่สร้างแรงบันดาลใจและคงทน",
     role: "นักพัฒนา Full-Stack และวิศวกร AI",
-    contact: "ติดต่อ",
-    projects: "ผลงาน",
+    contact: "มาคุยกัน",
+    projects: "ผลงานเด่น",
     github: "GitHub",
   },
   about: {
@@ -311,31 +312,31 @@ const th: Dict = {
     step: "ขั้นตอน",
     steps: [
       {
-        title: "วางแผนและออกแบบ 📋",
+        title: "วางแผนและออกแบบ",
         desc: "กำหนดความต้องการ สถาปัตยกรรม และเลือกเทคโนโลยี",
         descMobile: "วางขอบเขต สถาปัตยกรรม เทคสแตก",
         tags: ["User Stories", "ฐานข้อมูล", "ออกแบบ API"],
       },
       {
-        title: "พัฒนา 💻",
+        title: "พัฒนา",
         desc: "สร้างฟรอนต์เอนด์ แบ็กเอนด์ API และผสานฟีเจอร์ต่าง ๆ",
         descMobile: "สร้าง UI, API, ฟีเจอร์",
         tags: ["Components", "APIs", "State Mgmt"],
       },
       {
-        title: "ทดสอบและประกันคุณภาพ 🧪",
+        title: "ทดสอบและประกันคุณภาพ",
         desc: "การทดสอบอย่างครอบคลุมและการประกันคุณภาพ",
         descMobile: "Unit, integration, E2E",
         tags: ["Unit Tests", "Integration", "E2E"],
       },
       {
-        title: "ดีพลอย 🚀",
+        title: "ดีพลอย",
         desc: "ตั้งค่าไปป์ไลน์ CI/CD และการดีพลอยบนคลาวด์",
         descMobile: "ทำให้อัตโนมัติและดีพลอยขึ้นคลาวด์",
         tags: ["Docker", "CI/CD", "AWS/Vultr"],
       },
       {
-        title: "ติดตามผล 📊",
+        title: "ติดตามผล",
         desc: "ติดตามประสิทธิภาพและปรับปรุงอย่างต่อเนื่อง",
         descMobile: "ติดตาม วิเคราะห์ ปรับปรุง",
         tags: ["Analytics", "Performance", "Iteration"],
@@ -431,20 +432,21 @@ const th: Dict = {
       "ผมเปิดรับงานประจำ งานสัญญาจ้าง หรือการร่วมงาน มาคุยกันว่าผมจะช่วยสร้างคุณค่าให้ทีมของคุณได้อย่างไร",
     subtitleMobile: "เปิดรับงานและการร่วมงาน — มาคุยกัน",
     emailMe: "ส่งอีเมลถึงผม",
-    downloadResume: "ดาวน์โหลดเรซูเม่",
+    downloadResume: "ขอ CV",
     email: "อีเมล",
     linkedin: "LinkedIn",
     github: "GitHub",
-    note: "ส่งอีเมลมาจะตอบกลับเร็วที่สุด",
+    note: "ติดต่อทางอีเมลจะสะดวกที่สุด ปกติตอบกลับภายใน 24 ชั่วโมง",
   },
   projects: {
     title: "ผลงาน",
-    placeholder: "คำอธิบายสั้น ๆ ตรงนี้",
-    comingSoonBadge: "เร็ว ๆ นี้",
-    comingSoonTitle: "ผลงานคัดสรรกำลังจะมา",
-    comingSoonBody:
-      "Case study, live demo และซอร์สโค้ดกำลังถูกคัดสรรอยู่ ระหว่างนี้สามารถติดต่อเข้ามาเพื่อขอชม walkthrough ของผลงานล่าสุดได้",
-    notifyMe: "แจ้งเตือนผ่านอีเมล",
+    intro:
+      "ตัวอย่างผลงานที่ส่งมอบจริง ทั้งผลิตภัณฑ์ ระบบภายใน และประสบการณ์ AI พร้อมผลลัพธ์ที่วัดได้",
+    featuredLabel: "ผลงานเด่น",
+    walkthrough: "ขอ walkthrough",
+    readBlogs: "อ่านบันทึกวิศวกรรม",
+    ndaNote:
+      "ยังมีงานลูกค้าเพิ่มเติมที่สามารถเล่าให้ฟังได้เมื่อร้องขอ รวมถึง private demo และ architecture walkthrough ภายใต้ NDA",
   },
   preloader: { loading: "กำลังโหลด…" },
 };
@@ -457,15 +459,15 @@ const zh: Dict = {
     projects: "项目",
     blogs: "博客",
     contact: "联系",
-    signIn: "登录",
+    signIn: "联系我",
   },
   hero: {
     line1: "将代码打造成",
     line2: "体验",
     tagline: "我将创造力与逻辑融合，构建鼓舞人心且持久的解决方案。",
     role: "全栈开发者 & AI 工程师",
-    contact: "联系",
-    projects: "项目",
+    contact: "联系我",
+    projects: "精选项目",
     github: "GitHub",
   },
   about: {
@@ -489,31 +491,31 @@ const zh: Dict = {
     step: "步骤",
     steps: [
       {
-        title: "规划与设计 📋",
+        title: "规划与设计",
         desc: "明确需求、架构并选择技术栈",
         descMobile: "规划范围、架构、技术栈",
         tags: ["用户故事", "数据库", "API 设计"],
       },
       {
-        title: "开发 💻",
+        title: "开发",
         desc: "构建前端、后端 API 并集成功能",
         descMobile: "构建 UI、API、功能",
         tags: ["组件", "API", "状态管理"],
       },
       {
-        title: "测试与质量保证 🧪",
+        title: "测试与质量保证",
         desc: "全面的测试与质量保证",
         descMobile: "单元、集成、端到端",
         tags: ["单元测试", "集成测试", "端到端"],
       },
       {
-        title: "部署 🚀",
+        title: "部署",
         desc: "CI/CD 流水线与云端部署配置",
         descMobile: "自动化并部署至云端",
         tags: ["Docker", "CI/CD", "AWS/Vultr"],
       },
       {
-        title: "监控 📊",
+        title: "监控",
         desc: "追踪性能并持续优化",
         descMobile: "监控、分析、迭代",
         tags: ["分析", "性能", "迭代"],
@@ -601,20 +603,20 @@ const zh: Dict = {
       "我接受全职、合同或合作机会。让我们聊聊我如何为您的团队创造价值。",
     subtitleMobile: "接受职位与合作 — 欢迎联系。",
     emailMe: "给我发邮件",
-    downloadResume: "下载简历",
+    downloadResume: "索取简历",
     email: "邮箱",
     linkedin: "领英",
     github: "GitHub",
-    note: "邮件联系可获得最快回复。",
+    note: "邮件联系最合适，通常会在 24 小时内回复。",
   },
   projects: {
     title: "项目",
-    placeholder: "简短描述放在这里。",
-    comingSoonBadge: "敬请期待",
-    comingSoonTitle: "精选作品即将上线",
-    comingSoonBody:
-      "案例研究、在线演示和源代码正在整理中。期间欢迎来信,获取近期作品的详细讲解。",
-    notifyMe: "邮件通知我",
+    intro: "精选已交付产品、内部平台与 AI 体验，并附上可量化的成果。",
+    featuredLabel: "精选项目",
+    walkthrough: "申请讲解",
+    readBlogs: "阅读工程笔记",
+    ndaNote:
+      "如有需要，我也可以分享更多客户项目，包括在 NDA 前提下的私密演示与架构讲解。",
   },
   preloader: { loading: "加载中…" },
 };
@@ -627,7 +629,7 @@ const ja: Dict = {
     projects: "プロジェクト",
     blogs: "ブログ",
     contact: "お問い合わせ",
-    signIn: "サインイン",
+    signIn: "相談する",
   },
   hero: {
     line1: "コードを",
@@ -635,8 +637,8 @@ const ja: Dict = {
     tagline:
       "創造性とロジックを融合し、人を惹きつけ長く使われるソリューションを構築します。",
     role: "フルスタック開発者 & AI エンジニア",
-    contact: "お問い合わせ",
-    projects: "プロジェクト",
+    contact: "相談する",
+    projects: "注目の実績",
     github: "GitHub",
   },
   about: {
@@ -661,31 +663,31 @@ const ja: Dict = {
     step: "ステップ",
     steps: [
       {
-        title: "計画と設計 📋",
+        title: "計画と設計",
         desc: "要件、アーキテクチャ、技術スタックの選定",
         descMobile: "範囲・構成・スタックを計画",
         tags: ["ユーザーストーリー", "データベース", "API 設計"],
       },
       {
-        title: "開発 💻",
+        title: "開発",
         desc: "フロントエンド、バックエンド API を構築し機能を統合",
         descMobile: "UI・API・機能を構築",
         tags: ["コンポーネント", "API", "状態管理"],
       },
       {
-        title: "テストと QA 🧪",
+        title: "テストと QA",
         desc: "包括的なテストと品質保証",
         descMobile: "ユニット・統合・E2E",
         tags: ["ユニットテスト", "統合テスト", "E2E"],
       },
       {
-        title: "デプロイ 🚀",
+        title: "デプロイ",
         desc: "CI/CD パイプラインとクラウド展開の構築",
         descMobile: "自動化してクラウドへ展開",
         tags: ["Docker", "CI/CD", "AWS/Vultr"],
       },
       {
-        title: "モニタリング 📊",
+        title: "モニタリング",
         desc: "パフォーマンスを追跡し継続的に最適化",
         descMobile: "監視・分析・改善",
         tags: ["分析", "パフォーマンス", "改善"],
@@ -780,20 +782,21 @@ const ja: Dict = {
       "フルタイム、契約、または協業を歓迎しています。あなたのチームにどう貢献できるか、ぜひお話ししましょう。",
     subtitleMobile: "求人・協業を歓迎 — お気軽にどうぞ。",
     emailMe: "メールを送る",
-    downloadResume: "履歴書をダウンロード",
+    downloadResume: "CV を依頼",
     email: "メール",
     linkedin: "LinkedIn",
     github: "GitHub",
-    note: "最も早い返信はメールでお願いします。",
+    note: "メールが最も確実です。通常 24 時間以内に返信します。",
   },
   projects: {
     title: "プロジェクト",
-    placeholder: "ここに簡単な説明が入ります。",
-    comingSoonBadge: "近日公開",
-    comingSoonTitle: "厳選した作品を公開予定",
-    comingSoonBody:
-      "ケーススタディ、ライブデモ、ソースコードを整理中です。お気軽にお問い合わせいただければ、最近の作品をご紹介します。",
-    notifyMe: "メールで通知",
+    intro:
+      "実際に提供したプロダクト、社内プラットフォーム、AI 体験の中から、成果が明確なものを厳選しています。",
+    featuredLabel: "注目の実績",
+    walkthrough: "ウォークスルーを依頼",
+    readBlogs: "技術ノートを読む",
+    ndaNote:
+      "ご要望があれば、NDA 前提で非公開デモやアーキテクチャ解説を含む追加事例も共有できます。",
   },
   preloader: { loading: "読み込み中…" },
 };

@@ -21,13 +21,20 @@ export default function LanguageSwitcher({
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const onClick = (e: MouseEvent) => {
+    const onPointerDown = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
         setOpen(false);
       }
     };
-    document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
+    const onEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onEscape);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onEscape);
+    };
   }, []);
 
   return (
@@ -38,7 +45,7 @@ export default function LanguageSwitcher({
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label="Change language"
-        className="rounded-md border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold tracking-wide text-white hover:bg-white/20 transition"
+        className="min-h-11 rounded-full border border-white/15 bg-slate-950/70 px-3.5 py-2 text-sm font-semibold tracking-wide text-white transition hover:border-emerald-400/50 hover:bg-white/12"
       >
         {LOCALE_SHORT[locale]}
       </button>
@@ -46,7 +53,7 @@ export default function LanguageSwitcher({
       {open && (
         <ul
           role="listbox"
-          className="absolute right-0 mt-2 w-20 overflow-hidden rounded-md border border-white/15 bg-[#0f1115] shadow-lg z-50"
+          className="absolute right-0 z-50 mt-2 w-20 overflow-hidden rounded-2xl border border-white/15 bg-slate-950/95 shadow-lg"
         >
           {LOCALES.map((l: Locale) => (
             <li key={l} role="option" aria-selected={l === locale}>
@@ -57,7 +64,7 @@ export default function LanguageSwitcher({
                   setOpen(false);
                 }}
                 className={[
-                  "block w-full px-4 py-2 text-left text-sm font-semibold tracking-wide transition",
+                  "block min-h-11 w-full px-4 py-2 text-left text-sm font-semibold tracking-wide transition",
                   l === locale
                     ? "bg-white/10 text-white"
                     : "text-slate-300 hover:bg-white/10 hover:text-white",

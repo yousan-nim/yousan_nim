@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { FiBriefcase } from "react-icons/fi";
 import { useI18n } from "@/lib/i18n/I18nProvider";
 
 const POINT_COLOR = [
@@ -16,49 +17,56 @@ const Experience = () => {
   const e = t.experience;
 
   return (
-    <section id="experience" className="py-20 min-h-screen">
+    <section id="experience" className="scroll-mt-24 py-20 min-h-screen">
       <div className="w-[95%] md:w-[80%] xl:max-w-screen-2xl mx-auto">
-        <h1 className="text-white font-semibold uppercase text-[clamp(32px,6vw,56px)] text-start lg:text-center mb-8">
+        <h2 className="mb-4 text-start text-[clamp(32px,6vw,56px)] font-semibold uppercase text-white lg:text-center">
           {e.title}
-        </h1>
+        </h2>
 
         {/* Career Timeline */}
         <div className="mb-12">
-          <h2 className="text-white font-semibold text-[clamp(24px,4vw,36px)] mb-8 text-center">
+          <p className="mx-auto mb-8 max-w-2xl text-center text-[clamp(15px,2.5vw,18px)] text-slate-300/78">
             {e.subtitle}
-          </h2>
+          </p>
           <div className="relative max-w-5xl mx-auto">
             {/* Center vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-white/50 via-white/30 to-transparent -translate-x-1/2"></div>
+            <div className="absolute bottom-0 left-[18px] top-0 w-px bg-gradient-to-b from-white/50 via-white/30 to-transparent md:left-1/2 md:-translate-x-1/2"></div>
 
-            <div className="space-y-12">
+            <div className="space-y-6 md:space-y-12">
               {e.items.map((item, i) => {
                 const isLeft = i % 2 === 1;
                 return (
-                  <div
+                  <article
                     key={i}
-                    className="relative grid grid-cols-2 gap-8 items-center"
+                    className="relative pl-12 md:grid md:grid-cols-2 md:gap-8 md:pl-0"
                   >
-                    {!isLeft && <div></div>}
+                    {!isLeft && <div className="hidden md:block" />}
                     <div
-                      className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full ring-4 z-10 ${POINT_COLOR[i]}`}
-                    ></div>
-                    <div className={isLeft ? "text-right" : "text-left"}>
-                      <div className="text-white/50 text-[clamp(13px,2vw,16px)] mb-1">
+                      className={`absolute left-0 top-5 z-10 flex h-9 w-9 items-center justify-center rounded-full ring-4 md:left-1/2 md:-translate-x-1/2 ${POINT_COLOR[i]}`}
+                    >
+                      <FiBriefcase className="text-sm" />
+                    </div>
+                    <div
+                      className={[
+                        "rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl md:p-6",
+                        isLeft ? "md:text-right" : "md:text-left",
+                      ].join(" ")}
+                    >
+                      <div className="mb-2 text-[clamp(12px,2vw,14px)] font-medium uppercase tracking-[0.24em] text-slate-400">
                         {item.period}
                       </div>
-                      <div className="text-white font-semibold lg:text-[clamp(18px,3vw,24px)] mb-2 rounded-2xl border border-white/10 px-3">
+                      <h3 className="mb-2 text-[clamp(20px,3vw,24px)] font-semibold text-white">
                         {item.role}
-                      </div>
-                      <div className="text-white font-semibold lg:text-[clamp(18px,3vw,18px)] mb-2">
+                      </h3>
+                      <p className="mb-3 text-[clamp(15px,2.5vw,18px)] font-medium text-emerald-200/86">
                         {item.company}
-                      </div>
-                      <div className="text-white/70 text-[clamp(14px,2.2vw,18px)] leading-relaxed">
+                      </p>
+                      <p className="text-[clamp(15px,2.2vw,17px)] leading-8 text-slate-300/82">
                         {item.desc}
-                      </div>
+                      </p>
                     </div>
-                    {isLeft && <div></div>}
-                  </div>
+                    {isLeft && <div className="hidden md:block" />}
+                  </article>
                 );
               })}
             </div>

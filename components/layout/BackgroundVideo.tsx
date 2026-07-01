@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type Props = {
   defaultSrc: string;
@@ -14,10 +15,38 @@ type Props = {
  * - No color changes, just progressive darkening overlay
  */
 export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Props) {
+  const pathname = usePathname();
   const [aboutVisible, setAboutVisible] = useState(false);
   const [scrollDarkness, setScrollDarkness] = useState(0);
+  const [shouldRenderVideo, setShouldRenderVideo] = useState(false);
 
   useEffect(() => {
+    if (pathname !== "/") {
+      setShouldRenderVideo(false);
+      return;
+    }
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const compactViewport = window.matchMedia("(max-width: 1023px)");
+
+    const sync = () => {
+      setShouldRenderVideo(
+        !reducedMotion.matches && !compactViewport.matches && pathname === "/"
+      );
+    };
+
+    sync();
+    reducedMotion.addEventListener("change", sync);
+    compactViewport.addEventListener("change", sync);
+
+    return () => {
+      reducedMotion.removeEventListener("change", sync);
+      compactViewport.removeEventListener("change", sync);
+    };
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!shouldRenderVideo) return;
     const target = document.getElementById("about");
     if (!target) return;
 
@@ -35,7 +64,7 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
 
     io.observe(target);
     return () => io.disconnect();
-  }, []);
+  }, [shouldRenderVideo]);
 
   // Decide which src to play
   const src = useMemo(() => {
@@ -49,6 +78,7 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
   // Scroll horizontally pans the video from left to right via object-position
   // Also updates darkness based on scroll progress
   useEffect(() => {
+    if (!shouldRenderVideo) return;
     const el = videoRef.current;
     if (!el) return;
 
@@ -75,10 +105,11 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [src]);
+  }, [shouldRenderVideo, src]);
 
   // Dispatch a "bg-ready" event when the video can play through
   useEffect(() => {
+    if (!shouldRenderVideo) return;
     const video = videoRef.current;
     if (!video) return;
 
@@ -88,7 +119,16 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
 
     video.addEventListener("canplaythrough", onReady, { once: true });
     return () => video.removeEventListener("canplaythrough", onReady);
-  }, [src]);
+  }, [shouldRenderVideo, src]);
+
+  if (!shouldRenderVideo) {
+    return (
+      <div className="fixed inset-0 -z-10" aria-hidden>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(52,211,153,0.14),transparent_28%),radial-gradient(circle_at_82%_10%,rgba(56,189,248,0.12),transparent_22%),linear-gradient(180deg,#08111f_0%,#020617_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.12),rgba(2,6,23,0.74))]" />
+      </div>
+    );
+  }
 
   return (
     <div className={"fixed inset-0 -z-10"} aria-hidden>
@@ -101,7 +141,7 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
         playsInline
         className={
           className ||
-          "w-full h-full object-cover opacity-70 will-change-[object-position]"
+          "h-full w-full object-cover opacity-48 will-change-[object-position]"
         }
       >
         <source src={src} type="video/mp4" />
@@ -112,6 +152,7 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
         className="absolute inset-0 pointer-events-none bg-black transition-opacity duration-300"
         style={{ opacity: scrollDarkness }}
       />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.16),rgba(2,6,23,0.72))]" />
     </div>
   );
 }
