@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type Props = {
   defaultSrc: string;
@@ -35,6 +36,9 @@ function NebulaFallback() {
  * - Darkens progressively as the user scrolls
  */
 export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Props) {
+  const pathname = usePathname();
+  // Reading-focused pages (blogs) supply their own calm background — no video.
+  const disabled = pathname?.startsWith("/blogs") ?? false;
   const [aboutVisible, setAboutVisible] = useState(false);
   const [scrollDarkness, setScrollDarkness] = useState(0);
   // null = undecided (SSR / first paint), true/false after capability check
@@ -44,6 +48,7 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
   // Show it everywhere — including mobile — and only opt OUT on genuine user
   // signals: reduced-motion, Data Saver, or a very slow (2g) connection.
   useEffect(() => {
+    if (disabled) return;
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -55,9 +60,10 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
       : false;
 
     setUseVideo(!prefersReduced && !saveData && !slowNetwork);
-  }, []);
+  }, [disabled]);
 
   useEffect(() => {
+    if (disabled) return;
     const target = document.getElementById("about");
     if (!target) return;
 
@@ -74,7 +80,7 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
 
     io.observe(target);
     return () => io.disconnect();
-  }, []);
+  }, [disabled]);
 
   // Decide which src to play
   const src = useMemo(() => {
@@ -86,6 +92,7 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
 
   // Scroll → pan the video + progressive darkness
   useEffect(() => {
+    if (disabled) return;
     let ticking = false;
     const handleScroll = () => {
       if (ticking) return;
@@ -107,7 +114,7 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [src, useVideo]);
+  }, [src, useVideo, disabled]);
 
   // Signal readiness so the Preloader can hide even without a video
   useEffect(() => {
@@ -121,7 +128,9 @@ export default function BackgroundVideo({ defaultSrc, aboutSrc, className }: Pro
     const onReady = () => window.dispatchEvent(new Event("bg-ready"));
     video.addEventListener("canplaythrough", onReady, { once: true });
     return () => video.removeEventListener("canplaythrough", onReady);
-  }, [src, useVideo]);
+  }, [src, useVideo, disabled]);
+
+  if (disabled) return null;
 
   return (
     <div className={"fixed inset-0 -z-10"} aria-hidden>

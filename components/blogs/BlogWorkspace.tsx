@@ -193,11 +193,16 @@ export default function BlogWorkspace() {
   return (
     <CodeLangContext.Provider value={{ lang: codeLang, setLang: setCodeLang }}>
     <section className="relative min-h-screen overflow-hidden px-4 pb-24 pt-24 md:px-6 md:pt-28">
-      <div aria-hidden className="absolute inset-0 -z-20 bg-[#0a0a0a]" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.16),transparent_26%),radial-gradient(circle_at_82%_10%,rgba(56,189,248,0.12),transparent_22%)]"
-      />
+      {/* Reading backdrop — no video on blogs: a calm dark base with soft,
+          fixed theme glows (purple / cyan / indigo) that stay put while reading. */}
+      <div aria-hidden className="fixed inset-0 -z-20 bg-[#0a0a0b]" />
+      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
+        <div className="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-purple-600/20 blur-[130px]" />
+        <div className="absolute top-[8%] right-[-10%] h-[26rem] w-[26rem] rounded-full bg-cyan-500/[0.14] blur-[140px]" />
+        <div className="absolute bottom-[-15%] left-1/4 h-96 w-96 rounded-full bg-indigo-500/[0.16] blur-[150px]" />
+        {/* subtle vignette keeps the reading column in focus */}
+        <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_0%,transparent_55%,rgba(0,0,0,0.55))]" />
+      </div>
 
       <div className="relative mx-auto max-w-screen-2xl">
         {/* Mobile nav toggle */}
@@ -301,7 +306,7 @@ export default function BlogWorkspace() {
           </aside>
 
           {/* Main content */}
-          <main id={readerId} className="min-w-0 scroll-mt-24 bg-black/80 p-4 rounded-2xl lg:p-8">
+          <main id={readerId} className="min-w-0 scroll-mt-24 rounded-2xl border border-white/10 bg-black/75 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-md lg:p-8">
             <div className="flex flex-wrap items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.26em] text-purple-300/80">
               <span>{selectedPost.section}</span>
               <span className="h-1 w-1 rounded-full bg-white/25" />
