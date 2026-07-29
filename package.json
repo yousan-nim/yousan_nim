@@ -9,6 +9,7 @@
     "test:energy": "node --test lib/your-energy.test.ts"
   },
   "dependencies": {
+    "firebase-admin": "^14.2.0",
     "next": "15.5.18",
     "nextjs-toploader": "^3.9.17",
     "react": "19.1.0",

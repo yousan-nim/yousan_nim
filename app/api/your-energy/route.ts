@@ -3,6 +3,9 @@ import {
   createEnergyReading,
   isEnergyInput,
 } from "@/lib/your-energy";
+import { saveEnergyReading } from "@/lib/firestore";
+
+export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -28,5 +31,21 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ data: createEnergyReading(body) });
+  const reading = createEnergyReading(body);
+
+  try {
+    await saveEnergyReading(body, reading);
+  } catch {
+    return NextResponse.json(
+      {
+        error: {
+          code: "STORAGE_UNAVAILABLE",
+          message: "ยังบันทึกผลลัพธ์ไม่ได้ กรุณาลองอีกครั้ง",
+        },
+      },
+      { status: 503 }
+    );
+  }
+
+  return NextResponse.json({ data: reading });
 }
