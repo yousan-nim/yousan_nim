@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start"
+    "start": "next start",
+    "test:energy": "node --test lib/your-energy.test.ts"
   },
   "dependencies": {
     "next": "15.5.18",

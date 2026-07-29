@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 const EMAIL = "pongchanok.nt@gmail.com";
 const LINKEDIN = "https://www.linkedin.com/in/yousan-nim/";
@@ -27,6 +30,10 @@ const LINKS = [
 ];
 
 const FloatingAction = () => {
+  const pathname = usePathname();
+
+  if (pathname === "/yourEnergy") return null;
+
   return (
     <div
       role="navigation"

@@ -15,7 +15,8 @@ type NavLabelKey =
   | "contact";
 
 type NavItem = {
-  labelKey: NavLabelKey;
+  labelKey?: NavLabelKey;
+  label?: string;
   href: string;
   kind: "section" | "page";
   id?: string;
@@ -38,15 +39,20 @@ const NAV_ITEMS: NavItem[] = [
   { id: "projects", labelKey: "projects", href: "/#projects", kind: "section" },
   { id: "contact", labelKey: "contact", href: "/#contact", kind: "section" },
   { labelKey: "blogs", href: "/blogs", kind: "page" },
+  { label: "Your Energy", href: "/yourEnergy", kind: "page" },
 ];
 
 const BLOGS_ITEM = NAV_ITEMS.find((item) => item.labelKey === "blogs")!;
-const PRIMARY_ITEMS = NAV_ITEMS.filter((item) => item.labelKey !== "blogs");
+const ENERGY_ITEM = NAV_ITEMS.find((item) => item.href === "/yourEnergy")!;
+const PRIMARY_ITEMS = NAV_ITEMS.filter(
+  (item) => item.labelKey !== "blogs" && item.href !== "/yourEnergy"
+);
 
 export default function Navbar() {
   const { t } = useI18n();
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isEnergy = pathname === "/yourEnergy";
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
 
@@ -125,9 +131,13 @@ export default function Navbar() {
     const baseClasses = mobile
       ? "block rounded-md px-4 py-3 text-base"
       : "rounded-md px-3 py-2 md:text-sm lg:text-base 2xl:text-lg transition uppercase";
-    const stateClasses = activeItem
-      ? "bg-white/10 text-white"
-      : "text-slate-300 hover:bg-white/10 hover:text-white";
+    const stateClasses = isEnergy
+      ? activeItem
+        ? "bg-rose-100 text-rose-950"
+        : "text-rose-800 hover:bg-rose-100 hover:text-rose-950"
+      : activeItem
+        ? "bg-white/10 text-white"
+        : "text-slate-300 hover:bg-white/10 hover:text-white";
 
     return (
       <Link
@@ -147,7 +157,7 @@ export default function Navbar() {
         }}
         className={[baseClasses, stateClasses].join(" ")}
       >
-        {t.nav[item.labelKey]}
+        {item.labelKey ? t.nav[item.labelKey] : item.label}
       </Link>
     );
   };
@@ -160,7 +170,12 @@ export default function Navbar() {
           ">
           {/* Logo / Name */}
           <Link href="/" className="shrink-0">
-            <span className="font-semibold tracking-wide text-sm md:text-base lg:text-lg 2xl:text-xl text-white text-start">
+            <span
+              className={[
+                "text-start text-sm font-semibold tracking-wide md:text-base lg:text-lg 2xl:text-xl",
+                isEnergy ? "text-rose-950" : "text-white",
+              ].join(" ")}
+            >
               YOUSAN NIM
             </span>
           </Link>
@@ -170,36 +185,59 @@ export default function Navbar() {
             {PRIMARY_ITEMS.map((item) => renderNavLink(item))}
             <span
               aria-hidden
-              className="mx-1 h-5 w-px bg-white/25"
+              className={[
+                "mx-1 h-5 w-px",
+                isEnergy ? "bg-rose-300" : "bg-white/25",
+              ].join(" ")}
             />
             {renderNavLink(BLOGS_ITEM)}
+            {renderNavLink(ENERGY_ITEM)}
           </nav>
           <div className="hidden lg:flex items-center gap-3">
-            <LanguageSwitcher />
+            {!isEnergy && <LanguageSwitcher />}
             <a
               href="/cv/Pongchanok_Nuamteam_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md border border-white/30 bg-white/20 px-4 py-2 text-sm text-white hover:bg-white/30 transition"
+              className={[
+                "rounded-md border px-4 py-2 text-sm transition",
+                isEnergy
+                  ? "border-rose-300 bg-white/60 text-rose-900 hover:bg-white"
+                  : "border-white/30 bg-white/20 text-white hover:bg-white/30",
+              ].join(" ")}
             >
               {t.nav.resume}
             </a>
           </div>
 
           {/* Mobile language switcher */}
-          <div className="lg:hidden mr-2">
-            <LanguageSwitcher />
-          </div>
+          {!isEnergy && (
+            <div className="mr-2 lg:hidden">
+              <LanguageSwitcher />
+            </div>
+          )}
 
           {/* Mobile toggle */}
           <button
-            className="rounded-md p-2 text-slate-200 hover:bg-white/10 lg:hidden border-[1px] border-white/10"
+            className={[
+              "rounded-md border p-2 lg:hidden",
+              isEnergy
+                ? "border-rose-300 bg-white/50 text-rose-900 hover:bg-white"
+                : "border-white/10 text-slate-200 hover:bg-white/10",
+            ].join(" ")}
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label="Toggle navigation"
           >
-            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
+            <svg
+              viewBox="0 0 24 24"
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
               {open ? (
                 <path d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -217,7 +255,14 @@ export default function Navbar() {
             open ? "max-h-96" : "max-h-0",
           ].join(" ")}
         >
-          <div className="space-y-1 border-t border-white/10 bg-[#0f1115] p-2">
+          <div
+            className={[
+              "space-y-1 border-t p-2",
+              isEnergy
+                ? "border-rose-200 bg-rose-50"
+                : "border-white/10 bg-[#0f1115]",
+            ].join(" ")}
+          >
             {NAV_ITEMS.map((item) => renderNavLink(item, true))}
           </div>
         </div>

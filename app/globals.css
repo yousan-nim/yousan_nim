@@ -32,6 +32,21 @@ body {
   max-width: 100%;
 }
 
+/* Keep browser autofill consistent with the light Your Energy form. */
+.your-energy-input {
+  color-scheme: light;
+}
+
+.your-energy-input:autofill,
+.your-energy-input:-webkit-autofill,
+.your-energy-input:-webkit-autofill:hover,
+.your-energy-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #4c0519;
+  caret-color: #4c0519;
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.92) inset;
+  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.92) inset;
+}
+
 html {
   /* color-scheme tells the browser to use dark native UI (including the
      scrollbar) so the track is no longer rendered with a white default.
