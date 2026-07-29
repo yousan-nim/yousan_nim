@@ -37,6 +37,19 @@ body {
   color-scheme: light;
 }
 
+/* iOS keeps an intrinsic width on native date/time controls. */
+.your-energy-input[type="date"],
+.your-energy-input[type="time"] {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 .your-energy-input:autofill,
 .your-energy-input:-webkit-autofill,
 .your-energy-input:-webkit-autofill:hover,
