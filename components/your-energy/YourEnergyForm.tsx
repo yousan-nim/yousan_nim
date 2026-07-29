@@ -7,7 +7,6 @@ import {
   LuHeart,
   LuLocateFixed,
   LuMapPin,
-  LuShieldCheck,
   LuSparkles,
 } from "react-icons/lu";
 
@@ -21,14 +20,16 @@ type Reading = {
 };
 
 export default function YourEnergyForm() {
-  const [location, setLocation] = useState("");
   const [locationSeed, setLocationSeed] = useState("");
   const [locationStatus, setLocationStatus] = useState("");
   const [locationConsent, setLocationConsent] = useState(false);
   const [reading, setReading] = useState<Reading | null>(null);
+  const [readingId, setReadingId] = useState("");
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copyStatus, setCopyStatus] = useState("");
+  const [feedbackStatus, setFeedbackStatus] = useState("");
+  const [isFeedbackSubmitting, setIsFeedbackSubmitting] = useState(false);
 
   const copyImagePrompt = async () => {
     if (!reading) return;
@@ -50,7 +51,6 @@ export default function YourEnergyForm() {
     setLocationStatus("กำลังขออนุญาตตำแหน่ง…");
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
-        setLocation("ใช้ตำแหน่งอุปกรณ์แล้ว");
         setLocationSeed(`${coords.latitude.toFixed(3)},${coords.longitude.toFixed(3)}`);
         setLocationStatus("รับตำแหน่งเรียบร้อยแล้ว");
         if (continueToForm) setLocationConsent(true);
@@ -76,7 +76,7 @@ export default function YourEnergyForm() {
           birthDate: form.get("birthDate"),
           birthTime: form.get("birthTime") || undefined,
           birthPlace: form.get("birthPlace") || undefined,
-          location: locationSeed || location,
+          location: locationSeed,
           today: new Date().toLocaleDateString("en-CA"),
           previousRuleId: reading?.ruleId,
         }),
@@ -88,6 +88,8 @@ export default function YourEnergyForm() {
       }
 
       setReading(result.data);
+      setReadingId(result.readingId);
+      setFeedbackStatus("");
     } catch (error) {
       setSubmitError(
         error instanceof Error ? error.message : "เกิดข้อผิดพลาด กรุณาลองอีกครั้ง"
@@ -97,8 +99,39 @@ export default function YourEnergyForm() {
     }
   };
 
+  const submitFeedback = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    setIsFeedbackSubmitting(true);
+    setFeedbackStatus("");
+
+    try {
+      const response = await fetch(`/api/your-energy/${readingId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          developerMessage: form.get("developerMessage"),
+        }),
+      });
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error?.message || "ส่งข้อความไม่สำเร็จ");
+      }
+
+      setFeedbackStatus("ส่งข้อความถึงผู้พัฒนาแล้ว ขอบคุณนะ");
+      event.currentTarget.reset();
+    } catch (error) {
+      setFeedbackStatus(
+        error instanceof Error ? error.message : "เกิดข้อผิดพลาด กรุณาลองอีกครั้ง"
+      );
+    } finally {
+      setIsFeedbackSubmitting(false);
+    }
+  };
+
   const fieldClass =
-    "your-energy-input mt-2 min-h-11 w-full rounded-xl border border-rose-200 bg-white/80 px-3 py-2.5 text-rose-950 shadow-sm placeholder:text-rose-300 transition focus:border-rose-400";
+    "your-energy-input mt-2 min-h-11 min-w-0 max-w-full w-full rounded-xl border border-rose-200 bg-white/80 px-3 py-2.5 text-rose-950 shadow-sm placeholder:text-rose-300 transition focus:border-rose-400";
 
   return (
     <>
@@ -124,8 +157,7 @@ export default function YourEnergyForm() {
               id="location-consent-description"
               className="mt-3 text-sm leading-6 text-rose-900/70"
             >
-              เราใช้ตำแหน่งเพื่อสร้างคำทำนายให้เข้ากับพื้นที่ที่เธออยู่
-              ข้อมูลจะส่งไปประมวลผลชั่วคราวและไม่ถูกบันทึกลงฐานข้อมูล
+              เราใช้ตำแหน่งเพื่อสร้างคำทำนายให้เข้ากับพื้นที่ที่ และเพื่อความแม่นยำยิ่งขึ้น
             </p>
             {locationStatus && (
               <p role="alert" className="mt-3 text-sm font-medium text-rose-700">
@@ -156,8 +188,8 @@ export default function YourEnergyForm() {
         <LuHeart className="h-5 w-5" />
       </div>
       <form onSubmit={submit} className="space-y-5">
-        <div className="grid gap-5 md:grid-cols-2">
-          <label className="text-sm font-semibold text-rose-950/80">
+        <div className="grid min-w-0 gap-5 md:grid-cols-2">
+          <label className="min-w-0 text-sm font-semibold text-rose-950/80">
             ชื่อเล่น
             <input
               name="nickname"
@@ -167,15 +199,15 @@ export default function YourEnergyForm() {
               className={fieldClass}
             />
           </label>
-          <label className="text-sm font-semibold text-rose-950/80">
+          <label className="min-w-0 text-sm font-semibold text-rose-950/80">
             วันเดือนปีเกิด
             <input name="birthDate" required type="date" className={fieldClass} />
           </label>
-          <label className="text-sm font-semibold text-rose-950/80">
+          <label className="min-w-0 text-sm font-semibold text-rose-950/80">
             เวลาเกิด <span className="font-normal text-rose-900/50">(ถ้าทราบ)</span>
             <input name="birthTime" type="time" className={fieldClass} />
           </label>
-          <label className="text-sm font-semibold text-rose-950/80">
+          <label className="min-w-0 text-sm font-semibold text-rose-950/80">
             เมืองหรือประเทศที่เกิด
             <input
               name="birthPlace"
@@ -185,47 +217,9 @@ export default function YourEnergyForm() {
           </label>
         </div>
 
-        <fieldset>
-          <legend className="text-sm font-semibold text-rose-950/80">ตอนนี้เธออยู่ที่ไหน</legend>
-          <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center">
-            <div className="relative flex-1">
-              <LuMapPin aria-hidden className="absolute left-3 top-3.5 text-rose-400" />
-              <input
-                required
-                value={location}
-                onChange={(event) => {
-                  setLocation(event.target.value);
-                  setLocationSeed("");
-                }}
-                placeholder="พิมพ์ชื่อเมือง"
-                aria-label="เมืองหรือตำแหน่งปัจจุบัน"
-                className={`${fieldClass} mt-0 pl-10`}
-              />
-            </div>
-            <span className="text-center text-sm text-rose-900/50">หรือ</span>
-            <button
-              type="button"
-              onClick={() => requestLocation()}
-              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-rose-200 bg-rose-50 px-4 text-sm font-semibold text-rose-700 transition hover:bg-rose-100"
-            >
-              <LuLocateFixed aria-hidden />
-              {locationSeed ? "ใช้ตำแหน่งอุปกรณ์แล้ว" : "ใช้ตำแหน่งอุปกรณ์"}
-            </button>
-          </div>
-          {locationStatus && (
-            <p role="status" className="mt-2 text-sm text-rose-700">
-              {locationStatus}
-            </p>
-          )}
-          <p className="mt-2 flex gap-2 text-xs leading-5 text-rose-900/60">
-            <LuShieldCheck aria-hidden className="mt-0.5 shrink-0 text-rose-500" />
-            เบราว์เซอร์จะถามอนุญาตก่อนเสมอ ตำแหน่งจะส่งไปคำนวณชั่วคราวและไม่ถูกบันทึก
-          </p>
-        </fieldset>
-
         <label className="flex gap-3 rounded-xl bg-rose-50/80 p-3 text-sm leading-6 text-rose-900/70">
           <input required type="checkbox" className="mt-1 h-5 w-5 accent-rose-500" />
-          ฉันยินยอมให้ส่งข้อมูลข้างต้นไปประมวลผลคำทำนาย โดยไม่มีการบันทึกลงฐานข้อมูล
+          ฉันยินยอมเปิดใจรับคำทำนาย สำหรับวันนี้ ;)
         </label>
 
         <button
@@ -276,6 +270,41 @@ export default function YourEnergyForm() {
               {copyStatus || "คัดลอกพรอมต์สร้างภาพ"}
             </button>
           </div>
+
+          <form
+            onSubmit={submitFeedback}
+            className="mt-6 border-t border-rose-200 pt-5 text-left"
+          >
+            <label className="block text-sm font-semibold text-rose-950/80">
+              มีอะไรอยากบอกผู้พัฒนา{" "}
+              <span className="italic">_yousan_nim ไหม?</span>
+              <textarea
+                required
+                name="developerMessage"
+                maxLength={500}
+                rows={4}
+                placeholder="ฝากข้อความไว้ตรงนี้ได้เลย"
+                className={`${fieldClass} resize-y`}
+              />
+              <span className="mt-1 block text-xs font-normal text-rose-900/50">
+                สูงสุด 500 ตัวอักษร
+              </span>
+            </label>
+            <button
+              type="submit"
+              disabled={isFeedbackSubmitting || !readingId}
+              className="mt-3 inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-rose-500 px-4 text-sm font-bold text-white transition hover:bg-rose-400 disabled:opacity-60"
+            >
+              {isFeedbackSubmitting
+                ? "กำลังส่งข้อความ…"
+                : "ส่งข้อความถึงผู้พัฒนา"}
+            </button>
+            {feedbackStatus && (
+              <p role="status" className="mt-2 text-center text-sm text-rose-700">
+                {feedbackStatus}
+              </p>
+            )}
+          </form>
         </div>
       )}
       </section>

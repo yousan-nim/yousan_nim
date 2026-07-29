@@ -32,9 +32,10 @@ export async function POST(request: Request) {
   }
 
   const reading = createEnergyReading(body);
+  let readingId: string;
 
   try {
-    await saveEnergyReading(body, reading);
+    readingId = await saveEnergyReading(body, reading);
   } catch {
     return NextResponse.json(
       {
@@ -47,5 +48,5 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ data: reading });
+  return NextResponse.json({ data: reading, readingId });
 }

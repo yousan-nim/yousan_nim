@@ -23,7 +23,7 @@ export async function saveEnergyReading(
   input: EnergyInput,
   reading: EnergyReading
 ) {
-  await getFirestore(getFirebaseApp()).collection("energyReadings").add({
+  const document = await getFirestore(getFirebaseApp()).collection("energyReadings").add({
     nickname: input.nickname.trim(),
     birthDate: input.birthDate,
     birthTime: input.birthTime || null,
@@ -33,4 +33,19 @@ export async function saveEnergyReading(
     readingDate: input.today,
     createdAt: FieldValue.serverTimestamp(),
   });
+
+  return document.id;
+}
+
+export async function saveDeveloperMessage(
+  readingId: string,
+  developerMessage: string
+) {
+  await getFirestore(getFirebaseApp())
+    .collection("energyReadings")
+    .doc(readingId)
+    .update({
+      developerMessage: developerMessage.trim(),
+      developerMessageUpdatedAt: FieldValue.serverTimestamp(),
+    });
 }
